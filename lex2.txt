@@ -1,28 +1,28 @@
-Multichar_Symbols !morfoloogilise info m‰rgendid
+Multichar_Symbols !morfoloogilise info m√§rgendid
 +S +A +Num +Pron ma+V +K +Adv +sg +pl +nom +gen +part +ill +adit +in +el +all +ad +abl +trl +ter +es +ab +kom +comp +sup +indic +imper +cond +quot +pres +past +impf +ps1 +ps2 +ps3 
 +neg +af +imps +ps +inf +sup +partic +ger
 
 !Definitions
 !  C = [b|d|g|h|j|k|l|m|n|p|r|s|sh|z|zh|t|v];
-!  V = [a|e|i|o|u|ı|‰|ˆ|¸];
+!  V = [a|e|i|o|u|√µ|√§|√∂|√º];
 !  F = [B|D|G|S];	! laadivahelduslikud konsonandid
 !  Alfa = [C | V];
 
-LEXICON Sınastik
-  Nimisına;	!substantive
-  Omadussına;	!adjective
-  Tegusına; 	!verb
+LEXICON S√µnastik
+  Nimis√µna;	!substantive
+  Omaduss√µna;	!adjective
+  Tegus√µna; 	!verb
 
-! T¸vikud
+! T√ºvikud
 
-LEXICON Omadussına
+LEXICON Omaduss√µna
  endine+A:endi 10_NE-SE-S;
  endine+A:endi 12_NE-SE-S;
  esimene+A:esime 12_NE-SE-S;
  halb+A:halB 22_A;
  ilus+A:ilus 02_A;
- j‰rgmine+A:j‰rgmi 10_NE-SE-S;
- j‰rgmine+A:j‰rgmi 12_NE-SE-S;
+ j√§rgmine+A:j√§rgmi 10_NE-SE-S;
+ j√§rgmine+A:j√§rgmi 12_NE-SE-S;
  kallis+A:kalli 05_S-0;
  kaval+A:kaval 02_A;
  noor+A:noor 13;
@@ -40,10 +40,10 @@ LEXICON Omadussına
  vallatu+A:vallatu 01;
  vana+A:vana 17;
  viiman+A:viima 10_NE-SE-S;
- vıimalik+A:vıimalikK 25;
- ınnelik+A:ınnelikK 25;
+ v√µimalik+A:v√µimalikK 25;
+ √µnnelik+A:√µnnelikK 25;
 
-LEXICON Nimisına
+LEXICON Nimis√µna
  aasta 01;
  algus 11;
  ase 04;
@@ -58,7 +58,7 @@ LEXICON Nimisına
  hind:hinD 22_A;
  hommik 02_U;
  huvi 17;
- h‰‰l 13;
+ h√§√§l 13;
  idee:ide. 26;
  inime 12_NE-SE-S;
  isa 17;
@@ -66,7 +66,7 @@ LEXICON Nimisına
  juht:juhT 22_I;
  jumal 02_A;
  jutt:jutT 22_U;
- jıgi:jıG=i 18_Adt;
+ j√µgi:j√µG=i 18_Adt;
  kala 17;
  kana 17;
  kannel:kanD 08_EL-LE;
@@ -80,9 +80,9 @@ LEXICON Nimisına
  kroon 22_I;
  kukal:kukAl 08_A;
  kuu:ku. 26;
- kıne:kın=e 16_Adt;
- k‰si:k‰S 15;
- k¸simus 11;
+ k√µne:k√µn=e 16_Adt;
+ k√§si:k√§S 15;
+ k√ºsimus 11;
  laud:lauD 22_A;
  ladu:laD=u 18_Adt;
  lagi:laG=i 18_Adt;
@@ -99,13 +99,13 @@ LEXICON Nimisına
  maja:maj=a 17_Adt;
  manner:manDEr 03_I;
  meel 13;
- mıte:mıtTe 08;
- m‰ng 22_U;
+ m√µte:m√µtTe 08;
+ m√§ng 22_U;
  nai 12_NE-SE-S;
  nimi:nim= 20;
  number:numbEr 02_I;
- n‰dal 02_A;
- n‰gu:n‰G=u 18_Adt;
+ n√§dal 02_A;
+ n√§gu:n√§G=u 18_Adt;
  padi:paTj 24; 
  pank:panK 22_A;
  pesa:pes=a 17_Adt;
@@ -115,7 +115,7 @@ LEXICON Nimisına
  president:presidenT 22_I;
  probleem 22_I;
  protsent:protsenT 22_I;
- p‰ev 22_A;
+ p√§ev 22_A;
  raamat 02_U;
  raha 17;
  rahvas:rahva 07_S-0;
@@ -133,7 +133,7 @@ LEXICON Nimisına
  surm 22_A;
  suu:su. 26;
  suvi 20;
- sıda:sıD=a 18_Adt_PlPV;
+ s√µda:s√µD=a 18_Adt_PlPV;
  tee:te. 26;
  tegevus 11;
  tegu:teGu 18;
@@ -146,23 +146,23 @@ LEXICON Nimisına
  tund:tunD 22_I;
  tunne:tunDe 08;
  tuvi 17;
- t‰nav 02_A;
- tˆˆ:tˆ. 26;
- t¸druk 02_U;
- t¸tar:t¸tAr 08_E;
+ t√§nav 02_A;
+ t√∂√∂:t√∂. 26;
+ t√ºdruk 02_U;
+ t√ºtar:t√ºtAr 08_E;
  uks 13;
  vaher:vahTEr 03_A;
  valitsus 11;
  vesi:veS 15;
  viis 22_I;
  voodi 01;
- vıimalus 11;
- vıti:vıt 05_I-ME;
- ıhtu 01;
- ıpik 02_U;
+ v√µimalus 11;
+ v√µti:v√µt 05_I-ME;
+ √µhtu 01;
+ √µpik 02_U;
  !<(C) V (V) C (C) V (C V)> 01;
 
-LEXICON Tegusına
+LEXICON Tegus√µna
  aiTa 29;
  alGa 29;
  alusta 27;
@@ -173,12 +173,12 @@ LEXICON Tegusına
  ela 27;
  esita 27;
  hakKa 29;
- h¸pPa 29;
+ h√ºpPa 29;
  ilmu 27;
  istu 28;
  juhtu 27;
- j‰tT 34;
- j‰‰:j‰. 38;
+ j√§tT 34;
+ j√§√§:j√§. 38;
  kaDu 29;
  kaota 27;
  karT 34;
@@ -190,8 +190,8 @@ LEXICON Tegusına
  kuula 29;
  kuul 33_E;
  kuulu 27;
- k‰i 37;
- k¸si 27;
+ k√§i 37;
+ k√ºsi 27;
  lepPi 28;
  liiKu 28;
  lisa 27;
@@ -199,18 +199,18 @@ LEXICON Tegusına
  looT 34;
  luba 27;
  luGe 28;
- lıpeta 27;
- lˆˆ:lˆ. 38;
+ l√µpeta 27;
+ l√∂√∂:l√∂. 38;
  maks 32;
  meeldi 27;
  muutu 27;
- m‰ngi 28;
- m‰rKa 29;
+ m√§ngi 28;
+ m√§rKa 29;
  naer	33;
  nimeta 27;
  nutT 35;
- n‰i 37;
- n‰iTa 29;
+ n√§i 37;
+ n√§iTa 29;
  ooTa 29;
  osKa 29;
  ost 34;
@@ -223,7 +223,7 @@ LEXICON Tegusına
  piDa 28;
  riiD 30;
  rabele:rabel 31;
- r‰‰Ki 28;
+ r√§√§Ki 28;
  saa 38;
  saaT 34;
  satTu 28;
@@ -232,8 +232,8 @@ LEXICON Tegusına
  siDu 28;
  soovi 28;
  suuT 34;
- sıiT 34;
- sˆˆ:sˆ. 38;
+ s√µiT 34;
+ s√∂√∂:s√∂. 38;
  tahT 34;
  teata 27;
  tekKi 28;
@@ -243,24 +243,24 @@ LEXICON Tegusına
  tule	36;
  tundu 27;
  tunnista 27;
- tımBa 29;
- tıst 34;
- tıus 32_E;
- t‰henda 27;
- tˆˆta 27;
+ t√µmBa 29;
+ t√µst 34;
+ t√µus 32_E;
+ t√§henda 27;
+ t√∂√∂ta 27;
  usKu 28;
  vaaTa 29;
  vali 27;
  vasta 29;
  vii 37;
- vıi 37;
- vıtT 34;
- ¸tle:¸tel 31;
- !<C u G e> 28; !proovisin anal¸¸sida sınastikus mitteesinevaid sınu, l‰htudes nende h‰‰likstruktuurist 
+ v√µi 37;
+ v√µtT 34;
+ √ºtle:√ºtel 31;
+ !<C u G e> 28; !proovisin anal√º√ºsida s√µnastikus mitteesinevaid s√µnu, l√§htudes nende h√§√§likstruktuurist 
  !<C V V> 37;
  
  
-! t¸vevariantide moodustus ja kasutus
+! t√ºvevariantide moodustus ja kasutus
 
 LEXICON 01	!vallatu
 An_SgN;
@@ -269,11 +269,11 @@ An_SgP_t;
 An_PlG_te;
 An_PlP_id;
 
-LEXICON 02_U	!ıpik
+LEXICON 02_U	!√µpik
 An_SgN;
 :u TP_02b0;
 
-LEXICON 02_A 	!t‰nav
+LEXICON 02_A 	!t√§nav
 An_SgN;
 :a TP_02b0;
 
@@ -311,7 +311,7 @@ LEXICON 05_GE-KME	!liige
 :ge An_SgP_t;
 :kme TP_04b0-05bt;
 
-LEXICON 05_I-ME	!vıti
+LEXICON 05_I-ME	!v√µti
 :i An_SgN;
 :i An_SgP_t;
 :me TP_04b0-05bt;
@@ -325,7 +325,7 @@ LEXICON 07_S-0  !hammas
 :S$ TP_07an;
 TP_07bt;
 
-LEXICON 08	!mıte
+LEXICON 08	!m√µte
 :$ TP_08an;
 TP_07bt;
 
@@ -333,7 +333,7 @@ LEXICON 08_A  !kukal
 :$ TP_08an;
 :a TP_07bt;
 
-LEXICON 08_E  !t¸tar
+LEXICON 08_E  !t√ºtar
 :$ TP_08an;
 :e TP_07bt;
 
@@ -385,7 +385,7 @@ An_SgN;
 :i An_PlP_V;
 :i An_Pl_Vok;
 
-LEXICON 15	!k‰si
+LEXICON 15	!k√§si
 :i An_SgN;
 :e$ An_SgG;
 :$ An_SgP_tt;
@@ -397,7 +397,7 @@ LEXICON 15	!k‰si
 LEXICON 16	!ratsu
 TP_16a0;
 
-LEXICON 16_Adt	!kıne
+LEXICON 16_Adt	!k√µne
 TP_16a0;
 :2 An_SgAdt_0;   
 
@@ -412,7 +412,7 @@ LEXICON 18	!tigu
 TP_18at;
 :$ TP_18an;
 
-LEXICON 18_Adt	!lagi, ladu, jıgi, lugu 
+LEXICON 18_Adt	!lagi, ladu, j√µgi, lugu 
 TP_18at;
 :$ TP_18an;
 :2 An_SgAdt_0;
@@ -422,7 +422,7 @@ TP_18at;
 :$ TP_18an;
 An_PlP_V;
 
-LEXICON 18_Adt_PlPV	!sıda, rida, tuba
+LEXICON 18_Adt_PlPV	!s√µda, rida, tuba
 TP_18at;
 :$ TP_18an;
 :2 An_SgAdt_0;
@@ -471,7 +471,7 @@ LEXICON 24	!padi
 :a$ TP_24bn;
 :a TP_24bt;
 
-LEXICON 25	!ınnelik
+LEXICON 25	!√µnnelik
 :$ An_SgN;
 :u$ TP_25bn;
 :u TP_25bt;
@@ -484,16 +484,16 @@ An_PlP_id;
 LEXICON 26_ii	!galerii
 TP_26a0;
 
-!*****noomenite lıpp ja verbide algus********
+!*****noomenite l√µpp ja verbide algus********
 
-LEXICON 27	! muutumatu t¸vega ja astmevahelduseta verbid (kıige produktiivsem verbit¸¸p (elama)
+LEXICON 27	! muutumatu t√ºvega ja astmevahelduseta verbid (k√µige produktiivsem verbit√º√ºp (elama)
  TP_27a0; 
 
 LEXICON 28	! ma ja da - TA, olevik -  NA (leppima)
  TP_28at;
  :$ TP_28an;
 
-LEXICON 29	! ma ja olevik - TA, da - NA - (h¸ppama)
+LEXICON 29	! ma ja olevik - TA, da - NA - (h√ºppama)
  TP_29at;
  :$ TP_29an;
 
@@ -505,11 +505,11 @@ LEXICON 31	! ELE, astmevahelduseta - (rabelema)
  :e TP_30at;
  TP_30bn;
 
-LEXICON 32	! ma ja da - TA+konsonantt¸vi, olevik - NA+Vokaalt¸vi (seisma)
+LEXICON 32	! ma ja da - TA+konsonantt√ºvi, olevik - NA+Vokaalt√ºvi (seisma)
  TP_32at;
  :a$ TP_32bn;
 
-LEXICON 32_E	! t¸vevokaal e (tıusma)
+LEXICON 32_E	! t√ºvevokaal e (t√µusma)
  TP_32at;
  :e$ TP_32bn;
  
@@ -517,43 +517,43 @@ LEXICON 33	! erinevus eelmisest - da, dud, sin, sime (naerma)
  TP_33at;
  :a$ TP_33bn;
  
-LEXICON 33_E  ! t¸vevokaal e (kuulma)
+LEXICON 33_E  ! t√ºvevokaal e (kuulma)
  TP_33at;
  :e$ TP_33bn;
 
-LEXICON 34	! ma - TA + kons.t¸vi, da - TA, t¸vi&formatiiv sulandunud, olevik - NA ja vok.t¸vi, umbisik - e+tud
+LEXICON 34	! ma - TA + kons.t√ºvi, da - TA, t√ºvi&formatiiv sulandunud, olevik - NA ja vok.t√ºvi, umbisik - e+tud
  TP_34at;
  :a$ TP_34bn;
  :e$ TP_34cn;
 
-LEXICON 35	! 4 t¸ve: nut+ma (at), nuta+b (bn), nute+tud (cn), nutt+a (ct)
+LEXICON 35	! 4 t√ºve: nut+ma (at), nuta+b (bn), nute+tud (cn), nutt+a (ct)
  TP_35at;
  :a$ TP_35bn;
  :e$ TP_35cn;
  :t TP_35ct;
 
-LEXICON 36	! 5 t¸ve (tule+ma, tul+i, tul+dud, tull+a, tull+akse)
+LEXICON 36	! 5 t√ºve (tule+ma, tul+i, tul+dud, tull+a, tull+akse)
  :e$ TP_36an;
  :$ TP_36bn;
  TP_36bt;
- :l TP_36ct;	!Siin vıib-olla alati ei ole l, vaid suvalise konsonandi 2-kordistamine.
+ :l TP_36ct;	!Siin v√µib-olla alati ei ole l, vaid suvalise konsonandi 2-kordistamine.
  :l TP_36cn;
 
-LEXICON 37	! vıima (sin,ge,me - NA, teised - TA)
+LEXICON 37	! v√µima (sin,ge,me - NA, teised - TA)
  :$ TP_37an;
  TP_37at;
 
-LEXICON 38	! sˆˆma (6 t¸ve: an, at, bn, bt, cn, ct)
+LEXICON 38	! s√∂√∂ma (6 t√ºve: an, at, bn, bt, cn, ct)
  :$ TP_38an;
  TP_38at;
- :$ TP_38bn; ! t¸vevariandi "s¸¸(a)" tekitavad reeglid 
+ :$ TP_38bn; ! t√ºvevariandi "s√º√º(a)" tekitavad reeglid 
  TP_38bt;
- :$ TP_38cn;	! "sıi(n,me)" tekib ka reeglitest
+ :$ TP_38cn;	! "s√µi(n,me)" tekib ka reeglitest
  TP_38ct;
  
-! TP_  t¸vevariantide paigutusviisid paradigmas
+! TP_  t√ºvevariantide paigutusviisid paradigmas
 
-LEXICON TP_02b0  ! ıpiku
+LEXICON TP_02b0  ! √µpiku
 An_SgG;
 An_SgP_t;
 An_PlG_te;
@@ -602,7 +602,7 @@ An_SgP_t;
 An_SgAdt_se;
 An_PlG_te;
 
-LEXICON TP_16a0	!kıne, ratsu
+LEXICON TP_16a0	!k√µne, ratsu
 An_SgN;
 An_SgG;
 An_SgP_t;
@@ -615,16 +615,16 @@ An_SgG;
 An_SgP_0;
 An_PlG_de;
 An_PlP_sid;
-:+W An_PlP_V;	!Mitmuse t¸vevokaali m‰‰ratakse reeglitega.
+:+W An_PlP_V;	!Mitmuse t√ºvevokaali m√§√§ratakse reeglitega.
 :+W An_Pl_Vok;
 
-LEXICON TP_18at	!sıda, tigu
+LEXICON TP_18at	!s√µda, tigu
 An_SgN;
-:3 An_SgP_0; ! TA muutet¸vi 
+:3 An_SgP_0; ! TA muutet√ºvi 
 :3 An_PlG_de;
 :3 An_PlP_sid;
 
-LEXICON TP_18an	!sıja, teo
+LEXICON TP_18an	!s√µja, teo
 An_SgG;
 
 LEXICON TP_19a0	!seminar
@@ -651,10 +651,10 @@ An_PlP_sid;
 LEXICON TP_22bn	!jala, tiku, sepa
 An_SgG;
 :+W An_PlP_V;
-:$+W An_Pl_Vok;  !sınal tikk vokaalmitmuse vormid naljakad, aga mınel sınal ehk pole?
+:$+W An_Pl_Vok;  !s√µnal tikk vokaalmitmuse vormid naljakad, aga m√µnel s√µnal ehk pole?
 
 
-LEXICON TP_22bt  ! jal¥ga, tikku, seppa
+LEXICON TP_22bt  ! jal¬¥ga, tikku, seppa
 An_SgP_0;
 An_SgAdt_0;
 An_PlG_de;
@@ -668,7 +668,7 @@ LEXICON TP_23bn	!heina
 An_SgG;
 :+W An_PlP_V;
 
-LEXICON TP_23bt	!hei¥na
+LEXICON TP_23bt	!hei¬¥na
 An_SgP_0;
 An_SgAdt_0;
 :+W An_PlP_V;
@@ -685,16 +685,16 @@ An_PlG_de;
 An_PlP_sid;
 :+W An_PlP_V;	!patju
 
-LEXICON TP_25bn	!ınneliku
+LEXICON TP_25bn	!√µnneliku
 An_SgG;
-:+W An_PlG_V;	!ınnelike, ınnelikes jne.
+:+W An_PlG_V;	!√µnnelike, √µnnelikes jne.
 
-LEXICON TP_25bt	!ınnelikku
+LEXICON TP_25bt	!√µnnelikku
 An_SgP_0;
 An_SgAdt_0;
 An_PlG_de;
 An_PlP_sid;
-:+W An_PlP_V;	!ınnelikke
+:+W An_PlP_V;	!√µnnelikke
 
 LEXICON TP_26a0	!idee, galerii
 An_SgN;
@@ -703,7 +703,7 @@ An_SgP_d;
 An_PlG_de;
 An_PlP_sid;
 
-! noomenite lıpp, verbide algus
+! noomenite l√µpp, verbide algus
 LEXICON TP_27a0	!ela+ma
  An_ma;
  An_mata;
@@ -736,7 +736,7 @@ LEXICON TP_28an	!lepi+n
  An_tud;
  An_takse;
 
-LEXICON TP_29at	!h¸ppa+ma
+LEXICON TP_29at	!h√ºppa+ma
  An_ma;
  An_mata;
  An_v;
@@ -747,7 +747,7 @@ LEXICON TP_29at	!h¸ppa+ma
  An_me;
  Deriv_mine_ja;
 
-LEXICON TP_29an	!h¸pa+ta
+LEXICON TP_29an	!h√ºpa+ta
  An_ta;
  An_ke;
  An_tud;
@@ -770,7 +770,7 @@ LEXICON TP_30bn	!riiel+da; rabel+da
  An_dud;
  An_dakse;
 
-! 31. t¸¸bil langeb t¸vevariantide a ja b paigutus t‰pselt kokku 30. t¸¸biga, ainult 31 on astmevahelduseta.
+! 31. t√º√ºbil langeb t√ºvevariantide a ja b paigutus t√§pselt kokku 30. t√º√ºbiga, ainult 31 on astmevahelduseta.
 
 LEXICON TP_32at	!seis+ma
  An_ma;
@@ -870,14 +870,14 @@ LEXICON TP_36cn	!tull+akse
 LEXICON TP_36ct	!tull+a
  An_a;
 
-LEXICON TP_37an	!vıi+sin, vıi+me
+LEXICON TP_37an	!v√µi+sin, v√µi+me
  An_mata;
  An_sin;
  An_sime;
  An_ge;
  An_me;
 
-LEXICON TP_37at	!vıi+ma
+LEXICON TP_37at	!v√µi+ma
  An_ma;
  An_v;
  An_s;
@@ -887,40 +887,40 @@ LEXICON TP_37at	!vıi+ma
  An_dakse;
  Deriv_mine_ja;
 
-LEXICON TP_38an	!sˆˆ+me
+LEXICON TP_38an	!s√∂√∂+me
  An_mata;
  An_ge;
  An_me;
 
-LEXICON TP_38at !sˆˆ+ma
+LEXICON TP_38at !s√∂√∂+ma
  An_ma;
  An_v;
  An_b;
  An_dud;
 
-LEXICON TP_38bn	! s¸¸+akse
+LEXICON TP_38bn	! s√º√º+akse
  An_akse;
 
-LEXICON TP_38bt	!s¸¸+a
+LEXICON TP_38bt	!s√º√º+a
  An_a;
 
-LEXICON TP_38cn	!sıime
+LEXICON TP_38cn	!s√µime
  An_ime;
 
-LEXICON TP_38ct	!sˆ.+i -> sıi
+LEXICON TP_38ct	!s√∂.+i -> s√µi
  An_i;
  An_in;
 
 
-! An_  pıhivormide ja nende analoogiavormide moodustamine
+! An_  p√µhivormide ja nende analoogiavormide moodustamine
 
 LEXICON An_SgN  ! Sg Nom
  +S+sg+nom:0 GI;
  LIIT;
 
-LEXICON An_SgG  ! SgG analoogiar¸hm
+LEXICON An_SgG  ! SgG analoogiar√ºhm
  +S+sg+gen:0 GI;
- +S+sg:0 KƒƒNE_1;
+ +S+sg:0 K√Ñ√ÑNE_1;
  +S+pl+nom:+d GI;
  LIIT;
  !LIIT_DEV_G;
@@ -958,37 +958,37 @@ LEXICON An_SgAdt_tte ! SgAdt (formatiiv tte)
 
 LEXICON An_PlP_id  ! PlP (formatiiv id)
  +S+pl+part:+id GI;
- +S+pl:+i KƒƒNE_2;
+ +S+pl:+i K√Ñ√ÑNE_2;
 
 LEXICON An_PlP_sid  ! PlP (formatiiv sid)
  +S+pl+part:+sid GI;
 
 
 
-LEXICON An_PlP_V  ! PlP (vokaallıpp)
+LEXICON An_PlP_V  ! PlP (vokaall√µpp)
  +S+pl+part:0 GI;
 
 LEXICON An_Pl_Vok  ! vokaalmitmuse paralleelvormid
- +S+pl:0 KƒƒNE_2;
+ +S+pl:0 K√Ñ√ÑNE_2;
 
-LEXICON An_PlG_te  ! de-mitmuse (formatiiv te) analoogiar¸hm
+LEXICON An_PlG_te  ! de-mitmuse (formatiiv te) analoogiar√ºhm
  +S+pl+gen:+te GI;
- +S+pl:+te KƒƒNE_1;
+ +S+pl:+te K√Ñ√ÑNE_1;
  !:+te LIIT_DEV_G;
 
-LEXICON An_PlG_de  ! de-mitmuse (formatiiv de) analoogiar¸hm 
+LEXICON An_PlG_de  ! de-mitmuse (formatiiv de) analoogiar√ºhm 
  +S+pl+gen:+de GI;
- +S+pl:+de KƒƒNE_1;
+ +S+pl:+de K√Ñ√ÑNE_1;
  !:+de LIIT_DEV_G;
  :+de LIIT;
 
-LEXICON An_PlG_V	!ınnelik-t¸¸p
+LEXICON An_PlG_V	!√µnnelik-t√º√ºp
  +S+pl+gen: GI;
- +S+pl: KƒƒNE_1;
+ +S+pl: K√Ñ√ÑNE_1;
 ! LIIT_DEV_G;
  LIIT;
 
-LEXICON KƒƒNE_1  ! k‰‰ndelıpud illatiivist komitatiivini
+LEXICON K√Ñ√ÑNE_1  ! k√§√§ndel√µpud illatiivist komitatiivini
  +ill:+sse GI;
  +in:+s GI;
  +el:+st GI;
@@ -1001,7 +1001,7 @@ LEXICON KƒƒNE_1  ! k‰‰ndelıpud illatiivist komitatiivini
  +ab:+ta GI;
  +kom:+ga GI;
 
-LEXICON KƒƒNE_2  ! k‰‰ndelıpud illatiivist translatiivini (mitmus)
+LEXICON K√Ñ√ÑNE_2  ! k√§√§ndel√µpud illatiivist translatiivini (mitmus)
  +ill:+sse GI;
  +in:+s GI;
  +el:+st GI;
@@ -1014,7 +1014,7 @@ LEXICON GI  ! liide gi/ki
  +gi:Qi #;
  #;
 
-! Analoogiar¸hmad verbidele
+! Analoogiar√ºhmad verbidele
 LEXICON An_ma
  ma+V+sup+ill:ma GI;
  ma+V+quot+pres+ps:vat GI;
@@ -1034,7 +1034,7 @@ LEXICON An_ev
  $ev+A+pos+sg+nom+partic : ev 02_A ;
 
 !!!!!
-! J‰rgmised 7 - kindla kıneviisi lihtmineviku vormid
+! J√§rgmised 7 - kindla k√µneviisi lihtmineviku vormid
 !!!!!
 
 LEXICON An_s
@@ -1085,7 +1085,7 @@ LEXICON An_a
 !!!!!
 
 !!!!!
-! K‰skiv kıneviis + nud + nuks + nuvat
+! K√§skiv k√µneviis + nud + nuks + nuvat
 !!!!!
 
 LEXICON An_ge
@@ -1114,7 +1114,7 @@ LEXICON An_nud
 !!!!!
 
 !!!!!
-! Kindla kıneviisi olevik
+! Kindla k√µneviisi olevik
 !!!!!
 
 LEXICON An_b
@@ -1182,7 +1182,7 @@ LEXICON An_akse
 !!!!!
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! Produktiivne verbituletus (v,tav,nud,nu,tud,tu on analoogiar¸hmade all)
+! Produktiivne verbituletus (v,tav,nud,nu,tud,tu on analoogiar√ºhmade all)
 !!!!!!
 LEXICON Deriv_mine_ja
   ja : +ja 01;
@@ -1196,11 +1196,11 @@ LEXICON Deriv_mine
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-! liitsınade moodustamine
+! liits√µnade moodustamine
 
 LEXICON LIIT
-+:& Nimisına;
-+:& Omadussına;
++:& Nimis√µna;
++:& Omaduss√µna;
 
 
 !LEXICON LIIT_DEV_P
