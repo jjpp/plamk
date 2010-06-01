@@ -1,18 +1,18 @@
 
 Alphabet
 
-a b c d e f g h i j k l m n o p q r s sh z zh t u v õ ä ö ü x y G:g G:0 B:b B:0 B:m D:d D:0 D:l D:n D:r K:k K:g K:0 P:p P:b P:0 T:t
-T:d T:0 S:s S:0 S:r %+:0 %$:0 %&:0 A:a A:0 E:e E:0 U:u U:0 %.:a %.:e
+a b c d e f g h i j k l m n o p q r s š sh z ž zh t u v õ ä ö ü x y G:g G:0 B:b B:0 B:m D:d D:0 D:l D:n D:r K:k K:g K:0 P:p P:b P:0 T:t
+T:d T:0 S:s S:0 S:r %+:0 %$:0 %&:0 A:a A:0 E:e E:0 I:i I:0 U:u U:0 %.:a %.:e
 %.:o %.:u %.:ö %.:ä %.:0 %=:0 2:0 Q:k;
 
 Sets
 
-  Kons = b d g h j k l m n p r s sh z zh t v ;
+  Kons = b d g h j k l m n p r s š sh z ž zh t v ;
   Vok = a e i o u õ ä ö ü ;
   Alfa = Kons Vok;
   AV = G B D K P T S ;! astmevaheldusele alluvad foneemid
   AVT = g b d k p t s ;	! AV-tugev aste
-  VaheVok = A E U ;
+  VaheVok = A E U I;
   TyveVok = a e i u ;
   LyhVok = a e o u õ ä ö ü ;
   LV = B G D S T ; ! laadivaheldus (assimilatsioon ja häälikukadu)
@@ -70,8 +70,8 @@ Rules
 
  B:0 <=> Algus Vok: _ (%=:) (Vok:) %$:;
 
-"AV 10 -  d kadu. Muuseas siin ka yks morfeemipiiri reegel:
-morfeemipiiril kaks d-d saavad üheks ning dt saab t-ks"
+"AV 10 -  d kadu." ! Muuseas siin ka yks morfeemipiiri reegel:
+! morfeemipiiril kaks d-d saavad üheks ning dt saab t-ks"
 
 
 D:0 <=>  Algus Vok Vok: _ (TyveVok:) (l) %$:; !laud-laua, vaidlema-vaielda
@@ -102,7 +102,7 @@ S:0 <=> Algus Vok [Kons+] (AV:AVT) TyveVok:  _ Piir; !küngas-künka
 
 
  "AV 14 k-g"
- K:g <=> Vok [Liq | n | Vok] _ (Vok) (S:|l) %$:;	!kook-koogi, pilk-pilgu, küngas-künka
+ K:g <=> Vok [Liq | n | Vok] _ (Vok | VaheVok:) (S:|l) %$:;	!kook-koogi, pilk-pilgu, küngas-künka
  	 Vok _ VaheVok: Liq (Vok) %$:;    	!kogre-kokre
 
  "AV 15 p-b"
@@ -129,7 +129,7 @@ D:j <=>  Algus [ a | o | õ ]  _  a   %$:;	!sadada-sajab, sõda-sõja
 
  B:v <=> Vok [Vok|Liq] _ (Vok) %$:;	!kaebama-kaevata, kõlbama-kõlvata, värbama-värvata, varb-varva
 
-
+!!!! EOF AV
 
 !-----------------Fonotaktika- ja ortograafiareeglid-----------------
 
@@ -143,8 +143,11 @@ D:j <=>  Algus [ a | o | õ ]  _  a   %$:;	!sadada-sajab, sõda-sõja
   V1:0 <=> Vok _ D: V1 %$:; where V1 in (a u); ! jõudu-jõuu->jõu
 
 
-"Vokaali madaldumine"   ! Nõrgeneva AV tõttu !tekivad mõnedes !'rida'-tüüpi sõnades häälikuühendid ua, üi jm, mis on fonotaktiliselt !lubamatud ning teisenevad vastavalt oa-ks, öe-ksjm.
-!Seejuures 2 erinevat konteksti, kuna madalduda võib nii sise- !(siga->sea) kui lõppvokaal (kadu->kao)
+"Vokaali madaldumine"   ! Nõrgeneva AV tõttu !tekivad mõnedes 
+			!'rida'-tüüpi sõnades häälikuühendid ua, üi jm, mis on fonotaktiliselt 
+			!lubamatud ning teisenevad vastavalt oa-ks, öe-ksjm.
+			!Seejuures 2 erinevat konteksti, kuna madalduda võib nii sise-
+			!(siga->sea) kui lõppvokaal (kadu->kao)
 
   KorgeVok:MadalVok <=> Algus  _ LV: (%=:) [a|e|i:|u:](l) %$: ;
 			Algus Vok (%.:) LV: (%=:) _ %$: ;
@@ -210,12 +213,13 @@ W:i <=> e: %+: _ ;	! e-tüvelised
 
  "mitmuse vokaal e"
 W:e <=> [i: | u:] %+: _ ;		! i- ja u-tüvelised
-        Algus [u | o] [B:|n] (%=:) a: %+: _ ;	!a-tüvelised,lühikeses                                                                      !esisilbis u või o
-        Algus [u | o | ü] Kons j: a: %+: _ ;	!a-tüvelised, esisilbis uCj,                                                                      !oCj, üCj (kuri)
+        Algus [u | o] [B:|n] (%=:) a: %+: _ ;	!a-tüvelised,lühikeses  
+						!esisilbis u või o
+        Algus [u | o | ü] Kons j: a: %+: _ ;	!a-tüvelised, esisilbis uCj, 
+						!oCj, üCj (kuri)
 
  "mitmuse vokaal u"
-W:u <=> [[i: [D:|G:]]|[[a | õ | ä i | e i] Kons]] (%=:) a: %+: _ ;
-!"kass kõrtsis ei käi"
+W:u <=> [[i: [D:|G:]]|[[a | õ | ä i | e i] Kons]] (%=:) a: %+: _ ; !"kass kõrtsis ei käi"
          [ä | e] Kons j: a: %+: _ ; !a-tüvelised, esisilbis äCj, eCj (väli)
 
 
@@ -251,7 +255,7 @@ V1:õ <=> _ %.: %+: i [.#. | d | n | m e | t e]; where V1 in (o ö);
 
 "Liitsõnapiirile sidekriips kolme ühesuguse hääliku korral"	!nt. plekk-katus, jää-äär
 
-  %&:%- <=> :A1 (:0) :A1 (:0) _ :A1; where A1 in (a e f h i k l m n o p r s sh t u õ ä ö ü);
+  %&:%- <=> :A1 (:0) :A1 (:0) _ :A1; where A1 in (a e f h i k l m n o p r s š sh t u õ ä ö ü);
 
 
 
