@@ -30,7 +30,7 @@
 =bisektor 02_S | a0: bisektor, b0: bisektori, b0r: bisektore
 =boonus 09_A | a0: boonus, b0: boonuse
 =boonus 11_A | a0: boonus, b0: boonuse, b0v: boonusi
-=brauser 02_S | a0: brauser, b0: baruseri, b0r: brausere
+=brauser 02_S | a0: brauser, b0: brauseri, b0r: brausere
 =Cardano 01_H | a0: Cardano, a0r: 0
 =Cartesius 11_H | a0: Cartesius, b0: Cartesiuse, b0v: Cartesiusi
 =Cauchy 26_S | a0: Cauchy, a0r: #
@@ -103,7 +103,7 @@
 =konfigur'eerima 28_V | at: konfigur'eeri, an: konfigureeri
 =konv'ertima 28_V | at: konv'erti, an: konverdi
 =koosekans 22_S | at: koosekans, bt: koosekansi, bn: koosekansi, btv: koosekanse, bnv: koosekanse
-=kootangens 02_S | a0: tangens, b0: tangensi, b0r: tangense
+=kootangens 02_S | a0: kootangens, b0: kootangensi, b0r: kootangense
 =kujutuma 27_V | a0: kujutu
 =kukerpallitama 27_V | a0: kukerpallita
 =kursor 02_S | a0: kursor, b0: kursori, b0r: kursore

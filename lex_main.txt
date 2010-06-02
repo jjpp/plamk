@@ -11,6 +11,7 @@ Multichar_Symbols !morfoloogilise info märgendid
 LEXICON Sõnastik
   Nimisõna;	!substantive
   Omadussõna;	!adjective
+  Pärisnimi;	
   Tegusõna; 	!verb
 
  
@@ -43,6 +44,18 @@ LEXICON 02_NE-SE  !raudne
 :ne An_SgN;
 :se TP_02b0;
 
+LEXICON 02_S-NDA  !kümnes
+:s An_SgN;
+:nda TP_02b0;
+
+LEXICON 02_S-JA  !paraja
+:s An_SgN;
+:ja TP_02b0;
+
+LEXICON 02_T-NDE  !tuhat
+:t An_SgN;
+:nde TP_02b0;
+
 LEXICON 02_S-0	!sipelgas
 :s An_SgN;
 TP_02b0;
@@ -70,17 +83,31 @@ LEXICON 05_I-ME	!võti
 :i$ An_SgP_t;
 :me TP_04b0-05bt;
 
+LEXICON 05_E-ME	!seade
+:e$ An_SgN;
+:e$ An_SgP_t;
+:me TP_04b0-05bt;
+
+LEXICON 05_U-ME	!mitu
+:u$ An_SgN;
+:u$ An_SgP_t;
+:me TP_04b0-05bt;
+
 LEXICON 05_S-0	!kallis
 :s$ An_SgN;
 :s$ An_SgP_t;
 TP_04b0-05bt;
 
-LEXICON 07_S-0  !hammas
-:S$ TP_07an;
+LEXICON 05_A	!valvas
+:$ An_SgN;
+:a TP_03bt;
+
+LEXICON 06	!mõte
+:$ TP_09a0;
 TP_07bt;
 
-LEXICON 08	!mõte
-:$ TP_08an;
+LEXICON 07_S-0  !hammas
+:S$ TP_07an;
 TP_07bt;
 
 LEXICON 08_A  !kukal
@@ -99,9 +126,26 @@ LEXICON 09_E	!katus
 TP_09a0;
 :e TP_09b0;
 
+LEXICON 09_S-KSE !vennas
+:s TP_09a0;
+:kse TP_09b0;
+
+LEXICON 10_0-SE-S	!väike-väikese
+ An_SgN;
+ :se An_SgG;
+ 10_;
+
 LEXICON 10_NE-SE-S	!soolane
-:ne An_SgN;
-:se An_SgG;
+ :ne An_SgN;
+ :se An_SgG;
+ 10_;
+
+LEXICON 10_KSE		!väike-väikse
+ e An_SgN;
+ :se An_SgG;
+ e 10_;
+
+LEXICON 10_
 :s An_SgP_t;
 :s An_PlG_te;
 :se An_PlP_id;
@@ -117,6 +161,13 @@ An_PlG_te;
 
 LEXICON 12_NE-SE-S  !tavaline
 :ne An_SgN;
+12_;
+
+LEXICON 12_0-SE-S   !kleenuke
+An_SgN;
+12_;
+
+LEXICON 12_
 :se An_SgG;
 :si TP_12b0v;
 :s TP_12c0;
@@ -190,6 +241,9 @@ LEXICON 20	!nimi
 :i TP_20a0;
 :e TP_20b0;
 
+LEXICON 21	!jõgi
+18_Adt;
+
 LEXICON 22_A  !jalg, pikk, sepp
 An_SgN;
 :a$ TP_22bn;
@@ -220,10 +274,25 @@ TP_23a;
 :i$ TP_23bn;
 :i TP_23bt;
 
-LEXICON 24	!padi
+LEXICON 24_A	!padi
 :$ An_SgN;
 :a$ TP_24bn;
 :a TP_24bt;
+
+LEXICON 24_E	!koger
+:$ An_SgN;
+:e$ TP_24bn;
+:e TP_24bt;
+
+LEXICON 24_U	!puder
+:$ An_SgN;
+:u$ TP_24bn;
+:u TP_24bt;
+
+LEXICON 24_I-VE	!tali
+:i$ An_SgN;
+:ve$ TP_24bn;
+:ve TP_24bt;
 
 LEXICON 25	!õnnelik
 :$ An_SgN;
@@ -374,9 +443,10 @@ An_PlP_sid;
 
 LEXICON TP_18at	!sõda, tigu
 An_SgN;
-:3 An_SgP_0; ! TA muutetüvi 
-:3 An_PlG_de;
-:3 An_PlP_sid;
+! siin olid kolmed?
+An_SgP_0; ! TA muutetüvi 
+An_PlG_de;
+An_PlP_sid;
 
 LEXICON TP_18an	!sõja, teo
 An_SgG;
@@ -669,76 +739,76 @@ LEXICON TP_38ct	!sö.+i -> sõi
 ! An_  põhivormide ja nende analoogiavormide moodustamine
 
 LEXICON An_SgN  ! Sg Nom
- +S+sg+nom:0 GI;
+ +sg+nom:0 GI;
  LIIT;
 
 LEXICON An_SgG  ! SgG analoogiarühm
- +S+sg+gen:0 GI;
- +S+sg:0 KÄÄNE_1;
- +S+pl+nom:+d GI;
+ +sg+gen:0 GI;
+ +sg:0 KÄÄNE_1;
+ +pl+nom:+d GI;
  LIIT;
  !LIIT_DEV_G;
 
 LEXICON An_SgP_0  ! SgP (formatiiv 0)
- +S+sg+part:0 GI;
+ +sg+part:0 GI;
  !LIIT_DEV_P;
 
 LEXICON An_SgP_t  ! SgP (formatiiv t) 
- +S+sg+part:+t GI;
+ +sg+part:+t GI;
  !:+t LIIT_DEV_P;
 
 LEXICON An_SgP_tt  ! SgP (formatiiv tt) 
- +S+sg+part:+tt GI;
+ +sg+part:+tt GI;
  !:+tt LIIT_DEV_P;
 
 LEXICON An_SgP_d  ! SgP (formatiiv d) 
- +S+sg+part:+d GI;
+ +sg+part:+d GI;
  !:+d LIIT_DEV_P;
 
 
 LEXICON An_SgAdt_0  ! SgAdt (formatiiv 0) 
- +S+sg+adit:0 GI;
+ +sg+adit:0 GI;
 
 LEXICON An_SgAdt_de  ! SgAdt (formatiiv de) 
- +S+sg+adit:+de GI;
+ +sg+adit:+de GI;
 
 LEXICON An_SgAdt_se  ! SgAdt (formatiiv se) 
- +S+sg+adit:+se GI;
+ +sg+adit:+se GI;
 
 LEXICON An_SgAdt_tte ! SgAdt (formatiiv tte) 
- +S+sg+adit:+tte GI;
+ +sg+adit:+tte GI;
 
 
 
 LEXICON An_PlP_id  ! PlP (formatiiv id)
- +S+pl+part:+id GI;
- +S+pl:+i KÄÄNE_2;
+ +pl+part:+id GI;
+ +pl:+i KÄÄNE_2;
 
 LEXICON An_PlP_sid  ! PlP (formatiiv sid)
- +S+pl+part:+sid GI;
+ +pl+part:+sid GI;
 
 
 
 LEXICON An_PlP_V  ! PlP (vokaallõpp)
- +S+pl+part:0 GI;
+ +pl+part:0 GI;
 
 LEXICON An_Pl_Vok  ! vokaalmitmuse paralleelvormid
- +S+pl:0 KÄÄNE_2;
+ +pl:0 KÄÄNE_2;
 
 LEXICON An_PlG_te  ! de-mitmuse (formatiiv te) analoogiarühm
- +S+pl+gen:+te GI;
- +S+pl:+te KÄÄNE_1;
+ +pl+gen:+te GI;
+ +pl:+te KÄÄNE_1;
  !:+te LIIT_DEV_G;
 
 LEXICON An_PlG_de  ! de-mitmuse (formatiiv de) analoogiarühm 
- +S+pl+gen:+de GI;
- +S+pl:+de KÄÄNE_1;
+ +pl+gen:+de GI;
+ +pl:+de KÄÄNE_1;
  !:+de LIIT_DEV_G;
  :+de LIIT;
 
 LEXICON An_PlG_V	!õnnelik-tüüp
- +S+pl+gen: GI;
- +S+pl: KÄÄNE_1;
+ +pl+gen: GI;
+ +pl: KÄÄNE_1;
 ! LIIT_DEV_G;
  LIIT;
 

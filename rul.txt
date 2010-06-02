@@ -59,7 +59,7 @@ Rules
 
 "AV 7 - assimilatsioon d-n"	!hind-hinna, kannel-kandle
 
- D:n <=> n _ (Vok: l) (S:) %$:;
+ D:n <=> n _ ([Vok: | VaheVok:] ([l | r | s])) (S:) %$:;
 
 "AV 8 - assimilatsioon d-r"	!kord-korra
 
@@ -85,7 +85,7 @@ D:0 <=>  Algus Vok Vok: _ (TyveVok:) (l) %$:; !laud-laua, vaidlema-vaielda
 "AV 11 - g kadu"
 
 G:0 <=> Vok _ (%=:) (Vok|h) %$: ;
-        [ a | i | õ | u ] [ l | r ] _ (Vok) %$: ; ! jalg-jala, kirg-kire
+        [ a | i | õ | u ] [ l | r ] _ (Vok (S:)) %$: ; ! jalg-jala, kirg-kire
         [ e | ä | ü ]  [ l | r ] _ [ i | u ]  %$: ;  ! pürgima-pürin
 	a %.: _ i: %$: ;     !saagida-saen
 
@@ -102,19 +102,19 @@ S:0 <=> Algus Vok [Kons+] (AV:AVT) TyveVok:  _ Piir; !küngas-künka
 
 
  "AV 14 k-g"
- K:g <=> Vok [Liq | n | Vok] _ (Vok | VaheVok:) (S:|l) %$:;	!kook-koogi, pilk-pilgu, küngas-künka
+ K:g <=> Vok [Liq | n | Vok] _ (Vok | VaheVok:) (S:|l|s) %$:;	!kook-koogi, pilk-pilgu, küngas-künka
  	 Vok _ VaheVok: Liq (Vok) %$:;    	!kogre-kokre
 
  "AV 15 p-b"
- P:b <=> Vok [Liq | m | Vok] _  Vok (S:) %$:0 ;	!karp-karbi, kimp-kimbu, loopida-loobin
+ P:b <=> Vok [Liq | m | Vok] _  [Vok | VaheVok:] ([S:|s]) %$:0 ;	!karp-karbi, kimp-kimbu, loopida-loobin
          Vok _ [Liq|j] Vok (S:) %$:;	!lupjama-lubjata, kobras-kopra
          Vok _ VaheVok: Liq (Vok) %$:;    		!sõpra-sõbra
 
  "AV 16 t-d"
- T:d <=> Vok [Vok|Liq | n] _ Vok  %$:;	!paat-paadi, kaart-kaardi, elevant-elevandi
+ T:d <=> Vok [Vok|Liq | n] _ Vok (S:) %$:;	!paat-paadi, kaart-kaardi, elevant-elevandi
          Vok Vok _ e l %$:;     		!vaatlema-vaadelda
          Vok _ VaheVok: Liq (Vok) %$:;    	!putru-pudru
-
+	 
 
  "AV 17: g-j"	!märg-märja, hüljes-hülge
  G:j <=> [ e | ä | ü ]  [ l | r ] _ [ a | e ] (S: )  %$: ;
@@ -136,7 +136,7 @@ D:j <=>  Algus [ a | o | õ ]  _  a   %$:;	!sadada-sajab, sõda-sõja
 
 "Vahevokaali kadu"       ! Kui l,m,n,r,v-lõpulisele sõnale lisandub tüvevokaal, siis vahevokaal kaob, nt. tütar-tütre, suhkur-suhkru.
 
-  VaheVok:0 <=>  _ [Liq | m | n | v | s] (%+:) TyveVok ;
+  VaheVok:0 <=>  _ [Liq | m | n | v | s] (%+:) TyveVok: ;
 
 "Vokaali annihileerumine nõrgas astmes"
 
@@ -224,7 +224,7 @@ W:u <=> [[i: [D:|G:]]|[[a | õ | ä i | e i] Kons]] (%=:) a: %+: _ ; !"kass kõr
 
 
  "ainsuse vokaal kirjutada korstnasse"
-TyveVok:0 <=> [Kons|AV:] _ %+: [W: |u s]; where TyveVok in (a e i u);  !pesa+i ->pesi, kana+u->kanu
+TyveVok:0 <=> [Kons|AV:] (%=:) _ %+: [W: |u s]; where TyveVok in (a e i u);  !pesa+i ->pesi, kana+u->kanu
 
 
 "oo+a->uua, öö+a->üüa 1"	!joo+a->juua, söö+a->süüa

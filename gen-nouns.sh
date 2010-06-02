@@ -10,7 +10,7 @@ $XFST -e "load $FST" -e 'invert' -e "save reverse-$FST" -stop
 (
 for num in sg pl; do
 	for cs in nom gen part ill in el all ad abl tr ter es ab kom adit; do
-		echo "$W+S+$num+$cs"
+		echo "$W+$num+$cs"
 	done
 done) | $LOOKUP reverse-$FST 
 

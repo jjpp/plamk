@@ -8,13 +8,15 @@ ESTMORF=wine /home/jjpp/dev/keel/estmorf/x/ESTMORF.EXE
 ETHTHORN=sed -e 's/š/ð/g' -e 's/Š/Ð/g' -e 's/ž/þ/g' -e 's/Ž/Þ/g' 
 INVERSE_ETHTHORN=sed -e 's/ð/š/g' -e 's/Ð/Š/g' -e 's/þ/ž/g' -e 's/Þ/Ž/g' 
 
+GENERATED_LEX=lex_subst.txt lex_adj.txt lex_name.txt
+
 
 all: eesti.fst
 test: estmorf.out xfst.out
 
 clean:
-	$(RM) eesti.fst lex.fst rules.fst xfst.out estmorf.out lex_adj.txt rul-av.txt \
-		rules-av.fst lex_full.txt 
+	$(RM) eesti.fst lex.fst rules.fst xfst.out estmorf.out rul-av.txt \
+		rules-av.fst lex_full.txt $(GENERATED_LEX)
 
 eesti.fst: lex.fst rules.fst rules-av.fst
 	$(XFST) -e "load rules-av.fst" -e "load lex.fst" -e "invert" -e "compose" \
@@ -34,17 +36,21 @@ rul-av.txt: rul.txt
 rules-av.fst: rul-av.txt
 	echo -ne "read-grammar rul-av.txt\ncompile\nintersect\n\n\nsave-binary rules-av.fst\nquit\n"  | $(TWOLC)
 
-lex_full.txt: lex_main.txt lex_verb.txt lex_noun.txt lex_adj.txt
+lex_full.txt: lex_main.txt lex_verb.txt $(GENERATED_LEX)
 	cat $^ > $@
 
 lex_adj.txt: tyvebaas.txt tyvebaas-lisa.txt eki2lex.pl
 	cat tyvebaas.txt tyvebaas-lisa.txt | $(ICONV) -flatin1 -tutf8 | $(INVERSE_ETHTHORN) | ./eki2lex.pl
 
+lex_subst.txt: lex_adj.txt
+lex_name.txt: lex_adj.txt
+
 xfst.out: eesti.fst 1984_words.txt
-	$(XFST) -e "load eesti.fst" -e "apply up < 1984_words.txt" -stop -q -pipe > xfst.out
+	$(XFST) -e "load eesti.fst" -e "apply up < 1984_words_u.txt" -stop -q -pipe > xfst.out
+	fgrep '???' xfst.out | wc -l
 
 estmorf.out: 1984_words.txt
-	cat 1984_words.txt | $(ETHTHORN) | $(ICONV) -futf8 -tlatin1 | $(ESTMORF) > estmorf.out
+	cat 1984_words_u.txt | $(ETHTHORN) | $(ICONV) -futf8 -tlatin1 | $(ESTMORF) > estmorf.out
 
 xfsti: eesti.fst
 	$(XFST) -e "load eesti.fst"
