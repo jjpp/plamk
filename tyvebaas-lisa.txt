@@ -58,7 +58,7 @@
 =f'ail 22_S | at: f'ail, bt: f'aili, bn: faili, btv: f'aile, bnv: faile
 =fikskoma'arv 22_S | at: fikskoma'arv, bt: fikskoma'arvu, bn: fikskomaarvu, btv: fikskoma'arve, bnv: fikskomaarve
 =fokaalt'elg 22_S | at: fokaalt'elg, bt: fokaalt'elge, bn: fokaaltelje, btv: fokaalt'elgi, bnv: fokaalteli
-=fokusseerima 28_V | at fokus'eeri, an: fokusseeri
+=fokusseerima 28_V | at: fokus'eeri, an: fokusseeri
 =formaatima 28_V | at: formaati, an: formaadi
 =form'aatimine 12_S | a0: form'aatimine, b0: form'aatimise, c0: form'aatimis, b0v: form'aatimisi
 =format'eerima 28_V | at: format'eeri, an: formateeri
