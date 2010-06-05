@@ -2,8 +2,8 @@
 Alphabet
 
 a b c d e f g h i j k l m n o p q r s š sh z ž zh t u v õ ä ö ü x y G:g G:0 B:b B:0 B:m D:d D:0 D:l D:n D:r K:k K:g K:0 P:p P:b P:0 T:t
-T:d T:0 S:s S:0 S:r %+:0 %$:0 %&:0 A:a A:0 E:e E:0 I:i I:0 U:u U:0 %.:a %.:e
-%.:o %.:u %.:ö %.:ä %.:0 %=:0 2:0 Q:k;
+T:d T:0 S:s S:0 S:r %+:0 %$:0 %&:0 A:a A:0 E:e E:0 I:i I:0 U:u U:0 %.:a %.:e J:e J:j
+%.:o %.:u %.:ö %.:ä %.:i %.:0 %=:0 2:0 Q:k;
 
 Sets
 
@@ -84,11 +84,10 @@ D:0 <=>  Algus Vok Vok: _ (TyveVok:) (l) %$:; !laud-laua, vaidlema-vaielda
 
 "AV 11 - g kadu"
 
-G:0 <=> Vok _ (%=:) (Vok|h) %$: ;
+G:0 <=> [Vok | J:] _ (%=:) (Vok|h) %$: ;
         [ a | i | õ | u ] [ l | r ] _ (Vok (S:)) %$: ; ! jalg-jala, kirg-kire
         [ e | ä | ü ]  [ l | r ] _ [ i | u ]  %$: ;  ! pürgima-pürin
-	a %.: _ i: %$: ;     !saagida-saen
-
+	a %.: _ i: %$: ;     !saagida-saenA
 
 "AV 12-13 - s sise- ja lõpukadu"
 
@@ -113,7 +112,7 @@ S:0 <=> Algus Vok [Kons+] (AV:AVT) TyveVok:  _ Piir; !küngas-künka
  "AV 16 t-d"
  T:d <=> Vok [Vok|Liq | n] _ Vok (S:) %$:;	!paat-paadi, kaart-kaardi, elevant-elevandi
          Vok Vok _ e l %$:;     		!vaatlema-vaadelda
-         Vok _ VaheVok: Liq (Vok) %$:;    	!putru-pudru
+         Vok _ (VaheVok:) Liq (Vok) %$:;    	!putru-pudru, patrama-padrata
 	 
 
  "AV 17: g-j"	!märg-märja, hüljes-hülge
@@ -121,7 +120,7 @@ S:0 <=> Algus Vok [Kons+] (AV:AVT) TyveVok:  _ Piir; !küngas-künka
 
 "AV 18: d-j"
 
-D:j <=>  Algus [ a | o | õ ]  _  a   %$:;	!sadada-sajab, sõda-sõja
+D:j <=>  Algus [ a | o | õ ]  _  (%=:) a   %$:;	!sadada-sajab, sõda-sõja
  	 .#. [ [[ r | s ] a] |s õ ]  _  u  %$: ; !sadu-saju,kodu-koju
 
 
@@ -305,7 +304,8 @@ V1:õ <=> _ %.: %+: i [.#. | d | n | m e | t e]; where V1 in (o ö);
  Q:g <=> [Vok | l | m | n | r] (%$:)  _ i;
 
 
-
+"vok+e kaduva g ees" !aeg-aja
+ J:j <=> [a | o] _ G:0;
 
 
 

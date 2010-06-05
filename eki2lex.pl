@@ -37,8 +37,14 @@ while (<>) {
 	$comm = '';
 
 
-	my $w2 = ':' . $w;
+
 	my $chain = substr($k, $[, 2);
+	if ($chain >= 27 && $chain < 39) {
+		$w =~ s/ma$//;
+	}
+
+	my $w2 = ':' . $w;
+
 
 	given ($chain) {
 		when ("01") {
@@ -213,8 +219,53 @@ while (<>) {
 			
 		}
 		when ("06") {
-			# everything went better than expected.
+			my $g = $stem{'at'};
+
+			if ($g eq $w) {
+				# välte muutus? kõik jääb samaks
+			} elsif ($w =~ /ve$/ && $g =~ /be$/) {
+				$w2 =~ s/ve$/Be/;
+			} elsif ($w =~ /ve$/ && $g =~ /be$/) {
+				$w2 =~ s/ve$/Be/;
+			} elsif ($w =~ /([kpt])e$/ && $g =~ /([kpt])\1e$/) {
+				$w2 =~ s/([kpt])e$/\1\u\1e/;
+			} elsif ($w =~ /([lnr])\1e$/ && $g =~ /[lnr]de$/) {
+				$w2 =~ s/([lnr])\1e/\1De/;
+			} elsif ($w =~ /mme$/ && $g =~ /mbe$/) {
+				$w2 =~ s/mme/mBe/;
+			} elsif ($w =~ /[lnr]e$/ && $g =~ /[lnr]de$/) {
+				$w2 =~ s/([lnr])e/\1De/;
+			} elsif ($w =~ /he$/ && $g =~ /hte$/) {
+				$w2 =~ s/he/hTe/;
+			} elsif ($w =~ /he$/ && $g =~ /hke$/) {
+				$w2 =~ s/he/hKe/;
+			} elsif ($w =~ /se$/ && $g =~ /ske$/) {
+				$w2 =~ s/se/sKe/;
+			} elsif ($w =~ /[lr]e$/ && $g =~ /[lr]ge$/) {
+				$w2 =~ s/([lr])e/\1Ge/;
+			} elsif ($w =~ /se$/ && $g =~ /sse$/) {
+				$w2 =~ s/se/sSe/;
+		 	} elsif ($w =~ /ge$/ && $g =~ /ke$/) {
+				$w2 =~ s/ge$/Ke/;
+		 	} elsif ($w =~ /be$/ && $g =~ /pe$/) {
+				$w2 =~ s/be$/Pe/;
+		 	} elsif ($w =~ /de$/ && $g =~ /te$/) {
+				$w2 =~ s/de$/Te/;
+		 	} elsif ($w =~ /je$/ && $g =~ /ge$/) {
+				$w2 =~ s/je$/Ge/;
+		 	} elsif ($w =~ /e$/ && $g =~ /de$/) {
+				$w2 =~ s/e$/De/;
+		 	} elsif ($w =~ /e$/ && $g =~ /ge$/) {
+				$w2 =~ s/e$/Ge/;
+		 	} elsif ($w =~ /dve$/ && $g =~ /tve$/) {
+				$w2 =~ s/dve$/Tve/;
+			}
+
+			else {
+				$w = '! ??? ' . $w;
+			}
 		}
+
 		when ("07") {
 			my $g = $stem{'bt'};
 
@@ -264,10 +315,10 @@ while (<>) {
 
 			if ($g eq er_ra($w)) { # kukal-kukla
 				$chain = '08_A';
-				$w2 =~ s/([ea])([lr])$/\u\1\2/;
+				$w2 =~ s/([ea])([lrnm])$/\u\1\2/;
 			} elsif ($g eq er_re($w)) { # tütar-tütre
 				$chain = '08_E';
-				$w2 =~ s/([ea])([lr])$/\u\1\2/;
+				$w2 =~ s/([ea])([lrnm])$/\u\1\2/;
 			} elsif ($w =~ /mm[ae][lr]$/ && $g =~ /mb[lr][ae]$/) {
 				$chain = $g =~ /e$/ ? '08_E' : '08_A';
 				$w2 =~ s/mm([ae])([lr])$/mB\2/;
@@ -399,6 +450,7 @@ while (<>) {
 			my $g = $stem{'bn'};
 
 			unless ($g =~ /^$w/) {
+				$w2 =~ s/([ao])eg$/\1JG/;
 				$w2 =~ s/([pktbgd])$/\u\1/;
 			}
 
@@ -469,6 +521,102 @@ while (<>) {
 			}
 		}
 
+		when ("27") { }
+
+		when ("28") {
+			$b = $stem{'an'};
+
+			if ($w eq $b) {
+				# 
+			} elsif ($w =~ /([gbdkpt])[aeiu]$/) {
+				$w2 =~ s/([gbdkpt])([aeiu])$/\u\1\2/;
+			} elsif ($w =~ /([fšs])\1[aeiu]$/) {
+				$w2 =~ s/([fšs])\1([aeiu])$/\1=\2/;
+			}
+
+			else {
+				$w = '! ??? ' .$w;
+			}
+		}
+
+		when ("29") {
+			$b = $stem{'an'};
+
+			if ($w eq $b) {
+				# 
+			} elsif ($w =~ /([gbdkpt])[aeiu]$/) {
+				$w2 =~ s/([gbdkpt])([aeiu])$/\u\1\2/;
+			} elsif ($w =~ /([fšs])\1[aeiu]$/) {
+				$w2 =~ s/([fšs])\1([aeiu])$/\1=\2/;
+			} elsif ($w =~ /([kpt])[rlj]a$/) {
+				$w2 =~ s/([kpt])([rlj])a$/\u\1\2a/;
+			}
+
+			else {
+				$w = '! ??? ' .$w;
+			}
+		}
+
+		when ("30") {
+			$w2 =~ s/le$//;
+			$w2 =~ s/([gbdkpt])$/\u\1/;
+		}
+
+		when ("31") {
+			$w2 =~ s/le$/l/;
+		}
+
+		when ("32") {
+			$chain = '32_E' if $stem{'bn'} =~ /e$/;
+		}
+
+		when ("33") {
+			$chain = '33_E' if $stem{'bn'} =~ /e$/;
+		}
+
+		when ("34") {
+			if ($stem{'bn'} ne $w . 'a') {
+				$w2 =~ s/([gbdkpt])$/\u\1/;
+			}
+		}
+
+		when ("35") {
+			$w2 =~ s/([kpt])$/\1\u\1/;
+		}
+
+		when ("36") {
+			$w2 =~ s/e$//;
+
+			$w = '! ??? ' . $w if $stem{'bn'} eq '#'; # pesema-kusema
+		}
+
+		when ("37") { }
+
+		when ("38") { 
+			if ($stem{'ct'} eq '#') {
+				$chain = '38_SIN';
+			} else {
+				$w2 =~ s/([aeiouäöüõ])\1$/\1./;
+			}
+		}
+
+		when ("41") { # muutumatud sõnadA
+			$chain = 'GI';
+#			given ($k) {
+#				when(/I/) {
+#					$chain = 'GI';
+#				}
+#
+#				when(/D/) {
+#					$chain = 'GI';
+#				}
+#
+#				default {
+#					$w = '! ??? ' . $k . ' ' . $w;
+#				}
+#			}
+		}
+
 		default {
 			$w = '! TODO ' . $w;
 		}
@@ -493,7 +641,7 @@ while (<>) {
 		}
 
 		when (/D/) {
-			$w .= '+D';
+			$w .= '+Adv';
 			$list = \@adverb;
 		}
 
@@ -512,7 +660,7 @@ while (<>) {
 		}
 
 		when (/P/) {
-			$w .= '+P';
+			$w .= '+Pron';
 			$list = \@pronomen;
 		}
 
@@ -527,7 +675,7 @@ while (<>) {
 		}
 
 		when (/N/) {
-			$w .= '+N';
+			$w .= '+Num';
 			$list = \@number;
 		}
 
@@ -552,7 +700,7 @@ while (<>) {
 		$w2 = '';
 	}
 
-	print "$w$w2 $chain; ! $stems\n" if $chain =~ /^26/;
+	print "$w$w2 $chain; ! $stems\n" if $k =~ /^06/;
 
 	push @{$list}, " $w$w2 $chain; ! $comm$stems\n";
 	$total ++;
@@ -562,6 +710,16 @@ print "Kokku sõnu: $total\n";
 write_lex("lex_adj.txt", "Omadussõna", @adj);
 write_lex("lex_subst.txt", "Nimisõna", @subst);
 write_lex("lex_name.txt", "Pärisnimi", @name);
+write_lex("lex_verb.txt", "Tegusõna", @verb);
+write_lex("lex_adv.txt", "Määrsõna", @adverb);
+#my @interject = ();
+#my @conjunct = ();
+#my @pronomen = ();
+#my @genitive = ();
+#my @prepostpos = ();
+#my @number = ();
+#my @ordinal = ();
+	#my @other = ();
 
 exit 0;
 
@@ -571,7 +729,7 @@ sub write_lex {
 	open F, ">$file";
 	binmode F, ':utf8';
 	print F "LEXICON $lexicon\n";
-	print F @_;
+	print F sort @_;
 	close F;
 	print "Sõnastik '$lexicon': " . scalar(@_) . " rida.\n";
 }

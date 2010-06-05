@@ -5,6 +5,8 @@ XFST=/home/jjpp/dev/keel/xerox/bin/xfst
 LOOKUP=/home/jjpp/dev/keel/xerox/bin/lookup
 FST=${FST:-eesti.fst}
 
+rm -f reverse-$FST
+
 $XFST -e "load $FST" -e 'invert' -e "save reverse-$FST" -stop
 
 (
