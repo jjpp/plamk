@@ -1,0 +1,13 @@
+Multichar_Symbols !morfoloogilise info märgendid
++S +A +Num +Ord +Pron ma+V +K +Adv
++sg +pl
++nom +gen +part +ill +adit +in +el +all +ad +abl +trl +ter +es +ab +kom
++comp +sup 
++indic +imper +cond +quot
++pres +past +impf
++ps1 +ps2 +ps3 
++neg +af 
++imps +ps
++inf +sup
++partic +ger
+

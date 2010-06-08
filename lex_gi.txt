@@ -1,0 +1,4 @@
+LEXICON GI  ! liide gi/ki
+ +gi:Qi #;
+ #;
+
