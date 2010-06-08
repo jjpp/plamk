@@ -10,7 +10,7 @@ $XFST -e "load $FST" -e 'invert' -e "save reverse-$FST" -stop
 
 (
 for form in \
-	"+V+sup+ill" "+V+aup+in" "+V+sup+el" "+V+sup+ab" "+V+sup+tr" "+V+sup+imps" \
+	"+V+sup+ill" "+V+sup+in" "+V+sup+el" "+V+sup+ab" "+V+sup+tr" "+V+sup+imps" \
 	"+V+inf" "+V+ger" \
 	"+V+partic+pres+ps" "+V+partic+pres+imps" "+V+partic+past+ps" "+V+partic+past+imps" \
 	"+V+indic+pres+ps1+sg+ps+af" "+V+indic+pres+ps2+sg+ps+af" "+V+indic+pres+ps3+sg+ps+af" \
