@@ -7,8 +7,8 @@ T:d T:0 S:s S:0 S:r %+:0 %$:0 %&:0 A:a A:0 E:e E:0 I:i I:0 U:u U:0 %.:a %.:e J:e
 
 Sets
 
-  Kons = b d g h j k l m n p r s š z ž t v ;
-  KonsKP = b d g h j l m n r s š z ž t v ;
+  Kons = b d f g h j k l m n p r s š z ž t v ;
+  KonsKP = b d f g h j l m n r s š z ž t v ;
   Vok = a e i o u õ ä ö ü ;
   Alfa = Kons Vok;
   AV = G B D K P T S ;! astmevaheldusele alluvad foneemid
@@ -22,7 +22,7 @@ Sets
   AVKlus = K P T ;
   NorkKlus = g b d G B D ;
   Liq = l r ;
-  TavaKons = h j l m n r s t v ;
+  TavaKons = f h j l m n r s š  v ;
 
 
 Definitions
@@ -219,7 +219,9 @@ W:e <=> [i: | u:] (%$:) %+: _ ;		! i- ja u-tüvelised
 						!oCj, üCj (kuri)
 
  "mitmuse vokaal u"
-W:u <=> [[i: [D:|G:]]|[[a | õ | ä i | e i] Kons]] (%=:) a: (%$:) %+: _ ; !"kass kõrtsis ei käi"
+W:u <=> [[i: [D:|G:]]|[[Kons | Algus] 
+		[a | a a | i | i i | õ | õ õ | a e | a i 
+		   | e i | ä i | õ i | a u | i u | õ u ] :Kons]] (%=:) a: (%$:) %+: _ ; !"kass kõrtsis ei käi"
 	 [a | ä | e] Kons j: a: (%$:) %+: _ ; !a-tüvelised, esisilbis äCj, eCj (väli) (asjus?)
 
 

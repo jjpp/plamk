@@ -326,7 +326,7 @@ LEXICON 27	! muutumatu tüvega ja astmevahelduseta verbid (kõige produktiivsem 
  TP_27a0; 
 
 LEXICON 28	! ma ja da - TA, olevik -  NA (leppima)
- TP_28at;
+ :2 TP_28at;
  :$ TP_28an;
 
 LEXICON 29	! ma ja olevik - TA, da - NA - (hüppama)
@@ -369,7 +369,7 @@ LEXICON 34_K_TUD ! laskma/mõskma/puskma
  
 LEXICON 34_D_TUD ! hoidma-leidma-püüdma
  :D TP_34at;
- :De$ TP_34bn;
+ :Da$ TP_34bn;
  :$ TP_34cn;
  
 
@@ -506,7 +506,6 @@ An_PlP_sid;
 
 LEXICON TP_22bn	!jala, tiku, sepa
 An_SgG;
-:+W An_PlP_V;
 :$+W An_Pl_Vok;  !sõnal tikk vokaalmitmuse vormid naljakad, aga mõnel sõnal ehk pole?
 
 
@@ -515,6 +514,7 @@ An_SgP_0;
 An_SgAdt_0;
 An_PlG_de;
 An_PlP_sid;
+:+W An_PlP_V;
 
 LEXICON TP_23a	!hein
 An_SgN;
@@ -780,8 +780,9 @@ LEXICON An_SgG  ! SgG analoogiarühm
  +pl+nom:+d GI;
  +C:+m 02_A;
  +U:+im 02_A;
- +dim:ke 12_0-SE-S;
- +dim:ke 12_NE-SE-S;
+ +ke:ke 12_0-SE-S;
+ +kene:ke 12_NE-SE-S;
+ +us+S:+us 11;
  LIIT;
  !LIIT_DEV_G;
 

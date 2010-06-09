@@ -297,7 +297,7 @@ while (<>) {
 			} elsif ($w =~ /gas$/ && $g =~ /ka$/) {
 				$w2 =~ s/gas$/Ka/;
 			} elsif ($w =~ /([ptk])[aei]s$/ && $g =~ /([ptk])\1[aei]$/) {
-				$w2 =~ s/([ptk])([aei])s$/$1=$2/;
+				$w2 =~ s/([ptk])([aei])s$/$1\u$1$2/;
 			} elsif ($w =~ /([mv])[aei]s$/ && $g =~ /b[aei]$/) {
 				$w2 =~ s/([mv])([aei])s$/B$2/;
 			} elsif ($w =~ /jes$/ && $g =~ /ge$/) {
@@ -579,7 +579,7 @@ while (<>) {
 			} elsif ($w =~ /([gbdkpt])[aeiu]$/) {
 				$w2 =~ s/([gbdkpt])([aeiu])$/\u$1$2/;
 			} elsif ($w =~ /([fšs])\1[aeiu]$/) {
-				$w2 =~ s/([fšs])\1([aeiu])$/$1=$2/;
+				$w2 =~ s/([fšs])\1([aeiu])$/$1=2$2/;
 			} elsif ($w =~ /([kpt])[rlj]a$/) {
 				$w2 =~ s/([kpt])([rlj])a$/\u$1$2a/;
 			}
@@ -740,7 +740,7 @@ while (<>) {
 		$w2 = '';
 	}
 
-	print "$w$w2 $chain; ! $stems\n" if $k =~ /^34/;
+#	print "$w$w2 $chain; ! $stems\n" if $k =~ /^34/;
 
 	push @{$list}, " $w$w2 $chain; ! $comm$stems\n";
 	$total ++;
