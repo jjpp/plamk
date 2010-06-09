@@ -7,6 +7,8 @@ FST=${FST:-eesti.fst}
 
 rm -f reverse-$FST
 
+[ -r $FST ] || make $FST
+
 $XFST -e "load $FST" -e 'invert' -e "save reverse-$FST" -stop
 
 (
@@ -14,7 +16,7 @@ for num in sg pl; do
 	for cs in nom gen part ill in el all ad abl tr ter es ab kom adit; do
 		echo "$W+$num+$cs"
 	done
-done) | $LOOKUP reverse-$FST 
+done) | $LOOKUP reverse-$FST | grep -v '^$' | awk '{printf "%-40s %s %s\n", $1, $2, $3}'
 
 
 

@@ -1,13 +1,14 @@
 
 Alphabet
 
-a b c d e f g h i j k l m n o p q r s š sh z ž zh t u v õ ä ö ü x y G:g G:0 B:b B:0 B:m D:d D:0 D:l D:n D:r K:k K:g K:0 P:p P:b P:0 T:t
+a b c d e f g h i j k l m n o p q r s š z ž t u v õ ä ö ü x y G:g G:0 B:b B:0 B:m D:d D:0 D:l D:n D:r K:k K:g K:0 P:p P:b P:0 T:t
 T:d T:0 S:s S:0 S:r %+:0 %$:0 %&:0 A:a A:0 E:e E:0 I:i I:0 U:u U:0 %.:a %.:e J:e J:j
 %.:o %.:u %.:ö %.:ä %.:i %.:0 %=:0 2:0 Q:k;
 
 Sets
 
-  Kons = b d g h j k l m n p r s š sh z ž zh t v ;
+  Kons = b d g h j k l m n p r s š z ž t v ;
+  KonsKP = b d g h j l m n r s š z ž t v ;
   Vok = a e i o u õ ä ö ü ;
   Alfa = Kons Vok;
   AV = G B D K P T S ;! astmevaheldusele alluvad foneemid
@@ -34,7 +35,7 @@ Rules
 
 "AV 1-2 - k ja p kadu"!kukk-kuke, lipp-lipu, õhk-õhu, kask-kase
 
- AVKlus:0 <=> Vok (r) [Klus|h|s] _ (Vok) (S:|l) %$:;
+ AVKlus:0 <=> Vok (r) [Klus|h|s] _ (Vok:) (S:|l) %$:;
                s _  (%$:)(%+:) t ;	!fonotaktika reegel skt->st
        where AVKlus in (K P)
                      Klus   in (k p)
@@ -48,7 +49,7 @@ Rules
 
 "AV 4-5- assimilatsioonid s-r ja b-m"!vars-varre,tõmbama-tõmmata
 
- SB:RM <=> RM _ (TyveVok) (S:) %$: ; where SB  in (S B)
+ SB:RM <=> RM: _ (TyveVok) (S:) %$: ; where SB  in (S B)
                                      RM  in (r m)
                                     matched;
 
@@ -79,7 +80,7 @@ D:0 <=>  Algus Vok Vok: _ (TyveVok:) (l) %$:; !laud-laua, vaidlema-vaielda
          Algus [ e | i: | u: | ü: ]  _  (%=:) TyveVok: %$: ;	!vedada-vean, rida-rea
 	 Algus õ  _  (%=:) e %$: ; 		!õde-õe, põdeda-põen
 	 [Kons- [r|s] ] a _ (%=:) u: %$: ;	!ladu-lao, kaduda-kaon
-				_ %+: dq ;	!and+da->anda
+				_ %+: d ;	!and+da->anda
         			n _ %+: t ;	!and+tud->antud
 
 "AV 11 - g kadu"
@@ -186,7 +187,7 @@ NorkKlus:Klus <=> _ %=: (TyveVok:) 2:;
 
 "pst -> st ja p kaashäälikuühendis" 	!pst -> st (lapst->last)
 
-  p:0 <=> _ s %+: t ;
+  p:0 <=> _ s (%$:) %+: t ;
   Kons Vok _ :p (%$:)(%+:) [Kons-p+]; 	!kaashäälikuühend
 
 "m -> n  t|d ees" 	!(lumd->lund)
@@ -207,23 +208,23 @@ NorkKlus:Klus <=> _ %=: (TyveVok:) 2:;
 ! Järgmised kolm on mitmuse vokaali valikureeglid:
 
  "mitmuse vokaal i"
-W:i <=> e: %+: _ ;	! e-tüvelised
+W:i <=> e: (%$:) %+: _ ;	! e-tüvelised
         Algus [e| o| u| ä| ö| ü] [Kons-[j|b|n]] (%=:) a: %+: _ ; !"eks ämm söö kodus sütt"
 
  "mitmuse vokaal e"
-W:e <=> [i: | u:] %+: _ ;		! i- ja u-tüvelised
-        Algus [u | o] [B:|n] (%=:) a: %+: _ ;	!a-tüvelised,lühikeses  
+W:e <=> [i: | u:] (%$:) %+: _ ;		! i- ja u-tüvelised
+        Algus [u | o] [B:|n] (%=:) a: (%$:) %+: _ ;	!a-tüvelised,lühikeses  
 						!esisilbis u või o
-        Algus [u | o | ü] Kons j: a: %+: _ ;	!a-tüvelised, esisilbis uCj, 
+        Algus [u | o | ü] Kons j: a: (%$:) %+: _ ;	!a-tüvelised, esisilbis uCj, 
 						!oCj, üCj (kuri)
 
  "mitmuse vokaal u"
-W:u <=> [[i: [D:|G:]]|[[a | õ | ä i | e i] Kons]] (%=:) a: %+: _ ; !"kass kõrtsis ei käi"
-         [ä | e] Kons j: a: %+: _ ; !a-tüvelised, esisilbis äCj, eCj (väli)
+W:u <=> [[i: [D:|G:]]|[[a | õ | ä i | e i] Kons]] (%=:) a: (%$:) %+: _ ; !"kass kõrtsis ei käi"
+	 [a | ä | e] Kons j: a: (%$:) %+: _ ; !a-tüvelised, esisilbis äCj, eCj (väli) (asjus?)
 
 
  "ainsuse vokaal kirjutada korstnasse"
-TyveVok:0 <=> [Kons|AV:] (%=:) _ %+: [W: |u s]; where TyveVok in (a e i u);  !pesa+i ->pesi, kana+u->kanu
+TyveVok:0 <=> [Kons|AV:] (%=:) _ (%$:) %+: [W: |u s]; where TyveVok in (a e i u);  !pesa+i ->pesi, kana+u->kanu
 
 
 "oo+a->uua, öö+a->üüa 1"	!joo+a->juua, söö+a->süüa
@@ -248,13 +249,13 @@ V1:õ <=> _ %.: %+: i [.#. | d | n | m e | t e]; where V1 in (o ö);
 
 "Konsonantühendi reegel "    ! Konsonantühendis kirjutatakse kõik häälikud ühekordselt, nt. kukkru->kukru, kristallne->kristalne.
 
-  K1:0 <=> Vok _ :K1 (%$:)(%+:)(VaheVok:0) [Kons-K1];
-             where K1 in Kons;
+  K1:0 <=> Vok _ :K1 [:0]+ [:[Kons - K1]]; ! vähemalt morfeemipiir võiks vahele jääda. 
+             where K1 in KonsKP;
 
 
 "Liitsõnapiirile sidekriips kolme ühesuguse hääliku korral"	!nt. plekk-katus, jää-äär
 
-  %&:%- <=> :A1 (:0) :A1 (:0) _ :A1; where A1 in (a e f h i k l m n o p r s š sh t u õ ä ö ü);
+  %&:%- <=> :A1 (:0) :A1 (:0) _ :A1; where A1 in (a e f h i k l m n o p r s š t u õ ä ö ü);
 
 
 

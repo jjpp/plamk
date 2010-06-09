@@ -1,9 +1,10 @@
-#!/usr/bin/perl
+#!/usr/bin/perl -w
 
 use feature "switch"; # alates perl 5.10 
 
 use Data::Dumper;
 use utf8;
+use strict;
 
 binmode STDIN, ':utf8';
 binmode STDOUT, ':utf8';
@@ -25,16 +26,20 @@ my @other = ();
 
 my @undecied = ();
 
+my $total = 0;
+
 while (<>) {
 	chomp();
 	s/'//g;
+	next if /^$/;
 	$_ = substr($_, $[ + 1);
 
-	($w, $k, undef, $stems) = split(' ', $_, 4);
+	my ($w, $k, undef, $stems) = split(' ', $_, 4);
 	next unless $k;
 
+	$stems = '' unless defined($stems);
 	my %stem = split(/[:,]\s*/, $stems);
-	$comm = '';
+	my $comm = '';
 
 
 
@@ -58,10 +63,10 @@ while (<>) {
 				$chain = '02_DA';
 			} elsif ($w =~ /[ea][rlnm]$/ && $g eq er_ri($w)) {
 				$chain = '02_I';
-				$w2 =~ s/([ae])([rlnm])$/\u\1\2/; # kaduv E, A
+				$w2 =~ s/([ae])([rlnm])$/\u$1$2/; # kaduv E, A
 			} elsif ($w =~ /[ae][rlnm]$/ && $g eq er_ra($w)) {
 				$chain = '02_A';
-				$w2 =~ s/([ae])([rlnm])$/\u\1\2/; # kaduv E. A
+				$w2 =~ s/([ae])([rlnm])$/\u$1$2/; # kaduv E. A
 			} elsif ($g eq $w . 'i') {
 				$chain = '02_I';
 			} elsif ($w =~ /ne$/ && $g eq ne_se($w)) {
@@ -78,10 +83,10 @@ while (<>) {
 				$w2 =~ s/t$//;
 			} elsif ($w =~ /(.)\1[eaui][lrmn]$/ && $g eq CCVl_Cl('a', $w)) {
 				$chain = '02_A';
-				$w2 =~ s/(.)\1([eaui])([lmnr])/\1=\u\2\3/;
+				$w2 =~ s/(.)\1([eaui])([lmnr])/$1=\u$2$3/;
 			} elsif ($w =~ /(.)\1[eaui][lrmn]$/ && $g eq CCVl_Cl('i', $w)) {
 				$chain = '02_I';
-				$w2 =~ s/(.)\1([eaui])([lmnr])/\1=\u\2\3/;
+				$w2 =~ s/(.)\1([eaui])([lmnr])/$1=\u$2$3/;
 			} elsif ($w eq $g . 's') {
 				$chain = '02_S-0';
 				$w2 = ':' . $g;
@@ -98,31 +103,31 @@ while (<>) {
 			}
 			elsif ($w =~ /(.)u([lrvs])$/ && $g =~ /[lrvs]u$/) {
 				$chain = '02_U';
-				$w2 =~ s/(.)u([lrvs])$/\1U\2/;
+				$w2 =~ s/(.)u([lrvs])$/$1U$2/;
 			}
 			elsif ($w =~ /(.)\1e([lrv])$/ && $g =~ /[lrv]a$/) {
 				$chain = '02_A';
-				$w2 =~ s/(.)\1e([lrv])$/\1=E\2/;
+				$w2 =~ s/(.)\1e([lrv])$/$1=E$2/;
 			}
 			elsif ($w =~ /(.)\1u([lrvs])$/ && $g =~ /[lrvs]a$/) {
 				$chain = '02_A';
-				$w2 =~ s/(.)\1u([lrvs])$/\1=U\2/;
+				$w2 =~ s/(.)\1u([lrvs])$/$1=U$2/;
 			}
 			elsif ($w =~ /(.)\1i([lrvs])$/ && $g =~ /[lrvs]a$/) {
 				$chain = '02_A';
-				$w2 =~ s/(.)\1i([lrvs])$/\1=I\2/;
+				$w2 =~ s/(.)\1i([lrvs])$/$1=I$2/;
 			}
 			elsif ($w =~ /(.)e([lrv])$/ && $g =~ /[lrv]a$/) {
 				$chain = '02_A';
-				$w2 =~ s/(.)e([lrv])$/\1=E\2/;
+				$w2 =~ s/(.)e([lrv])$/$1=E$2/;
 			}
 			elsif ($w =~ /(.)u([lrvs])$/ && $g =~ /[lrvs]a$/) {
 				$chain = '02_A';
-				$w2 =~ s/(.)u([lrvs])$/\1U\2/;
+				$w2 =~ s/(.)u([lrvs])$/$1U$2/;
 			}
 			elsif ($w =~ /(.)i([lrvs])$/ && $g =~ /[lrvs]a$/) {
 				$chain = '02_A';
-				$w2 =~ s/(.)i([lrvs])$/\1=I\2/;
+				$w2 =~ s/(.)i([lrvs])$/$1=I$2/;
 			} elsif ($w =~ /ne$/ && $g =~ /sa$/) {
 				$chain = '02_A';
 				$w2 =~ s/ne$/NE/;
@@ -140,7 +145,7 @@ while (<>) {
 			
 			if ($g =~ /sa$/ && substr($w, $[, -2) eq substr($g, $[, -2)) {
 				$chain = '03_A';
-				$w2 =~ s/([aieu])s/\u\1s/;
+				$w2 =~ s/([aieu])s/\u$1s/;
 			} elsif ($w =~ /bus$/ && $g =~ /psa$/) {
 				$chain = '03_A';
 				$w2 =~ s/bus$/PUs/;
@@ -180,7 +185,7 @@ while (<>) {
 
 			if ($g =~ /sa$/ && substr($w, $[, -2) eq substr($g, $[, -2)) {
 				$chain = '05_A';
-				$w2 =~ s/([aieu])s/\u\1s/;
+				$w2 =~ s/([aieu])s/\u$1s/;
 			} elsif ($w =~ /bus$/ && $g =~ /psa$/) {
 				$chain = '05_A';
 				$w2 =~ s/bus$/PUs/;
@@ -205,7 +210,7 @@ while (<>) {
 				$w2 =~ s/[iue]$//;
 			} elsif ($w =~ /([lrn])\1e$/ && $g =~ /[lrn]dme$/) {
 				$chain = '05_E-ME';
-				$w2 =~ s/([lrn])\1e$/\1D/;
+				$w2 =~ s/([lrn])\1e$/$1D/;
 			} elsif ($w =~ /[dgb]e$/ && $g =~ /[tkp]me$/) {
 				$chain = '05_E-ME';
 				$w2 =~ s/de$/T/;
@@ -228,13 +233,13 @@ while (<>) {
 			} elsif ($w =~ /ve$/ && $g =~ /be$/) {
 				$w2 =~ s/ve$/Be/;
 			} elsif ($w =~ /([kpt])e$/ && $g =~ /([kpt])\1e$/) {
-				$w2 =~ s/([kpt])e$/\1\u\1e/;
+				$w2 =~ s/([kpt])e$/$1\u$1e/;
 			} elsif ($w =~ /([lnr])\1e$/ && $g =~ /[lnr]de$/) {
-				$w2 =~ s/([lnr])\1e/\1De/;
+				$w2 =~ s/([lnr])\1e/$1De/;
 			} elsif ($w =~ /mme$/ && $g =~ /mbe$/) {
 				$w2 =~ s/mme/mBe/;
 			} elsif ($w =~ /[lnr]e$/ && $g =~ /[lnr]de$/) {
-				$w2 =~ s/([lnr])e/\1De/;
+				$w2 =~ s/([lnr])e/$1De/;
 			} elsif ($w =~ /he$/ && $g =~ /hte$/) {
 				$w2 =~ s/he/hTe/;
 			} elsif ($w =~ /he$/ && $g =~ /hke$/) {
@@ -242,7 +247,7 @@ while (<>) {
 			} elsif ($w =~ /se$/ && $g =~ /ske$/) {
 				$w2 =~ s/se/sKe/;
 			} elsif ($w =~ /[lr]e$/ && $g =~ /[lr]ge$/) {
-				$w2 =~ s/([lr])e/\1Ge/;
+				$w2 =~ s/([lr])e/$1Ge/;
 			} elsif ($w =~ /se$/ && $g =~ /sse$/) {
 				$w2 =~ s/se/sSe/;
 		 	} elsif ($w =~ /ge$/ && $g =~ /ke$/) {
@@ -278,11 +283,11 @@ while (<>) {
 			} elsif ($w =~ /dis$/) { # aldis
 				$w2 =~ s/dis$/Ti/;
 			} elsif ($w =~ /([rln])\1as$/ && $g =~ /[rln]da$/) {
-				$w2 =~ s/([rln])\1as$/\1Da/;
+				$w2 =~ s/([rln])\1as$/$1Da/;
 			} elsif ($w =~ /dras$/ && $g =~ /tra$/) {
 				$w2 =~ s/dras$/Tra/;
 			} elsif ($w =~ /b[rl]as$/ && $g =~ /p[rl]a$/) {
-				$w2 =~ s/b([rl])as$/P\1a/;
+				$w2 =~ s/b([rl])as$/P$1a/;
 			} elsif ($w =~ /kas$/ && $g =~ /kka$/) {
 				$w2 =~ s/kas$/kKa/;
 			} elsif ($w =~ /has$/ && $g =~ /hta$/) {
@@ -292,9 +297,9 @@ while (<>) {
 			} elsif ($w =~ /gas$/ && $g =~ /ka$/) {
 				$w2 =~ s/gas$/Ka/;
 			} elsif ($w =~ /([ptk])[aei]s$/ && $g =~ /([ptk])\1[aei]$/) {
-				$w2 =~ s/([ptk])([aei])s$/\1=\2/;
+				$w2 =~ s/([ptk])([aei])s$/$1=$2/;
 			} elsif ($w =~ /([mv])[aei]s$/ && $g =~ /b[aei]$/) {
-				$w2 =~ s/([mv])([aei])s$/B\2/;
+				$w2 =~ s/([mv])([aei])s$/B$2/;
 			} elsif ($w =~ /jes$/ && $g =~ /ge$/) {
 				$w2 =~ s/jes$/Ge/;
 			} elsif ($w =~ /ras$/ && $g =~ /rga$/) {
@@ -313,18 +318,18 @@ while (<>) {
 		when("08") {
 			my $g = $stem{'bt'};
 
-			if ($g eq er_ra($w)) { # kukal-kukla
-				$chain = '08_A';
-				$w2 =~ s/([ea])([lrnm])$/\u\1\2/;
-			} elsif ($g eq er_re($w)) { # tütar-tütre
-				$chain = '08_E';
-				$w2 =~ s/([ea])([lrnm])$/\u\1\2/;
-			} elsif ($w =~ /mm[ae][lr]$/ && $g =~ /mb[lr][ae]$/) {
+			if ($w =~ /mm[ae][lr]$/ && $g =~ /mb[lr][ae]$/) {
 				$chain = $g =~ /e$/ ? '08_E' : '08_A';
-				$w2 =~ s/mm([ae])([lr])$/mB\2/;
+				$w2 =~ s/mm([ae])([lr])$/mB$2/;
 			} elsif ($w =~ /nn[ae][lr]$/ && $g =~ /nd[lr][ae]$/) {
 				$chain = $g =~ /e$/ ? '08_E' : '08_A';
-				$w2 =~ s/nn([ae])([lr])$/nD\2/;
+				$w2 =~ s/nn([ae])([lr])$/nD\u$1$2/;
+			} elsif ($g eq er_ra($w)) { # kukal-kukla
+				$chain = '08_A';
+				$w2 =~ s/([ea])([lrnm])$/\u$1$2/;
+			} elsif ($g eq er_re($w)) { # tütar-tütre
+				$chain = '08_E';
+				$w2 =~ s/([ea])([lrnm])$/\u$1$2/;
 			}
 		
 			else {
@@ -400,7 +405,23 @@ while (<>) {
 
 		when ("14") {
 			$chain = '14';
-			$w2 =~ s/s$/S/;
+			my $g = $stem{'bn'};
+
+			if ($g eq $w . 'e') {
+				# 
+			} elsif ($g eq s_e($w)) {
+				$w2 =~ s/s$/S/;
+			} elsif ($g eq s_ne($w)) {
+				$chain = '14_S-NE';
+				$w2 =~ s/s$//;
+			} else { #elsif ($w =~ /rs$/ && $g =~ /rre$/) {
+				$w2 =~ s/s$/S/;
+			}
+			
+#			else {
+#				$w = '! ??? ' . $w;
+#			}
+				
 		}
 
 		when ("15") {
@@ -408,11 +429,22 @@ while (<>) {
 			$w2 =~ s/si$/S/;
 		}
 
-		when ("16") { }
+		when ("16") { 
+			if ($stem{'a0g'} ne '#') {
+				if ($w =~ /gri$/ && $stem{'a0g'} =~ /kri$/) {
+					$chain = '16_GRI_Adt';
+					$w2 =~ s/gri$//;
+				} else {
+					$chain = '16_Adt';
+					$w2 =~ s/(.)([aeui])$/$1=$2/;
+				}
+			}
+		}
+
 		when ("17") {
 			if ($stem{'a0g'} ne '#') {
 				$chain = '17_Adt';
-				$w2 =~ s/(.)([aeui])$/\1=\2/;
+				$w2 =~ s/(.)([aeui])$/$1=$2/;
 			}
 		}
 
@@ -423,13 +455,13 @@ while (<>) {
 			my $pikk = $stem{'atv'} ne '#' ? '=' : '';
 
 			if ($w =~ /g[eaui]$/) {
-				$w2 =~ s/g([eaui])$/G${pikk}\1/;
+				$w2 =~ s/g([eaui])$/G${pikk}$1/;
 			} elsif ($w =~ /d[eaui]$/) {
-				$w2 =~ s/d([eaui])$/D${pikk}\1/;
+				$w2 =~ s/d([eaui])$/D${pikk}$1/;
 			} elsif ($w =~ /b[eaui]$/) {
-				$w2 =~ s/b([eaui])$/B${pikk}\1/;
+				$w2 =~ s/b([eaui])$/B${pikk}$1/;
 			} elsif ($w =~ /j[eaui]$/) {
-				$w2 =~ s/j([eaui])$/j${pikk}\1/;
+				$w2 =~ s/j([eaui])$/j${pikk}$1/;
 			} else {
 				$w = '! ??? ' . $w;
 			}
@@ -450,8 +482,8 @@ while (<>) {
 			my $g = $stem{'bn'};
 
 			unless ($g =~ /^$w/) {
-				$w2 =~ s/([ao])eg$/\1JG/;
-				$w2 =~ s/([pktbgd])$/\u\1/;
+				$w2 =~ s/([ao])eg$/$1JG/;
+				$w2 =~ s/([pktbgd])$/\u$1/;
 			}
 
 			given ($g) {
@@ -488,9 +520,9 @@ while (<>) {
 			}
 			
 			if ($w =~ /[gbd]e[rlv]$/ && $p =~ /[kpt][rlv][aeu]$/) {
-				$w2 =~ s/ge([rlv])$/KE\1/;
-				$w2 =~ s/be([rlv])$/PE\1/;
-				$w2 =~ s/de([rlv])$/TE\1/;
+				$w2 =~ s/ge([rlv])$/KE$1/;
+				$w2 =~ s/be([rlv])$/PE$1/;
+				$w2 =~ s/de([rlv])$/TE$1/;
 			} elsif ($w =~ /[rlhsdb]i$/ && $g =~ /[rlhsdb]j[aeu]$/) {
 				$w2 =~ s/i$/j/;
 			} elsif ($w =~ /[rl]i$/ && $g =~ /[rl]ve$/) {
@@ -517,7 +549,7 @@ while (<>) {
 				$chain = '26_ii';
 			} else {
 				$chain = '26';
-				$w2 =~ s/([aeuoöõüä])\1$/\1./;
+				$w2 =~ s/([aeuoöõüä])\1$/$1./;
 			}
 		}
 
@@ -529,9 +561,9 @@ while (<>) {
 			if ($w eq $b) {
 				# 
 			} elsif ($w =~ /([gbdkpt])[aeiu]$/) {
-				$w2 =~ s/([gbdkpt])([aeiu])$/\u\1\2/;
+				$w2 =~ s/([gbdkpt])([aeiu])$/\u$1$2/;
 			} elsif ($w =~ /([fšs])\1[aeiu]$/) {
-				$w2 =~ s/([fšs])\1([aeiu])$/\1=\2/;
+				$w2 =~ s/([fšs])\1([aeiu])$/$1=$2/;
 			}
 
 			else {
@@ -545,11 +577,11 @@ while (<>) {
 			if ($w eq $b) {
 				# 
 			} elsif ($w =~ /([gbdkpt])[aeiu]$/) {
-				$w2 =~ s/([gbdkpt])([aeiu])$/\u\1\2/;
+				$w2 =~ s/([gbdkpt])([aeiu])$/\u$1$2/;
 			} elsif ($w =~ /([fšs])\1[aeiu]$/) {
-				$w2 =~ s/([fšs])\1([aeiu])$/\1=\2/;
+				$w2 =~ s/([fšs])\1([aeiu])$/$1=$2/;
 			} elsif ($w =~ /([kpt])[rlj]a$/) {
-				$w2 =~ s/([kpt])([rlj])a$/\u\1\2a/;
+				$w2 =~ s/([kpt])([rlj])a$/\u$1$2a/;
 			}
 
 			else {
@@ -559,7 +591,7 @@ while (<>) {
 
 		when ("30") {
 			$w2 =~ s/le$//;
-			$w2 =~ s/([gbdkpt])$/\u\1/;
+			$w2 =~ s/([gbdkpt])$/\u$1/;
 		}
 
 		when ("31") {
@@ -575,13 +607,21 @@ while (<>) {
 		}
 
 		when ("34") {
-			if ($stem{'bn'} ne $w . 'a') {
-				$w2 =~ s/([gbdkpt])$/\u\1/;
+			if ($stem{'bn'} eq $w . 'a') {
+				#
+			} elsif ($stem{'cn'} . 'd' eq $w) {
+				$chain = '34_D_TUD';
+				$w2 =~ s/d$//;
+			} elsif ($stem{'cn'} . 'k' eq $w) {
+				$chain = '34_K_TUD';
+				$w2 =~ s/k$//;
+			} else {
+				$w2 =~ s/([gbdkpt])$/\u$1/;
 			}
 		}
 
 		when ("35") {
-			$w2 =~ s/([kpt])$/\1\u\1/;
+			$w2 =~ s/([kpt])$/$1\u$1/;
 		}
 
 		when ("36") {
@@ -596,11 +636,11 @@ while (<>) {
 			if ($stem{'ct'} eq '#') {
 				$chain = '38_SIN';
 			} else {
-				$w2 =~ s/([aeiouäöüõ])\1$/\1./;
+				$w2 =~ s/([aeiouäöüõ])\1$/$1./;
 			}
 		}
 
-		when ("41") { # muutumatud sõnadA
+		when ("41") { # muutumatud sõnad
 			$chain = 'GI';
 #			given ($k) {
 #				when(/I/) {
@@ -671,7 +711,7 @@ while (<>) {
 
 		when (/K/) {
 			$w .= '+K';
-			$list = \@preppostpos;
+			$list = \@prepostpos;
 		}
 
 		when (/N/) {
@@ -700,7 +740,7 @@ while (<>) {
 		$w2 = '';
 	}
 
-	print "$w$w2 $chain; ! $stems\n" if $k =~ /^06/;
+	print "$w$w2 $chain; ! $stems\n" if $k =~ /^34/;
 
 	push @{$list}, " $w$w2 $chain; ! $comm$stems\n";
 	$total ++;
@@ -712,14 +752,14 @@ write_lex("lex_subst.txt", "Nimisõna", @subst);
 write_lex("lex_name.txt", "Pärisnimi", @name);
 write_lex("lex_verb.txt", "Tegusõna", @verb);
 write_lex("lex_adv.txt", "Määrsõna", @adverb);
-#my @interject = ();
-#my @conjunct = ();
-#my @pronomen = ();
-#my @genitive = ();
-#my @prepostpos = ();
-#my @number = ();
-#my @ordinal = ();
-	#my @other = ();
+write_lex("lex_inter.txt", "Hüüdsõna", @interject);
+write_lex("lex_conj.txt", "Sidesõna", @conjunct);
+write_lex("lex_pronom.txt", "Asesõna", @pronomen);
+write_lex("lex_gen.txt", "Genatribuut", @genitive);
+write_lex("lex_prepost.txt", "Kaassõna", @prepostpos);
+write_lex("lex_number.txt", "Arvsõna", @number);
+write_lex("lex_ordinal.txt", "Järgarvsõna", @ordinal);
+write_lex("lex_other.txt", "Muu_sõna", @other);
 
 exit 0;
 
@@ -736,25 +776,25 @@ sub write_lex {
 
 sub er_ri {
 	my $x = shift;
-	$x =~ s/[ea]([rlnm])$/\1i/;
+	$x =~ s/[ea]([rlnm])$/$1i/;
 	$x;
 }
 
 sub er_ra {
 	my $x = shift;
-	$x =~ s/[ea]([rlnm])$/\1a/;
+	$x =~ s/[ea]([rlnm])$/$1a/;
 	$x;
 }
 
 sub er_re {
 	my $x = shift;
-	$x =~ s/[ea]([rlnm])$/\1e/;
+	$x =~ s/[ea]([rlnm])$/$1e/;
 	$x;
 }
 
 sub er_ru {
 	my $x = shift;
-	$x =~ s/[ea]([rlnm])$/\1u/;
+	$x =~ s/[ea]([rlnm])$/$1u/;
 	$x;
 }
 
@@ -782,6 +822,18 @@ sub s_kse {
 	$x;
 }
 
+sub s_e {
+	my $x = shift;
+	$x =~ s/s$/e/;
+	$x;
+}
+
+sub s_ne {
+	my $x = shift;
+	$x =~ s/s$/ne/;
+	$x;
+}
+
 sub V_me {
 	my $x = shift;
 	$x =~ s/[eiu]$/me/;
@@ -791,7 +843,7 @@ sub V_me {
 sub CCVl_Cl {
 	my $suffix = shift;
 	my $x = shift;
-	$x =~ s/(.)\1[eaui]([lmnr])$/\1\2$suffix/;
+	$x =~ s/(.)\1[eaui]([lmnr])$/$1$2$suffix/;
 	$x;
 }
 

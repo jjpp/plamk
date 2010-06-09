@@ -1,16 +1,3 @@
-Multichar_Symbols !morfoloogilise info märgendid
-+S +A +Num +Ord +Pron ma+V +K +Adv
-+sg +pl
-+nom +gen +part +ill +adit +in +el +all +ad +abl +trl +ter +es +ab +kom
-+comp +sup 
-+indic +imper +cond +quot
-+pres +past +impf
-+ps1 +ps2 +ps3 
-+neg +af 
-+imps +ps
-+inf +sup
-+partic +ger
-
 Definitions
    Number = [%0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9]; 
 
@@ -27,7 +14,15 @@ LEXICON Sõnastik
   Tegusõna; 	!verb
   Määrsõna;	!adverb;
   Numbrid;
-
+  Hüüdsõna;
+  Sidesõna;
+  Asesõna;
+  Genatribuut;
+  Arvsõna;
+  Järgarvsõna;
+  Muu_sõna;
+  Kaassõna;
+  Lisanduvad_erandid;
  
 ! tüvevariantide moodustus ja kasutus
 
@@ -87,17 +82,12 @@ An_SgN;
 An_SgP_t;
 :me TP_04b0-05bt;
 
-LEXICON 05_GE-KME	!liige
-:ge$ An_SgN;
-:ge$ An_SgP_t;
-:kme TP_04b0-05bt;
-
 LEXICON 05_I-ME	!võti
 :i$ An_SgN;
 :i$ An_SgP_t;
 :me TP_04b0-05bt;
 
-LEXICON 05_E-ME	!seade
+LEXICON 05_E-ME	!seade, liige
 :e$ An_SgN;
 :e$ An_SgP_t;
 :me TP_04b0-05bt;
@@ -131,10 +121,6 @@ LEXICON 08_A  !kukal
 LEXICON 08_E  !tütar
 :$ TP_08an;
 :e TP_07bt;
-
-LEXICON 08_EL-LE  !kannel
-:el$ TP_08an;
-:le TP_07bt;
 
 LEXICON 09_E	!katus
 TP_09a0;
@@ -195,6 +181,15 @@ An_PlG_te;
 :i An_PlP_V;
 :i An_Pl_Vok;
 
+LEXICON 14_S-NE	!laas
+:s An_SgN;
+:ne$ An_SgG;
+:n$ An_SgP_t;
+:n$ An_SgAdt_de; 
+:n$ An_PlG_te;
+:si An_PlP_V;
+:si An_Pl_Vok; ! ???
+
 LEXICON 14	!uus
 An_SgN;
 :e$ An_SgG;
@@ -216,9 +211,13 @@ LEXICON 15	!käsi
 LEXICON 16	!ratsu
 TP_16a0;
 
-LEXICON 16_Adt	!kõne
+LEXICON 16_Adt	!kõne ?? kere, pere, tare
 TP_16a0;
 :2 An_SgAdt_0;   
+
+LEXICON 16_GRI_Adt	!pogri
+:gri TP_16a0;
+:kri An_SgAdt_0;   
 
 LEXICON 17	!tuvi
 TP_17a0;
@@ -362,6 +361,17 @@ LEXICON 34	! ma - TA + kons.tüvi, da - TA, tüvi&formatiiv sulandunud, olevik -
  TP_34at;
  :a$ TP_34bn;
  :e$ TP_34cn;
+
+LEXICON 34_K_TUD ! laskma/mõskma/puskma
+ :K TP_34at;
+ :Ke$ TP_34bn;
+ :$ TP_34cn;
+ 
+LEXICON 34_D_TUD ! hoidma-leidma-püüdma
+ :D TP_34at;
+ :De$ TP_34bn;
+ :$ TP_34cn;
+ 
 
 LEXICON 35	! 4 tüve: nut+ma (at), nuta+b (bn), nute+tud (cn), nutt+a (ct)
  TP_35at;
@@ -522,7 +532,7 @@ An_SgAdt_0;
 
 LEXICON TP_24bn	!padja
 An_SgG;
-:+W An_PlP_V;	!padjus
+:+W An_Pl_Vok;	!padjus
 
 LEXICON TP_24bt	!patja
 An_SgP_0;
@@ -768,6 +778,10 @@ LEXICON An_SgG  ! SgG analoogiarühm
  +sg+gen:0 GI;
  +sg:0 KÄÄNE_1;
  +pl+nom:+d GI;
+ +C:+m 02_A;
+ +U:+im 02_A;
+ +dim:ke 12_0-SE-S;
+ +dim:ke 12_NE-SE-S;
  LIIT;
  !LIIT_DEV_G;
 
@@ -856,10 +870,6 @@ LEXICON KÄÄNE_2  ! käändelõpud illatiivist translatiivini (mitmus)
  +abl:+lt GI;
  +tr:+ks GI;
 
-LEXICON GI  ! liide gi/ki
- +gi:Qi #;
- #;
-
 ! Analoogiarühmad verbidele
 LEXICON An_ma
  ma+V+sup+ill:ma GI;
@@ -873,11 +883,11 @@ LEXICON An_mata
 
 LEXICON An_v
  ma+V+partic+pres+ps:v GI;
- $v+A+pos+sg+nom+partic:v 02_A ;
+ v+A:v 02_A ; ! +A+pos+sg+nom+partic
 
 LEXICON An_ev
  ma+V+partic+pres+ps:ev GI;
- $ev+A+pos+sg+nom+partic:ev 02_A ;
+ ev+A:Ev 02_A ; ! +A+pos+sg+nom+partic
 
 !!!!!
 ! Järgmised 7 - kindla kõneviisi lihtmineviku vormid
@@ -929,10 +939,7 @@ LEXICON An_ta
 
 LEXICON An_a
  ma+V+inf:+a GI;
- ma+V+ger:+e e_s;
-
-LEXICON e_s
- :s GI;
+ ma+V+ger:+0es GI;
 
 !!!!!
 
@@ -956,7 +963,7 @@ LEXICON An_ke
 
 LEXICON An_nud
   ma+V+partic+past+ps:+nud GI ;
-  $nud+A+pos+partic:+nud GI ; 
+  $nud+A+pos+partic:+nud GI ; ! +A+pos+partic:+nud 
   $nu+S:nu 01;
   ma+V+cond+partic+past+ps1+sg+af:+nuksin GI ; 
   ma+V+cond+partic+past+ps2+sg+af:+nuksid GI ; 
@@ -972,22 +979,22 @@ LEXICON An_nud
 !!!!!
 
 LEXICON An_b
- ma+V+indic+pres+ps1+sg+ps+af  : +n GI;
- ma+V+indic+pres+ps2+sg+ps+af  : +d GI;
- ma+V+indic+pres+ps3+sg+ps+af  : +b GI;
- ma+V+indic+pres+ps+neg  : +0 GI;
- ma+V+imper+pres+ps2+sg : +0 GI;
- ma+V+cond+pres+ps1+sg+ps+af  : +ksin GI ;
- ma+V+cond+pres+ps2+sg+ps+af  : +ksid GI ;
- ma+V+cond+pres+ps3+sg+ps+af  : +ksid GI ;
- ma+V+cond+pres+ps1+pl+ps+af  : +ksime GI ;
- ma+V+cond+pres+ps2+pl+ps+af  : +ksite GI ;
- ma+V+cond+pres+ps3+pl+ps+af  : +ksid GI ;
+ ma+V+indic+pres+ps1+sg+ps+af:+n GI;
+ ma+V+indic+pres+ps2+sg+ps+af:+d GI;
+ ma+V+indic+pres+ps3+sg+ps+af:+b GI;
+ ma+V+indic+pres+ps+neg:+0 GI;
+ ma+V+imper+pres+ps2+sg:+0 GI;
+ ma+V+cond+pres+ps1+sg+ps+af:+ksin GI ;
+ ma+V+cond+pres+ps2+sg+ps+af:+ksid GI ;
+ ma+V+cond+pres+ps3+sg+ps+af:+ksid GI ;
+ ma+V+cond+pres+ps1+pl+ps+af:+ksime GI ;
+ ma+V+cond+pres+ps2+pl+ps+af:+ksite GI ;
+ ma+V+cond+pres+ps3+pl+ps+af:+ksid GI ;
 
 LEXICON An_me
- ma+V+indic+pres+ps1+pl+ps+af  : +me GI;
- ma+V+indic+pres+ps2+pl+ps+af  : +te GI;
- ma+V+indic+pres+ps3+pl+ps+af  : +vad GI;
+ ma+V+indic+pres+ps1+pl+ps+af:+me GI;
+ ma+V+indic+pres+ps2+pl+ps+af:+te GI;
+ ma+V+indic+pres+ps3+pl+ps+af:+vad GI;
 
 !!!!!
 
