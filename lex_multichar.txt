@@ -1,5 +1,5 @@
 Multichar_Symbols !morfoloogilise info märgendid
-+S +A +Num +Ord +Pron ma+V +K +Adv +C +U +dim
++H +S +A +Num +Ord +Pron ma+V +K +Adv +C +U +_ke +_kene +_us
 +sg +pl
 +nom +gen +part +ill +adit +in +el +all +ad +abl +trl +ter +es +ab +kom
 +comp +sup 

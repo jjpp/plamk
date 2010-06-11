@@ -1,0 +1,7 @@
+LEXICON Asendavad_erandid
+ Asendavad_erandid_gen; ! lisame EKI andmetest genereeritud asjad.
+
+teist+Num+sg+nom:teist GI;
+kümmend+Num+sg+nom:kümmend GI;
+
+

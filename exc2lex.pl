@@ -99,7 +99,7 @@ while (<>) {
 	push @{$list}, " $stem$form{$code}:$form GI; ! $line\n";
 }
 
-write_lex("lex_override.txt", "Asendavad_erandid", @override);
+write_lex("lex_override_gen.txt", "Asendavad_erandid_gen", @override);
 write_lex("lex_extra.txt", "Lisanduvad_erandid", @extra);
 
 exit 0;

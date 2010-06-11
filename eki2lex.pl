@@ -42,6 +42,7 @@ while (<>) {
 	my $comm = '';
 
 
+	$w = lc($w);
 
 	my $chain = substr($k, $[, 2);
 	if ($chain >= 27 && $chain < 39) {
@@ -129,8 +130,8 @@ while (<>) {
 				$chain = '02_A';
 				$w2 =~ s/(.)i([lrvs])$/$1=I$2/;
 			} elsif ($w =~ /ne$/ && $g =~ /sa$/) {
-				$chain = '02_A';
-				$w2 =~ s/ne$/NE/;
+				$chain = '02_NE-SA';
+				$w2 =~ s/ne$//;
 			} elsif ($w eq $g && $g =~ /a$/) {
 				$chain = '02_A';
 				$w2 = substr($w2, $[, -1);
@@ -198,6 +199,9 @@ while (<>) {
 			} elsif ($w =~ /nnis$/ && $g =~ /ndsa$/) {
 				$chain = '05_A';
 				$w2 =~ s/nnis/nDIs/;
+			} elsif ($w =~ /hus$/ && $g =~ /htu$/) {
+				$chain = '05_S-0';
+				$w2 =~ s/hus/hTu/;
 			} elsif ($w eq $g . 's') {
 				$chain = '05_S-0';
 				$w2 = ':' . $g;
@@ -206,8 +210,9 @@ while (<>) {
 					when (/i$/) { $chain = '05_I-ME'; }
 					when (/u$/) { $chain = '05_U-ME'; }
 					when (/e$/) { $chain = '05_E-ME'; }
+					when (/a$/) { $chain = '05_A-ME'; }
 				}
-				$w2 =~ s/[iue]$//;
+				$w2 =~ s/[aiue]$//;
 			} elsif ($w =~ /([lrn])\1e$/ && $g =~ /[lrn]dme$/) {
 				$chain = '05_E-ME';
 				$w2 =~ s/([lrn])\1e$/$1D/;
@@ -216,6 +221,22 @@ while (<>) {
 				$w2 =~ s/de$/T/;
 				$w2 =~ s/ge$/K/;
 				$w2 =~ s/be$/P/;
+			} elsif ($w =~ /[sh]e$/ && $g =~ /[sh]kme$/) {
+				$chain = '05_E-ME';
+				$w2 =~ s/([sh])e$/$1K/;
+			} elsif ($w =~ /[ui]e$/ && $g =~ /[ui]dme$/) {
+				$chain = '05_E-ME';
+				$w2 =~ s/([ui])e$/$1D/;
+			} elsif ($w =~ /ie$/ && $g =~ /igme$/) {
+				$chain = '05_E-ME';
+				$w2 =~ s/ie$/iG/;
+			} elsif ($w =~ /he$/ && $g =~ /htme$/) {
+				$chain = '05_E-ME';
+				$w2 =~ s/he$/hT/;
+			} elsif ($w =~ /me$/ && $g =~ /mne$/) {
+				$chain = '05_E-NE';
+				$w2 =~ s/mme$/m=/;
+				$w2 =~ s/me$/m/;
 			}
 
 			else {
@@ -481,19 +502,90 @@ while (<>) {
 		when ("22") {
 			my $g = $stem{'bn'};
 
-			unless ($g =~ /^$w/) {
-				$w2 =~ s/([ao])eg$/$1JG/;
-				$w2 =~ s/([pktbgd])$/\u$1/;
+			if ($g =~ /^${w}()[aeiu]$/) {
+				$g =~ /([aeiu])$/;
+				$chain = "22_\u$1";
+			} elsif ($w =~ /[kpt](v?)$/ && $g =~ /[gbd](v?)[aeiu]$/) {
+				$w2 =~ s/([kpt])(v?)$/\u$1$2/;
+				$g =~ /([aeiu])$/;
+				$chain = "22_\u$1";
+			} elsif ($w =~ /([kpts])\1$/ && $g =~ /[kpts][aeiu]$/) {
+				$w2 =~ s/([kpts])$/\u$1/;
+				$g =~ /([aeiu])$/;
+				$chain = "22_\u$1";
+			} elsif ($w =~ /([fš])\1$/ && $g =~ /[fš][aeiu]$/) {
+				$w2 =~ s/([fš])$/=/;
+				$chain = "22_FI";
+			} elsif ($w =~ /h[tk]$/ && $g =~ /h[aeiu]$/) {
+				$w2 =~ s/([kpt])$/\u$1/;
+				$g =~ /([aeiu])$/;
+				$chain = "22_\u$1";
+			} elsif ($w =~ /sk$/ && $g =~ /s[aeiu]$/) {
+				$w2 =~ s/([kpt])$/\u$1/;
+				$g =~ /([aeiu])$/;
+				$chain = "22_\u$1";
+			} elsif ($w =~ /[rnl]d$/ && $g =~ /([rnl])\1[aeiu]$/) {
+				$w2 =~ s/([gbd])$/\u$1/;
+				$g =~ /([aeiu])$/;
+				$chain = "22_\u$1";
+			} elsif ($w =~ /[rnl]b$/ && $g =~ /([rnl])v[aeiu]$/) {
+				$w2 =~ s/([gbd])$/\u$1/;
+				$g =~ /([aeiu])$/;
+				$chain = "22_\u$1";
+			} elsif ($w =~ /mb$/ && $g =~ /mm[aeiu]$/) {
+				$w2 =~ s/([gbd])$/\u$1/;
+				$g =~ /([aeiu])$/;
+				$chain = "22_\u$1";
+			} elsif ($w =~ /[rl]g$/ && $g =~ /[rl]j[aeu]$/) {
+				$w2 =~ s/([gbd])$/\u$1/;
+				$g =~ /([aeiu])$/;
+				$chain = "22_\u$1";
+			} elsif ($g =~ /[aeiu]$/ && 
+					(($w eq _V($g) . 'g') 
+					|| ($w eq _V($g) . 'd')))  { # urg-uru, laid-laiu
+				$w2 =~ s/([gbd])$/\u$1/;
+				$g =~ /([aeiu])$/;
+				$chain = "22_\u$1";
+			} elsif ($w =~ /b$/ && $g =~ /v[ai]$/) {
+				$w2 =~ s/([gbd])$/\u$1/;
+				$g =~ /([aeiu])$/;
+				$chain = "22_\u$1";
+			} elsif ($w =~ /^$g()[dg]$/ && $stem{'bt'} =~ /u$/) {
+				$w2 =~ s/([gbd])$/\u$1/;
+				$chain = '22_0-U';
+			} elsif ($w =~ /ks$/ && $g =~ /he$/) {
+				$w2 =~ s/ks$//;
+				$chain = '22_KS-HE';
+			} elsif ($w =~ /uub$/ && $g =~ /uue$/) { 
+				$w2 =~ s/b$//;
+				$chain = '22_B-E-BE';
+			} elsif ($w =~ /ood$/ && $g =~ /oe$/) {
+				$w2 =~ s/od$//;
+				$chain = '22_OOD-OE';
+			} elsif ($w =~ /aa[dsg]$/ && $g =~ /ae$/) {
+				$w2 =~ s/a([dsg])$//;
+				$chain = "22_AA\u$1-AE";
+			} elsif ($w =~ /eg$/ && $g =~ /ja$/) {
+				$w2 =~ s/eg$//;
+				$chain = '22_EG-JA';
 			}
 
-			given ($g) {
-				when (/a$/) { $chain = '22_A'; }
-				when (/e$/) { $chain = '22_E'; }
-				when (/i$/) { $chain = '22_I'; }
-				when (/u$/) { $chain = '22_U'; }
-				default { $w = '! ??? ' . $w; }
+			else {
+				$w = '! ??? ' . $w;
 			}
 
+#			unless ($g =~ /^$w/) {
+#				$w2 =~ s/([ao])eg$/$1JG/;
+#				$w2 =~ s/([pktbgd])$/\u$1/;
+#			}
+#
+#			given ($g) {
+#				when (/a$/) { $chain = '22_A'; }
+#				when (/e$/) { $chain = '22_E'; }
+#				when (/i$/) { $chain = '22_I'; }
+#				when (/u$/) { $chain = '22_U'; }
+#				default { $chain = '22_0-U'; }
+#			}
 		}
 
 		when ("23") {
@@ -591,7 +683,7 @@ while (<>) {
 
 		when ("30") {
 			$w2 =~ s/le$//;
-			$w2 =~ s/([gbdkpt])$/\u$1/;
+			$w2 =~ s/([gbdkpt])$/\u$1/ unless $w eq er_re($stem{'bn'});
 		}
 
 		when ("31") {
@@ -621,7 +713,10 @@ while (<>) {
 		}
 
 		when ("35") {
-			$w2 =~ s/([kpt])$/$1\u$1/;
+			$chain = $w =~ /p$/ ? '35_P' : '35_T';
+			if ($stem{'cn'} ne $w . 'e') {
+				$w2 =~ s/([pt])$/\u$1/;
+			}
 		}
 
 		when ("36") {
@@ -740,7 +835,7 @@ while (<>) {
 		$w2 = '';
 	}
 
-#	print "$w$w2 $chain; ! $stems\n" if $k =~ /^34/;
+#	print "$w$w2 $chain; ! $stems\n" if $k =~ /^22/;
 
 	push @{$list}, " $w$w2 $chain; ! $comm$stems\n";
 	$total ++;
@@ -836,7 +931,13 @@ sub s_ne {
 
 sub V_me {
 	my $x = shift;
-	$x =~ s/[eiu]$/me/;
+	$x =~ s/[aeiu]$/me/;
+	$x;
+}
+
+sub _V {
+	my $x = shift;
+	$x =~ s/[aeiu]$//;
 	$x;
 }
 

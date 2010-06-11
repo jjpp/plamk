@@ -23,14 +23,18 @@ test: estmorf.out xfst.out $(TESTFILE)
 
 clean:
 	$(RM) eesti.fst lex.fst lex-av.fst rules.fst xfst.out estmorf.out rul-av.txt \
-		rules-av.fst lex_full.txt $(GENERATED_LEX) lex_exc.txt lex_override.txt
+		rules-av.fst lex_full.txt $(GENERATED_LEX) lex_exc.txt lex_override_gen.txt \
+		lex_exc.fst
 
-eesti.fst: lex.fst rules.fst rules-av.fst lex_exc.fst
+eesti.fst: lex.fst rules.fst rules-av.fst lex_exc.fst deriv_filter.txt
 	$(XFST) -e 'read regex  [@"rules-av.fst"].i .o. [@"lex.fst"];' \
 		-e "save stack lex-av.fst" \
 		-e "clear" \
-		-e 'read regex [[@"lex_exc.fst"] .P. [@"lex-av.fst"]] .o. [@"rules.fst"];' \
+		-e 'read regex @re"deriv_filter.txt" .o. [[@"lex_exc.fst"] .P. [@"lex-av.fst"]] .o. [@"rules.fst"];' \
 		-e "save stack eesti.fst" -stop
+
+#		-e 'read regex [[@"lex_exc.fst"] .P. [@"lex-av.fst"]] .o. [@"rules.fst"];' \
+
 
 lex.fst: lex_full.txt
 	$(XFST) -e "read lexc lex_full.txt" -e "save stack lex.fst" -stop
@@ -50,7 +54,7 @@ rules-av.fst: rul-av.txt
 lex_full.txt: lex_multichar.txt lex_main.txt lex_gi.txt $(GENERATED_LEX)
 	cat $^ > $@
 
-lex_exc.txt: lex_multichar.txt lex_override.txt lex_gi.txt
+lex_exc.txt: lex_multichar.txt lex_override.txt lex_override_gen.txt lex_gi.txt
 	cat $^ > $@
 
 lex_adj.txt: tyvebaas.txt tyvebaas-lisa.txt eki2lex.pl
@@ -59,9 +63,9 @@ lex_adj.txt: tyvebaas.txt tyvebaas-lisa.txt eki2lex.pl
 lex_subst.txt: lex_adj.txt
 lex_name.txt: lex_adj.txt
 lex_verb.txt: lex_adj.txt
-lex_extra.txt: lex_override.txt
+lex_extra.txt: lex_override_gen.txt
 
-lex_override.txt: form.exc fcodes.ini exc2lex.pl
+lex_override_gen.txt: form.exc fcodes.ini exc2lex.pl
 	cat form.exc | $(ICONV) -flatin1 -tutf8 | $(INVERSE_ETHTHORN) | ./exc2lex.pl
 
 xfst.out: eesti.fst $(TESTFILE)
