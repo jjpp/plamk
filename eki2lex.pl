@@ -60,7 +60,9 @@ while (<>) {
 		when ("02") { # {{{
 			my $g = $stem{'b0'};
 
-			if ($g eq $w . 'da') {
+			if ($w eq 'mõlema') {
+				$chain = '02_S-0';
+			} elsif ($g eq $w . 'da') {
 				$chain = '02_DA';
 			} elsif ($w =~ /[ea][rlnm]$/ && $g eq er_ri($w)) {
 				$chain = '02_I';
@@ -421,6 +423,8 @@ while (<>) {
 			my $g = $stem{'bn'};
 			if ($g eq $w . 'e') {
 				$chain = '13';
+			} else {
+				$w = '! ??? ' . $w;
 			}
 		}
 
@@ -470,10 +474,11 @@ while (<>) {
 		}
 
 		when ("18") {
-			$chain .= '_Adt' if $stem{'atv'} ne '#';
-			$chain .= '_PlPV' if $stem{'anv'} ne '#';
+#			$chain .= '_Adt' if $stem{'atg'} ne '#';
+			$chain .= '_PlPV' if $stem{'atv'} ne '#';
+			$chain .= '_PlV' if $stem{'anv'} ne '#';
 
-			my $pikk = $stem{'atv'} ne '#' ? '=' : '';
+			my $pikk = $stem{'atg'} ne '#' ? '=' : '';
 
 			if ($w =~ /g[eaui]$/) {
 				$w2 =~ s/g([eaui])$/G${pikk}$1/;
@@ -496,15 +501,27 @@ while (<>) {
 		}
 
 		when ("21") { 
-			$w2 =~ s/g([eaui])$/G=i/;
+			$w2 =~ s/g([eaui])$/G=/;
+
+			if ($w eq 'tõbi') {
+				$w = '! erand ' . $w;
+			}
 		}
 
 		when ("22") {
 			my $g = $stem{'bn'};
+			my $p = $stem{'bt'};
 
-			if ($g =~ /^${w}()[aeiu]$/) {
+			if (($w eq 'silm' && $g eq 'silma') ||
+			    ($w eq 'pikk' && $g eq 'pika') ||
+			    ($w eq 'king' && $g eq 'kinga')) {
+				$w = '! erandlik tyvemitmus: ' . $w;
+			} elsif ($g =~ /^${w}()[aeiu]$/ && $g eq $p) {
 				$g =~ /([aeiu])$/;
 				$chain = "22_\u$1";
+			} elsif ($g =~ /^${w}()[aeiu]$/ && $w =~ /[kpt]$/) {
+				$w2 =~ s/([kpt])$/$1\u$1/;
+				$chain = "22_KPT_I";
 			} elsif ($w =~ /[kpt](v?)$/ && $g =~ /[gbd](v?)[aeiu]$/) {
 				$w2 =~ s/([kpt])(v?)$/\u$1$2/;
 				$g =~ /([aeiu])$/;
@@ -615,8 +632,12 @@ while (<>) {
 				$w2 =~ s/ge([rlv])$/KE$1/;
 				$w2 =~ s/be([rlv])$/PE$1/;
 				$w2 =~ s/de([rlv])$/TE$1/;
-			} elsif ($w =~ /[rlhsdb]i$/ && $g =~ /[rlhsdb]j[aeu]$/) {
+			} elsif ($w =~ /[rlhsdb]i$/ && $g =~ /[rlhsdb]j[aeu]$/ && $g eq $p) {
 				$w2 =~ s/i$/j/;
+			} elsif ($w =~ /[rlhsdb]i$/ && $g =~ /[rlhsdb]j[aeu]$/) {
+				$w2 =~ s/gi$/Kj/;
+				$w2 =~ s/di$/Tj/;
+				$w2 =~ s/bi$/Pj/;
 			} elsif ($w =~ /[rl]i$/ && $g =~ /[rl]ve$/) {
 				$w2 =~ s/i$//;
 				$chain = '24_I-VE';
@@ -661,6 +682,8 @@ while (<>) {
 			else {
 				$w = '! ??? ' .$w;
 			}
+
+			$w = '! /// ' . $w if ($w eq 'küündi');
 		}
 
 		when ("29") {
@@ -684,6 +707,9 @@ while (<>) {
 		when ("30") {
 			$w2 =~ s/le$//;
 			$w2 =~ s/([gbdkpt])$/\u$1/ unless $w eq er_re($stem{'bn'});
+			if ($w eq 'vähkre') {
+				$w = '! erand ' . $w;
+			}
 		}
 
 		when ("31") {
@@ -699,7 +725,9 @@ while (<>) {
 		}
 
 		when ("34") {
-			if ($stem{'bn'} eq $w . 'a') {
+			if ($w eq 'tund') {
+				$w = '! erandlik tyvevokaal ' . $w;
+			} elsif ($stem{'bn'} eq $w . 'a') {
 				#
 			} elsif ($stem{'cn'} . 'd' eq $w) {
 				$chain = '34_D_TUD';
@@ -755,6 +783,10 @@ while (<>) {
 		default {
 			$w = '! TODO ' . $w;
 		}
+	}
+
+	if (substr($k, $[, 2) >= 27 && substr($k, $[, 2) < 39 && $w !~ /^\s*\!/) {
+		$w = substr($w2, $[ + 1);
 	}
 
 	my $list = undef;
@@ -835,7 +867,7 @@ while (<>) {
 		$w2 = '';
 	}
 
-#	print "$w$w2 $chain; ! $stems\n" if $k =~ /^22/;
+	print "$w$w2 $chain; ! $stems\n" if $k =~ /^13/;
 
 	push @{$list}, " $w$w2 $chain; ! $comm$stems\n";
 	$total ++;

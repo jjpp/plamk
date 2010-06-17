@@ -1,3 +1,6 @@
+Definitions
+ # = [ ? - ? ];
+
 LEXICON Asendavad_erandid
  Asendavad_erandid_gen; ! lisame EKI andmetest genereeritud asjad.
 

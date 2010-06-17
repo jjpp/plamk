@@ -1,0 +1,10 @@
+read regex  [@"rules.fst"].i .o. [@"lex.fst"];
+save stack lex-av.fst
+clear
+read regex @re"deriv_filter.txt" .o.
+	[[@"lex_exc.fst"] .P. [@"lex-av.fst"]] .o.
+	[@"rules.fst"] .o.
+	~$"#" 
+;
+save stack eesti.fst 
+

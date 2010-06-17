@@ -26,12 +26,8 @@ clean:
 		rules-av.fst lex_full.txt $(GENERATED_LEX) lex_exc.txt lex_override_gen.txt \
 		lex_exc.fst
 
-eesti.fst: lex.fst rules.fst rules-av.fst lex_exc.fst deriv_filter.txt
-	$(XFST) -e 'read regex  [@"rules-av.fst"].i .o. [@"lex.fst"];' \
-		-e "save stack lex-av.fst" \
-		-e "clear" \
-		-e 'read regex @re"deriv_filter.txt" .o. [[@"lex_exc.fst"] .P. [@"lex-av.fst"]] .o. [@"rules.fst"];' \
-		-e "save stack eesti.fst" -stop
+eesti.fst: lex.fst rules.fst rules-av.fst lex_exc.fst deriv_filter.txt xfst.script
+	$(XFST) -f xfst.script 
 
 #		-e 'read regex [[@"lex_exc.fst"] .P. [@"lex-av.fst"]] .o. [@"rules.fst"];' \
 
@@ -46,7 +42,8 @@ lex_exc.fst: lex_exc.txt
 	$(XFST) -e "read lexc lex_exc.txt" -e "save stack lex_exc.fst" -stop
 
 rul-av.txt: rul.txt
-	awk '/!!!! EOF AV/ { x = 1; } { if (!x) { print; } }' rul.txt | sed -e 's/%+:0/%+:%+/' > rul-av.txt
+	awk '/!!!! EOF AV/ { x = 1; } { if (!x) { print; } }' rul.txt  > rul-av.txt
+#	awk '/!!!! EOF AV/ { x = 1; } { if (!x) { print; } }' rul.txt | sed -e 's/%+:0/%+:%+/' > rul-av.txt
 
 rules-av.fst: rul-av.txt
 	echo -ne "read-grammar rul-av.txt\ncompile\nintersect\n\n\nsave-binary rules-av.fst\nquit\n"  | $(TWOLC)

@@ -44,7 +44,7 @@ Rules
 
 "AV 3 - t kadu"
 
- T:0 <=>Vok [t|h] _ Vok ([S: | l ]) %$:;!tt-t (rott-roti) ja ht-h (ehtima-ehib)
+ T:0 <=>Vok [t|h] _ (Vok ([S: | l ])) %$:;!tt-t (rott-roti) ja ht-h (ehtima-ehib)
         Algus Vok: _ e (l) %$:;	!ütlema-öelda, jätma-jäetakse
 
 
@@ -65,7 +65,7 @@ Rules
 
 "AV 8 - assimilatsioon d-r"	!kord-korra
 
- D:r <=> Algus Vok r _ (TyveVok) (S:) %$:;
+ D:r <=> Algus Vok r _ (TyveVok) (S: | l) %$:;
 
 
 "AV 9 -  b kadu"	!tuba-toa
@@ -96,7 +96,7 @@ G:0 <=> Vok _ (%=:) (Vok|h) %$: ;
 S:0 <=> Algus Vok [Kons+] (AV:AVT) TyveVok:  _ Piir; !küngas-künka
         Algus Vok AV:AVT TavaKons Vok  _  Piir;  !kobras-kopra
         Algus Vok (Vok) _ (Vok) %$:;		!käsi-käe, õis-õie
-        Algus Vok Vok s _ Vok %$:; 	!kauss-kausi
+        Algus Vok (Vok) (Liq | n) s _ Vok %$:; 	!kauss-kausi, kurss-kursi?
                 where AV in  (G B D K P T )
                      AVT in  (g b d k p t )
            matched;
@@ -108,13 +108,13 @@ S:0 <=> Algus Vok [Kons+] (AV:AVT) TyveVok:  _ Piir; !küngas-künka
 
  "AV 15 p-b"
  P:b <=> Vok [Liq | m | Vok] _  [Vok | VaheVok:] ([S:|s]) %$:0 ;	!karp-karbi, kimp-kimbu, loopida-loobin
-         Vok _ [Liq|j] Vok (S:) %$:;	!lupjama-lubjata, kobras-kopra
+         Vok _ [Liq Vok | j: (Vok) ] (S:) %$:;	!lupjama-lubjata, kobras-kopra
          Vok _ VaheVok: Liq (Vok) %$:;    		!sõpra-sõbra
 
  "AV 16 t-d"
- T:d <=> Vok [Vok|Liq | n] _ Vok (S:) %$:;	!paat-paadi, kaart-kaardi, elevant-elevandi
+ T:d <=> Vok [Vok|Liq | n ] _ Vok (S:) %$:;	!paat-paadi, kaart-kaardi, elevant-elevandi
          Vok Vok _ e l %$:;     		!vaatlema-vaadelda
-         Vok _ (VaheVok:) [Liq | v] (Vok) %$:;    	!putru-pudru, patrama-padrata
+         Vok _ (VaheVok:) [Liq | v | j:] (Vok) %$:;    	!putru-pudru, patrama-padrata
 	 
 
  "AV 17: g-j"	!märg-märja, hüljes-hülge
@@ -128,7 +128,7 @@ D:j <=>  Algus [ a | o | õ ]  _  (%=:) a   %$:;	!sadada-sajab, sõda-sõja
 
 "AV 19: b-v"
 
- B:v <=> Vok [Vok|Liq] _ (Vok:) %$:;	!kaebama-kaevata, kõlbama-kõlvata, värbama-värvata, varb-varva
+ B:v <=> Vok [Vok|Liq] _ (Vok:) (S:) %$:;	!kaebama-kaevata, kõlbama-kõlvata, värbama-värvata, varb-varva
 
 !!!! EOF AV
 
@@ -151,7 +151,7 @@ D:j <=>  Algus [ a | o | õ ]  _  (%=:) a   %$:;	!sadada-sajab, sõda-sõja
 			!(siga->sea) kui lõppvokaal (kadu->kao)
 
   KorgeVok:MadalVok <=> Algus  _ LV:0 (%=:) [a|e|i:|u:](l) %$: ;
-			Algus Vok (%.:) LV: (%=:) _ %$: ;
+			Algus Vok (%.:) LV: (%=:) _ %$: [~[ [:0]* :Vok ] | .#.];
  where KorgeVok in (u ü i)
            MadalVok in (o ö e)
  matched ;
@@ -195,11 +195,11 @@ NorkKlus:Klus <=> _ %=: (TyveVok:) 2:;
 
   m:n <=> _ %+: [d | t] ;
 
-"skt -> st, kst -> st ja k kaashäälikuühendis"	!(lasktud->lastud),  (ukst->ust)
+"skt -> st, kst -> st ja k kaashäälikuühendis"	!(lasktud->lastud),  (ukst->ust) AGA: maksti, peksti ?
 
-  k:0 <=> s _  (%$:)(%+:) t ;
-                  _ s (%$:)(%+:) t ;
- Kons Vok _ :k (%$:)(%+:) [Kons-p+];   !kaashäälikuühend
+  k:0 <=> _ s %$: %+: t ;
+	! s _  (%$:)(%+:) t ; ! see pole tegelikult probleem?
+ Kons Vok _ :k (%$:)(%+:) [Kons-k+];   !kaashäälikuühend
 
 "j -> i sõna lõpus"      !(kirj->kiri, purj->puri)
 
@@ -210,7 +210,8 @@ NorkKlus:Klus <=> _ %=: (TyveVok:) 2:;
 
  "mitmuse vokaal i"
 W:i <=> e: (%$:) %+: _ MitteSpr;	! e-tüvelised
-        Algus [e| o| u| ä| ö| ü] [[(Kons) [:Kons - [:j|:b|:n]]] | [ h :t ] ] (%=:) a: %+: _ MitteSpr; !"eks ämm söö kodus sütt"
+	Algus [e | o (o)| u| ä ([e]) | ö| ü] [[(Kons) [:Kons - [:j|:b|:n]]] | [ h :t ] ] (%=:) a: (%$:) %+: _ MitteSpr; 
+	!"eks ämm söö kodus sütt"
 
  "mitmuse vokaal e"
 W:e <=> [i: | u:] (%$:) %+: _ ;		! i- ja u-tüvelised
@@ -222,12 +223,13 @@ W:e <=> [i: | u:] (%$:) %+: _ ;		! i- ja u-tüvelised
  "mitmuse vokaal u"
 W:u <=> [[i: [D:|G:]]|[[Kons | Algus] 
 		[a | a a | i | i i | õ | õ õ | a e | a i 
-		   | e i | ä i | õ i | a u | i u | õ u ] :Kons+]] (%=:) a: (%$:) %+: _ MitteSpr; !"kass kõrtsis ei käi"
-	 [a | ä | e] Kons j: a: (%$:) %+: _ MitteSpr ; !a-tüvelised, esisilbis äCj, eCj (väli) (asjus?)
+		   | e i | ä i | õ i | a u | i u | õ u ] [:Kons | VaheVok:0]+]] (%=:) a: (%$:) %+: _ MitteSpr; !"kass kõrtsis ei käi"
+	 [a | ä | e] Kons j: a: (%$:) %+: _ MitteSpr ; !a-tüvelised, esisilbis äCj, eCj (väli, neli) (asjus?)
 
 
  "ainsuse vokaal kirjutada korstnasse"
-TyveVok:0 <=> [Kons|AV:] (%=:) _ (%$:) %+: [W: |u s]; where TyveVok in (a e i u);  !pesa+i ->pesi, kana+u->kanu
+TyveVok:0 <=> [Kons|AV:] (%=:) _ (%$:) %+: [ W: ~%!: |u s];
+	where TyveVok in (a e i u);  !pesa+i ->pesi, kana+u->kanu
 
 
 "oo+a->uua, öö+a->üüa 1"	!joo+a->juua, söö+a->süüa
@@ -305,7 +307,7 @@ V1:õ <=> _ %.: %+: i [.#. | d | n | m e | t e]; where V1 in (o ö);
 
 "ki/gi liite valik - kui eelneb heliline häälik, siis gi"
 
- Q:g <=> [Vok | l | m | n | r] (%$:)  _ i;
+ Q:g <=> [:Vok | :l | :m | :n | :r] [:0]* (%$:) (%+:) _ i;
 
 "vokaalikadu +im eest"
 
