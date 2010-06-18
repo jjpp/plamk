@@ -3,7 +3,7 @@ Alphabet
 
 a b c d e f g h i j k l m n o p q r s š z ž t u v õ ä ö ü x y G:g G:0 B:b B:0 B:m D:d D:0 D:l D:n D:r K:k K:g K:0 P:p P:b P:0 T:t
 T:d T:0 S:s S:0 S:r %+:0 %$:0 %&:0 A:a A:0 E:e E:0 I:i I:0 U:u U:0 %.:a %.:e 
-%.:o %.:u %.:ö %.:ä %.:i %.:0 %=:0 2:0 %!:0 Q:k;
+%.:o %.:u %.:ö %.:ä %.:i %.:0 %=:0 2:0 %!:0 Q:k %-; 
 
 Sets
 
@@ -28,6 +28,7 @@ Sets
 Definitions
   Algus = [.#. (Kons+) | %&: (Kons+)] ;  ! silbi/sõna algus
   Piir = [.#. | %+: | %&:] ;    ! morfeemidevaheline piir
+  SonaPiir = [ .#. | %&: ];
   MitteSpr = [ [ ? - %!:0 ] | .#. ];
 
 Rules
@@ -123,7 +124,7 @@ S:0 <=> Algus Vok [Kons+] (AV:AVT) TyveVok:  _ Piir; !küngas-künka
 "AV 18: d-j"
 
 D:j <=>  Algus [ a | o | õ ]  _  (%=:) a   %$:;	!sadada-sajab, sõda-sõja
- 	 .#. [ [[ r | s ] a] |s õ ]  _  u  %$: ; !sadu-saju,kodu-koju
+ 	 SonaPiir [ [[ r | s ] a] |s õ ]  _  u  %$: ; !sadu-saju,kodu-koju
 
 
 "AV 19: b-v"
@@ -151,7 +152,7 @@ D:j <=>  Algus [ a | o | õ ]  _  (%=:) a   %$:;	!sadada-sajab, sõda-sõja
 			!(siga->sea) kui lõppvokaal (kadu->kao)
 
   KorgeVok:MadalVok <=> Algus  _ LV:0 (%=:) [a|e|i:|u:](l) %$: ;
-			Algus Vok (%.:) LV: (%=:) _ %$: [~[ [:0]* :Vok ] | .#.];
+			Algus Vok (%.:) LV: (%=:) _ %$: [~[ [:0]* :Vok ] | SonaPiir ];
  where KorgeVok in (u ü i)
            MadalVok in (o ö e)
  matched ;
@@ -203,7 +204,7 @@ NorkKlus:Klus <=> _ %=: (TyveVok:) 2:;
 
 "j -> i sõna lõpus"      !(kirj->kiri, purj->puri)
 
-  j:i <=> _ (%$:) [.#.|%&:] ;
+  j:i <=> _ (%$:) SonaPiir ;
 
 
 ! Järgmised kolm on mitmuse vokaali valikureeglid:
@@ -249,12 +250,12 @@ V1:V2 <=> _ %.: %+: [a | e s];
 
 "oo+i, öö+i -> õi"	!joo+i->jõi, söö+i->sõi
 
-V1:õ <=> _ %.: %+: i [.#. | d | n | m e | t e]; where V1 in (o ö);
+V1:õ <=> _ %.: %+: i [ SonaPiir | d | n | m e | t e]; where V1 in (o ö);
 
 
 "Konsonantühendi reegel "    ! Konsonantühendis kirjutatakse kõik häälikud ühekordselt, nt. kukkru->kukru, kristallne->kristalne.
 
-  K1:0 <=> Vok _ :K1 [:0]+ [Kons - K1]; ! vähemalt morfeemipiir võiks vahele jääda. 
+  K1:0 <=> Vok _ :K1 [:0 - %&:0]+ [Kons - K1]; ! vähemalt morfeemipiir võiks vahele jääda. 
              where K1 in KonsKP;
 
 
@@ -298,7 +299,7 @@ V1:õ <=> _ %.: %+: i [.#. | d | n | m e | t e]; where V1 in (o ö);
 
 "v ->ev konsonanttüvelistel verbidel"
 
- %+:e <=> [Kons | AV: ] _ v [.#.|a];! naer+v->naerev
+ %+:e <=> [Kons | AV: ] _ v [ SonaPiir | a];! naer+v->naerev
 
 
 "i -> e enne i-ga algavat formatiivi"	!kauni+im=kauneim

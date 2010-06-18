@@ -24,7 +24,7 @@ test: estmorf.out xfst.out $(TESTFILE)
 clean:
 	$(RM) eesti.fst lex.fst lex-av.fst rules.fst xfst.out estmorf.out rul-av.txt \
 		rules-av.fst lex_full.txt $(GENERATED_LEX) lex_exc.txt lex_override_gen.txt \
-		lex_exc.fst
+		lex_exc.fst full-compound.fst lihtsonad.fst
 
 eesti.fst: lex.fst rules.fst rules-av.fst lex_exc.fst deriv_filter.txt xfst.script
 	$(XFST) -f xfst.script 

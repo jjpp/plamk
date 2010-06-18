@@ -416,7 +416,7 @@ LEXICON 20	!nimi
 :e TP_20b0;
 
 LEXICON 21	!jõgi
- An_SgN;
+ :i An_SgN;
  :e$ TP_21bn;
  :e TP_21bt;
  :2e An_SgAdt_0;
