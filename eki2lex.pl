@@ -791,6 +791,11 @@ while (<>) {
 
 	my $list = undef;
 	given ($k) { # {{{
+		when (/D/) {
+			$w .= '+Adv';
+			$list = \@adverb;
+		}
+
 		when (/A/) {
 			$w .= '+A';
 			$w .= '+S' if /S/;
@@ -805,11 +810,6 @@ while (<>) {
 		when (/H/) {
 			$w .= '+H';
 			$list = \@name;
-		}
-
-		when (/D/) {
-			$w .= '+Adv';
-			$list = \@adverb;
 		}
 
 		when (/V/) {
@@ -847,7 +847,7 @@ while (<>) {
 		}
 
 		when (/O/) {
-			$w .= '+O';
+			$w .= '+Ord';
 			$list = \@ordinal;
 		}
 

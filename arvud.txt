@@ -1,0 +1,85 @@
+Multichar_Symbols
+
+ +Num +Ord
+ +pl +sg
+ +nom +gen +part +ill +in +el +all +ad +abl +tr +ter +es +ab +kom
+ +gi
+
+Definitions
+
+ Number = %0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+ Põhiarv = [[Number]+ ([ %. | %- | %,])]* [Number]+ ( %% | %' (%') );
+ Järgarv = [[Number]+ ([ %. | %- | %,])]* [Number]+ %.;
+
+LEXICON Root
+ < Põhiarv > PÕHIARV;
+ < Järgarv > JÄRGARV;
+
+LEXICON PÕHIARV
+ +Num: #;
+ +Num+sg:- Käänded;
+ +Num+sg: Käänded_X;
+ +Num: NDIK;
+ +Num:- NDIK;
+ +Ord: NDA;
+ +Ord:- NDA;
+
+LEXICON JÄRGARV
+ +Ord: #;
+
+
+LEXICON NDIK
+ +sg+nom:ndik GI;
+ +sg+gen:ndiku GI;
+ +sg+part:ndikku KI;
+
+ +sg:ndiku Käänded;
+
+ +pl+nom:ndikud KI;
+ +pl+gen:ndike GI;
+ +pl+gen:ndikkude GI;
+ +pl+part:ndikke KI;
+ +pl+part:ndikkusid KI;
+
+ +pl:ndike Käänded;
+ +pl:ndikkude Käänded;
+
+LEXICON NDA
+ +sg+gen:nda GI;
+ +sg+part:ndat KI;
+
+ +sg:nda Käänded;
+
+ +pl+nom:ndad KI;
+ +pl+gen:ndate GI;
+ +pl+part:ndaid KI;
+
+ +pl:ndate Käänded;
+
+LEXICON Käänded
+ Käänded_X;
+ Käänded_L;
+
+LEXICON Käänded_X ! ilma miinuseta arvule liituda võivad
+ +ill:sse GI;
+ +in:s KI;
+ +el:st KI;
+ +tr:ks KI;
+ +ter:ni GI;
+ +es:na GI;
+ +ab:ta GI;
+ +kom:ga GI;
+
+LEXICON Käänded_L ! vahel kohustuslik miinus
+ +all:le GI;
+ +ad:l GI;
+ +abl:lt KI;
+
+LEXICON GI
+ #;
+ +gi:gi #;
+
+LEXICON KI
+ #;
+ +gi:ki #;
+

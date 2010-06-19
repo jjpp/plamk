@@ -1,12 +1,22 @@
 read regex  [@"rules.fst"].i .o. [@"lex.fst"];
-save stack lex-av.fst
+save lex-av.fst
 clear
 
-read regex @re"deriv_filter.txt" .o.
-	[[@"lex_exc.fst"] .P. [@"lex-av.fst"]] .o.
-	~$"#" 
+read lexc arvud.txt
+save arvud.fst
+clear
+
+read regex [ @re"deriv_filter.txt" .o.
+		[[@"lex_exc.fst"] .P. [@"lex-av.fst"]] .o.
+		~$"#" .o.
+		@"rules.fst" ] 
+	| @"arvud.fst"
 ;
-save stack lihtsonad.fst 
+save lihtsonad.fst 
+clear
+
+read lexc liitsona_full.txt
+save liitsonamask.fst
 clear
 
 
@@ -14,7 +24,7 @@ read regex ("-" "&") [ @"lihtsonad.fst" "&" ("-" "&") ]* @"lihtsonad.fst" ("&" "
 save full-compound.fst
 clear
 
-read regex @"full-compound.fst" .o. @"rules.fst";
+read regex @"liitsonamask.fst" .o. @"full-compound.fst" .o. [ "&" -> "" ];
 
 # kuni compoundidega midagi kavalat ei tehta
 save eesti.fst

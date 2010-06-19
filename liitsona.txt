@@ -1,0 +1,56 @@
+! siia ette multicharid.
+
+Definitions
+    Täht = [ a | b | c | d | e | f | g | h | 
+    	     i | j | k | l | m | n | o | p | 
+	     q | r | s | š | z | ž | t | u | 
+	     v | w | x | y | õ | ä | ö | ü ];
+    Arv = [ %0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ];
+    Sona = [[Arv]+ (%- | %. | %,)]* [Arv]+ (%. | %% | %' (%') ) | ([Arv]+) [Täht | %-]+;
+    ArvJaKääne = [ %+sg | %+pl ] [ %+nom | %+gen | %+part | %+ill | %+adit 
+    				  | %+in | %+el | %+all | %+ad | %+abl | %+tr 
+				  | %+ter | %+es | %+ab | %+kom ];
+
+    VerbiParadigma = "ma+V"  [
+		 [ %+sup [ %+ill | %+in | %+el | %+ab | %+tr | %+imps ] ] |
+		   %+inf | %+ger |
+		 [ %+partic [ %+pres | %+past ] [ %+ps | %+imps ] ] |
+		 [ %+indic [ %+pres | %+impf ] 
+		 	[ %+imps | [ [ %+ps1 | %+ps2 | %+ps3 ] [ %+sg | %+pl ] %+ps ] ] %+af ] |
+		 [ %+indic %+pres [ %+ps | %+imps ] %+neg ] |
+		 [ %+quot [ %+pres [ %+ps | %+imps ] | %+past %+imps | %+partic %+past %+af ] ] |
+		 [ %+cond %+pres [ %+ps1 | %+ps2 | %+ps3 ] [ %+sg | %+pl ] %+ps %+af ] |
+		 [ %+cond %+partic %+past [ %+ps1 | %+ps2 | %+ps3 ] [ %+sg | %+pl ] %+af ] |
+		 [ %+cond [ %+pres | %+past ] %+imps ] |
+		 [ %+imper %+pres 
+		 	[ %+imps | [ %+ps2 %+sg | %+ps3 %+sg %+ps %+af |
+				[ %+ps1 | %+ps2 | %+ps3 ] %+pl %+ps %+af ] ] ]
+    ];
+
+!  +A +Adv +G +H +I +J +K +Num +O +Ord +Pron +S +X
+
+    Gi = ( "+gi" );
+
+    Omadussõna = [ Sona "+A" ("+S") ([ "+C" | "+U" ]) ( "+_us" "+S" | "+_ke" | "+_kene" ) ArvJaKääne | Sona "+A" ];
+    Nimisõna = Sona ("+A") "+S" ([ "+_ke" | "+_kene" ]) ArvJaKääne;
+    Käänduvsõna = Omadussõna | Nimisõna | 
+	    		[ Sona [ "+G" | "+H" | "+Num" | "+Ord" | "+Pron" ] ArvJaKääne ] |
+			[ Sona [ "+Ord" | "+Num" ] ]; 
+    Määrsõna = Sona "+Adv";
+    Hüüdsõna = Sona "+I";
+    Sidesõna = Sona "+J";
+    Kaassõna = Sona "+K";
+    Muusõna = Sona "+X";
+    Genatribuut = Sona "+G";
+    Tegusõna = Sona VerbiParadigma;
+    Muutumatusõna = Määrsõna | Hüüdsõna | Sidesõna | Kaassõna | Muusõna | Genatribuut;
+
+
+LEXICON Root
+
+ < Käänduvsõna | Tegusõna | Muutumatusõna > GI; ! lihtsõnad
+
+
+LEXICON GI
+< Gi > #;
+

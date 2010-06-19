@@ -10,7 +10,7 @@ INVERSE_ETHTHORN=sed -e 's/ð/š/g' -e 's/Ð/Š/g' -e 's/þ/ž/g' -e 's/Þ/Ž/g'
 
 GENERATED_LEX=lex_subst.txt lex_adj.txt lex_name.txt lex_verb.txt lex_adv.txt \
 	lex_inter.txt lex_conj.txt lex_pronom.txt lex_gen.txt lex_number.txt lex_ordinal.txt \
-	lex_other.txt lex_prepost.txt lex_extra.txt
+	lex_other.txt lex_prepost.txt lex_extra.txt liitsona_full.txt 
 TESTFILE=1984_words_u.txt
 
 
@@ -24,9 +24,9 @@ test: estmorf.out xfst.out $(TESTFILE)
 clean:
 	$(RM) eesti.fst lex.fst lex-av.fst rules.fst xfst.out estmorf.out rul-av.txt \
 		rules-av.fst lex_full.txt $(GENERATED_LEX) lex_exc.txt lex_override_gen.txt \
-		lex_exc.fst full-compound.fst lihtsonad.fst
+		lex_exc.fst full-compound.fst lihtsonad.fst liitsonamask.fst arvud.fst
 
-eesti.fst: lex.fst rules.fst rules-av.fst lex_exc.fst deriv_filter.txt xfst.script
+eesti.fst: lex.fst rules.fst rules-av.fst lex_exc.fst deriv_filter.txt xfst.script liitsona_full.txt arvud.txt
 	$(XFST) -f xfst.script 
 
 #		-e 'read regex [[@"lex_exc.fst"] .P. [@"lex-av.fst"]] .o. [@"rules.fst"];' \
@@ -64,6 +64,9 @@ lex_extra.txt: lex_override_gen.txt
 
 lex_override_gen.txt: form.exc fcodes.ini exc2lex.pl
 	cat form.exc | $(ICONV) -flatin1 -tutf8 | $(INVERSE_ETHTHORN) | ./exc2lex.pl
+
+liitsona_full.txt: lex_multichar.txt liitsona.txt
+	cat $^ > $@
 
 xfst.out: eesti.fst $(TESTFILE)
 	$(XFST) -e "load eesti.fst" -e "apply up < $(TESTFILE)" -stop -q -pipe > xfst.out
