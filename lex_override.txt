@@ -7,4 +7,24 @@ LEXICON Asendavad_erandid
 teist+Num+sg+nom:teist GI;
 kümmend+Num+sg+nom:kümmend GI;
 
+! lühitüvi liitsõnas
+viimane+A+prefix:viimne #;
+uudne+A+prefix:uudse #;
+
+nüüdne+A+prefix:nüüdis #;
+pealmine+A+prefix:pealis #;
+
+esimene+A+prefix:esi #;
+üldine+A+prefix:üld #;
+peamine+A+prefix:pea #;
+tavaline+A+prefix:tava #; ! line ?
+põhiline+A+prefix:põhi #;
+kahene+A+prefix:kahe #;
+
+roheline+A+prefix:rohe #;
+sinine+A+prefix:sini #;
+kollane+A+prefix:kolla #;
+punane+A+prefix:puna #;
+
+
 

@@ -6,7 +6,8 @@ Definitions
 	     q | r | s | š | z | ž | t | u | 
 	     v | w | x | y | õ | ä | ö | ü ];
     Arv = [ %0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ];
-    Sona = [[Arv]+ (%- | %. | %,)]* [Arv]+ (%. | %% | %' (%') ) | ([Arv]+) [Täht | %-]+;
+    Tähtsõne = [Täht | %-]+;
+    Sona = [[Arv]+ (%- | %. | %,)]* [Arv]+ (%. | %% | %' (%') ) | ([Arv]+) Tähtsõne;
     ArvJaKääne = [ %+sg | %+pl ] [ %+nom | %+gen | %+part | %+ill | %+adit 
     				  | %+in | %+el | %+all | %+ad | %+abl | %+tr 
 				  | %+ter | %+es | %+ab | %+kom ];
@@ -31,10 +32,12 @@ Definitions
 
     Gi = ( "+gi" );
 
-    Omadussõna = [ Sona "+A" ("+S") ([ "+C" | "+U" ]) ( "+_us" "+S" | "+_ke" | "+_kene" ) ArvJaKääne | Sona "+A" ];
-    Nimisõna = Sona ("+A") "+S" ([ "+_ke" | "+_kene" ]) ArvJaKääne;
-    Käänduvsõna = Omadussõna | Nimisõna | 
-	    		[ Sona [ "+G" | "+H" | "+Num" | "+Ord" | "+Pron" ] ArvJaKääne ] |
+    Omadussõna' = Sona "+A" ("+S") ([ "+C" | "+U" ]) ( "+_us" "+S" | "+_ke" | "+_kene" );
+    Omadussõna = [ Omadussõna' ArvJaKääne | Sona "+A" ];
+    Nimisõna' = Sona [ ("+A") "+S" | "+H" ] ([ "+_ke" | "+_kene" ]);
+    Nimisõna = Nimisõna' ArvJaKääne;
+    Käänduvsõna = Omadussõna | Nimisõna | MuuKäändsõna;
+    MuuKäändsõna = [ Sona [ "+G" | "+Num" | "+Ord" | "+Pron" ] ArvJaKääne ] |
 			[ Sona [ "+Ord" | "+Num" ] ]; 
     Määrsõna = Sona "+Adv";
     Hüüdsõna = Sona "+I";
@@ -42,13 +45,63 @@ Definitions
     Kaassõna = Sona "+K";
     Muusõna = Sona "+X";
     Genatribuut = Sona "+G";
-    Tegusõna = Sona VerbiParadigma;
+    Tegusõna = Tähtsõne VerbiParadigma;
     Muutumatusõna = Määrsõna | Hüüdsõna | Sidesõna | Kaassõna | Muusõna | Genatribuut;
 
+    SP = ( "&" "-" ) "&";
+    PreKriips = ( "-" "&" );
+    Kriips = "&" "-";
 
 LEXICON Root
+ < PreKriips > Käänduvad_sõnad;
+ < PreKriips > Tegusõnad;
+ Muutumatud_sõnad;
 
- < Käänduvsõna | Tegusõna | Muutumatusõna > GI; ! lihtsõnad
+
+LEXICON Tegusõnad
+ < Tegusõna > GI;
+
+
+LEXICON Nimisõnad 
+ < Nimisõna > GI;
+
+ < Nimisõna "&" "-" "&" > Nimisõnad; ! rindliitnimisõnad, EKKR SM32
+
+ < Nimisõna' "+sg" "+nom" SP > Tegusõnad; ! EKKR, SM19
+ < Nimisõna' "+sg" "+nom" Kriips > #;
+
+ < Nimisõna' [ "+sg" [ "+nom" | "+gen" ] | "+pl" "+gen" | "+prefix" ] SP > Nimisõnad; ! EKKR, SM27 ! FIXME: lühitüved
+ < Nimisõna' [ "+sg" [ "+nom" | "+gen" ] | "+pl" "+gen" | "+prefix" ] SP > Omadussõnad; ! EKKR, SM37 ! FIXME: lühitüved
+ < Nimisõna' [ "+sg" [ "+nom" | "+gen" ] | "+pl" "+gen" | "+prefix" ] SP > Määrsõnad; ! EKKR, S422 ! FIXME: lühitüved
+ < Nimisõna' [ "+sg" [ "+nom" | "+gen" ] | "+pl" "+gen" | "+prefix" ] Kriips > #; 
+
+LEXICON Omadussõnad
+ < Omadussõna > GI;
+ < Omadussõna' ("+sg" "+nom") SP > Tegusõnad; ! EKKR, SM19
+ < Omadussõna' ("+sg" "+nom") Kriips > #;
+ < Omadussõna' ("+sg" "+nom" | "+prefix") SP > Nimisõnad; ! EKKR, SM27 ! FIXME: lühitüved
+ < Omadussõna' ("+sg" "+nom" | "+prefix") SP > Omadussõnad; ! EKKR, SM38 ! FIXME: lühitüved
+ < Omadussõna' ("+sg" "+nom" | "+prefix") SP > Määrsõnad; ! EKKR, SM42 ! FIXME: lühitüved
+ < Omadussõna' ("+sg" "+nom" | "+prefix") Kriips > #; 
+
+LEXICON Määrsõnad
+ < Määrsõna > GI;
+ < Määrsõna SP > Tegusõnad; ! EKKR, SM19
+ < Määrsõna ("+prefix") SP > Nimisõnad; ! EKKR, SM31
+ < Määrsõna ("+prefix") SP > Omadussõnad; ! EKKR, SM39
+
+ < Määrsõna ("+prefix") SP > Määrsõnad; ! EKKR, SM42
+ < Määrsõna ("+prefix") SP Määrsõna "+sufix" > GI;
+ 
+
+LEXICON Käänduvad_sõnad
+ Nimisõnad;
+ Omadussõnad;
+ < MuuKäändsõna > GI;
+
+LEXICON Muutumatud_sõnad
+ Määrsõnad;
+ < Hüüdsõna | Sidesõna | Kaassõna | Muusõna | Genatribuut > GI;
 
 
 LEXICON GI

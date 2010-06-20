@@ -94,6 +94,7 @@
 =klaster 02_S | a0: klaster, b0: klastri, b0r: klastre
 =kl'oon 22_S | at: kl'oon, bt: kl'ooni, bn: klooni, btv: kl'oone, bnv: kloone
 =kl'oonima 28_V | at: kl'ooni, an: klooni
+=kohastama 27_V | a0: kohasta
 =kollineaarne 02_A | a0: kollineaarne, b0: kollineaarse, b0r: 0
 =komm'ertsl'ik 25_A | at: komm'ertsl'ik, bt: komm'ertsl'ikku, bn: komm'ertsliku, btv: komm'ertsl'ikke, bnv: komm'ertslike
 =kommuteeruv 02_A | a0: kommuteeruv, b0: kommuteeruva, b0r: 0

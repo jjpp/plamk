@@ -10,4 +10,4 @@ Multichar_Symbols !morfoloogilise info märgendid
 +imps +ps
 +inf +sup
 +partic +ger
-
++prefix +sufix ! liitsõnaosad

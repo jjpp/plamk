@@ -73,8 +73,8 @@ while (<>) {
 			} elsif ($g eq $w . 'i') {
 				$chain = '02_I';
 			} elsif ($w =~ /ne$/ && $g eq ne_se($w)) {
-				$chain = '02_NE-SE';
 				$w2 = ':' . substr($w, $[, -2);
+				$chain = $w2 =~ /[aeiouõäöü]$/ ? '02_Vok_NE-SE' : '02_NE-SE';
 			} elsif ($g eq s_nda($w)) {
 				$chain = '02_S-NDA';
 				$w2 =~ s/s$//;
@@ -91,11 +91,15 @@ while (<>) {
 				$chain = '02_I';
 				$w2 =~ s/(.)\1([eaui])([lmnr])/$1=\u$2$3/;
 			} elsif ($w eq $g . 's') {
-				$chain = '02_S-0';
-				$w2 = ':' . $g;
+				if ($w =~ /[kg]as$/ && syllcount($g) == 3) {
+					$chain = '02_GAS_S-0';
+					$w2 =~ s/as$//;
+				} else {
+					$chain = '02_S-0';
+					$w2 = ':' . $g;
+				}
 			} elsif ($w . 'e' eq $g) {
-				$chain = '02_S-0';
-				$w2 = ':' . $g;
+				$chain = '02_E';
 			} elsif ($g eq $w . 'u') {
 				$chain = '02_U';
 			} elsif ($g eq $w . 'a') {
@@ -867,7 +871,7 @@ while (<>) {
 		$w2 = '';
 	}
 
-	print "$w$w2 $chain; ! $stems\n" if $k =~ /^13/;
+#	print "$w$w2 $chain; ! $stems\n" if $k =~ /^13/;
 
 	push @{$list}, " $w$w2 $chain; ! $comm$stems\n";
 	$total ++;
@@ -978,6 +982,21 @@ sub CCVl_Cl {
 	my $x = shift;
 	$x =~ s/(.)\1[eaui]([lmnr])$/$1$2$suffix/;
 	$x;
+}
+
+sub syllcount {
+	my $w = shift;
+	my $syll = 0;
+	while (length($w) > 0) {
+		print "syllcount '$w'\n";
+		$w =~ s/^[^aeiouõäöü]+//;
+		$w =~ s/^[aeiouõäöü]+//;
+		$w =~ s/^[^aeiouõäöü]+//;
+
+		$syll ++;
+	}
+
+	return $syll;
 }
 
 # vim: foldmethod=marker

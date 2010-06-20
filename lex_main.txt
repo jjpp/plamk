@@ -1,6 +1,3 @@
-	Definitions
-	   Number = [%0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9]; 
-
 !Definitions
 !  C = [b|d|g|h|j|k|l|m|n|p|r|s|sh|z|zh|t|v];
 !  V = [a|e|i|o|u|õ|ä|ö|ü];
@@ -13,7 +10,6 @@ LEXICON Sõnastik
   Pärisnimi;	
   Tegusõna; 	!verb
   Määrsõna;	!adverb;
-!  Numbrid;
   Hüüdsõna;
   Sidesõna;
   Asesõna;
@@ -29,6 +25,62 @@ LEXICON Sõnastik
 LEXICON Kohalikud_erandid
  teist+Num:teistküm= 05_E-NE;
  kümmend+Num:küm= 05_E-NE;
+ 
+! lühitüved
+ hoogne+A+prefix:hoog #;
+ inimene+S+prefix:inim #;
+ kauge+A+prefix:kaug #;
+ kerge+A+prefix:kerg #;
+ kiire+A+prefix:kiir #;
+ kõrge+A+prefix:kõrg #;
+ rõhtne+A+prefix:rõht #;
+ võõras+A+S+prefix:võõr #;
+
+! muutumatud eesliitekomponendid, osa tuletuvad ise.. EKKR, SM31
+ anti+Adv+prefix:anti #; !??
+ eba+Adv+prefix:eba #;
+ ala+Adv+prefix:ala #;
+ all+Adv+prefix:all #;
+ ase+Adv+prefix:ase #;
+ eel+Adv+prefix:eel #;
+ enne+Adv+prefix:enne #;
+ era+Adv+prefix:era #;
+ eri+Adv+prefix:eri #;
+ igi+Adv+prefix:igi #;
+ ilm+Adv+prefix:ilm #;
+ ime+Adv+prefix:ime #;
+ järel+Adv+prefix:järel #;
+ kaas+Adv+prefix:kaas #;
+ kald+Adv+prefix:kald #;
+ kerg+Adv+prefix:kerg #;
+ kõrval+Adv+prefix:kõrval #;
+ liba+Adv+prefix:liba #;
+ läbi+Adv+prefix:läbi #;
+ piki+Adv+prefix:piki #;
+ pool+Adv+prefix:pool #;
+ puht+Adv+prefix:puht #;
+ puru+Adv+prefix:puru #;
+ püsti+Adv+prefix:püsti #;
+ raske+Adv+prefix:rask #;
+ risti+Adv+prefix:risti #;
+ seni+Adv+prefix:seni #;
+ taga+Adv+prefix:taga #;
+ täis+Adv+prefix:täis #;
+ ulgu+Adv+prefix:ulgu #;
+ vaeg+Adv+prefix:vaeg #;
+ vastas+Adv+prefix:vastas #;
+ vastu+Adv+prefix:vastu #;
+ vähe+Adv+prefix:vähe #;
+ üla+Adv+prefix:üla #;
+ üld+Adv+prefix:üld #; !?
+ üli+Adv+prefix:üli #;
+
+! järelliitekomponendid
+ võitu+Adv+sufix:võitu #;
+
+
+
+! tyvemoodustuse erandid, vokaalmitmuse erandid
 
 ! ??? aed+S:aed 22; ! at: aed, bt: aeda, bn: aia, btv: aedu, bnv: aiuA
  aed+S:aed An_SgN;
@@ -194,6 +246,10 @@ LEXICON 02_I	!number
 An_SgN;
 :i TP_02b0;
 
+LEXICON 02_E	!kevad
+An_SgN;
+:e TP_02b0;
+
 LEXICON 02_DA	!tore
 An_SgN;
 :da TP_02b0;
@@ -201,6 +257,12 @@ An_SgN;
 LEXICON 02_NE-SE  !raudne
 :ne An_SgN;
 :se TP_02b0;
+An_Prefix;
+
+LEXICON 02_Vok_NE-SE  !põline
+:ne An_SgN;
+:se TP_02b0;
+:s An_Prefix;
 
 LEXICON 02_NE-SA  !lihtsa
 :ne An_SgN;
@@ -218,7 +280,12 @@ LEXICON 02_T-NDE  !tuhat
 :t An_SgN;
 :nde TP_02b0;
 
-LEXICON 02_S-0	!sipelgas
+LEXICON 02_GAS_S-0	!sipelgas (3-silbilised)
+:as An_SgN;
+An_Prefix;
+:a TP_02b0;
+
+LEXICON 02_S-0	!elajas
 :s An_SgN;
 TP_02b0;
 
@@ -298,9 +365,10 @@ LEXICON 10_0-SE-S	!väike-väikese
  :se An_SgG;
  10_;
 
-LEXICON 10_NE-SE-S	!soolane
+LEXICON 10_NE-SE-S	!soolane, hiline
  :ne An_SgN;
  :se An_SgG;
+ :s An_Prefix;
  10_;
 
 LEXICON 10_KSE		!väike-väikse
@@ -324,6 +392,7 @@ An_PlG_te;
 
 LEXICON 12_NE-SE-S  !tavaline
 :ne An_SgN;
+:s An_Prefix;
 12_;
 
 LEXICON 12_0-SE-S   !kleenuke
@@ -1107,6 +1176,12 @@ LEXICON An_PlG_V	!õnnelik-tüüp
 ! LIIT_DEV_G;
  LIIT;
 
+LEXICON An_Prefix
+ +prefix: #;
+
+LEXICON An_Sufix
+ +sufix: #;
+
 LEXICON Spr ! ülivõrre
  +U:%!+im 02_A;
 
@@ -1334,11 +1409,4 @@ LIIT; ! tupikuks..
 
 !LEXICON LIIT_DEV_G
 !+:& Deriv_mine_ja;
-
-
-LEXICON Numbrid ! need tuleks tegelt eraldi fst'ga teha ja ühendiga lahendada.
-
-<Number+ %+Num:0 > #;
-<Number+ %. %+Ord:0 > #;
-<Number+ (%-)> KÄÄNE_1; ! -l, -le, -lt tuleks nõuda sidekriipsu!
 
