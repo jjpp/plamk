@@ -75,6 +75,8 @@ LEXICON Kohalikud_erandid
  üld+Adv+prefix:üld #; !?
  üli+Adv+prefix:üli #;
 
+ viker+Adv+prefix:viker #; !? 
+
 ! järelliitekomponendid
  võitu+Adv+sufix:võitu #;
 
@@ -1306,7 +1308,7 @@ LEXICON An_nud
   ma+V+quot+partic+past+af:+nuvat GI ;
 
 LEXICON An_nud_der
-  nud+A+pos+partic:+nud GI ; ! +A+pos+partic:+nud 
+  nud+A:+nud GI ; ! +A+pos+partic:+nud 
   nu+S:nu 01;
 !!!!!
 

@@ -92,6 +92,10 @@ LEXICON Määrsõnad
 
  < Määrsõna ("+prefix") SP > Määrsõnad; ! EKKR, SM42
  < Määrsõna ("+prefix") SP Määrsõna "+sufix" > GI;
+
+LEXICON Kaassõnad
+ < Kaassõna > GI;
+ < Kaassõna SP > Käänduvad_sõnad; ! EKKR, SM42 ?
  
 
 LEXICON Käänduvad_sõnad
@@ -101,7 +105,8 @@ LEXICON Käänduvad_sõnad
 
 LEXICON Muutumatud_sõnad
  Määrsõnad;
- < Hüüdsõna | Sidesõna | Kaassõna | Muusõna | Genatribuut > GI;
+ Kaassõnad;
+ < Hüüdsõna | Sidesõna | Muusõna | Genatribuut > GI;
 
 
 LEXICON GI

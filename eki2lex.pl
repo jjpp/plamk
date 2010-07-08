@@ -988,7 +988,6 @@ sub syllcount {
 	my $w = shift;
 	my $syll = 0;
 	while (length($w) > 0) {
-		print "syllcount '$w'\n";
 		$w =~ s/^[^aeiouõäöü]+//;
 		$w =~ s/^[aeiouõäöü]+//;
 		$w =~ s/^[^aeiouõäöü]+//;

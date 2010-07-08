@@ -24,7 +24,8 @@ test: estmorf.out xfst.out $(TESTFILE)
 clean:
 	$(RM) eesti.fst lex.fst lex-av.fst rules.fst xfst.out estmorf.out rul-av.txt \
 		rules-av.fst lex_full.txt $(GENERATED_LEX) lex_exc.txt lex_override_gen.txt \
-		lex_exc.fst full-compound.fst lihtsonad.fst liitsonamask.fst arvud.fst
+		lex_exc.fst full-compound.fst lihtsonad.fst liitsonamask.fst arvud.fst \
+		1984_words_u_l1.txt 1984_words_u_l1.out
 
 eesti.fst: lex.fst rules.fst rules-av.fst lex_exc.fst deriv_filter.txt xfst.script liitsona_full.txt arvud.txt
 	$(XFST) -f xfst.script 
@@ -67,6 +68,9 @@ lex_override_gen.txt: form.exc fcodes.ini exc2lex.pl
 
 liitsona_full.txt: lex_multichar.txt liitsona.txt
 	cat $^ > $@
+
+1984_words_u_l1.txt: $(TESTFILE)
+	cat $(TESTFILE) | $(ETHTHORN) | $(ICONV) -futf8 -tlatin1 | todos > $@
 
 xfst.out: eesti.fst $(TESTFILE)
 	$(XFST) -e "load eesti.fst" -e "apply up < $(TESTFILE)" -stop -q -pipe > xfst.out
