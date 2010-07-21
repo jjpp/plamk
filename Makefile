@@ -12,7 +12,7 @@ INVERSE_ETHTHORN=sed -e 's/ð/š/g' -e 's/Ð/Š/g' -e 's/þ/ž/g' -e 's/Þ/Ž/g'
 
 GENERATED_LEX=lex_subst.txt lex_adj.txt lex_name.txt lex_verb.txt lex_adv.txt \
 	lex_inter.txt lex_conj.txt lex_pronom.txt lex_gen.txt lex_number.txt lex_ordinal.txt \
-	lex_other.txt lex_prepost.txt lex_extra.txt liitsona_full.txt 
+	lex_other.txt lex_prepost.txt lex_extra.txt 
 TESTFILE=1984_words_u.txt
 
 
@@ -28,7 +28,7 @@ clean:
 	$(RM) eesti.fst lex.fst lex-av.fst rules.fst xfst.out estmorf.out rul-av.txt \
 		rules-av.fst lex_full.txt $(GENERATED_LEX) lex_exc.txt lex_override_gen.txt \
 		lex_exc.fst full-compound.fst lihtsonad.fst liitsonamask.fst arvud.fst \
-		1984_words_u_l1.txt 1984_words_u_l1.out eki.out
+		1984_words_u_l1.txt 1984_words_u_l1.out eki.out liitsona_full.txt
 
 eesti.fst: lex.fst rules.fst rules-av.fst lex_exc.fst deriv_filter.txt xfst.script liitsona_full.txt arvud.txt
 	$(XFST) -f xfst.script 
