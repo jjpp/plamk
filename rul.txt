@@ -36,7 +36,7 @@ Rules
 ! --Astmevahelduse reeglid (astevaihtelun sääntöjä) --------------------
 
 "AV 1-2 - k ja p kadu"!kukk-kuke, lipp-lipu, õhk-õhu, kask-kase
-
+! parandus: kaduvale klusiilile järgnev vokaal võib ka ise kaduda, nt tüvemitmuse tõttu
  AVKlus:0 <=> Vok (r) [Klus|h|s] _ (Vok:) (S:|l) %$:;
                s _  (%$:)(%+:) t ;	!fonotaktika reegel skt->st
        where AVKlus in (K P)
@@ -44,25 +44,27 @@ Rules
        matched ;
 
 "AV 3 - t kadu"
-
+! parandus: suhTeldud-vihTeldud, sigaretT 
  T:0 <=>Vok [t|h] _ (Vok ([S: | l ])) %$:;!tt-t (rott-roti) ja ht-h (ehtima-ehib)
         Algus Vok: _ e (l) %$:;	!ütlema-öelda, jätma-jäetakse
 
 
 "AV 4-5- assimilatsioonid s-r ja b-m"!vars-varre,tõmbama-tõmmata
-
+! parandus: kõr[s-kõrr[e-kõr[t viimase tüvevariandi jaoks kaob esimene r (konsonantühend?). lubame seda.
  SB:RM <=> RM: _ (TyveVok) (S:) %$: ; where SB  in (S B)
                                      RM  in (r m)
                                     matched;
 
 "AV 6 - assimilatsioon d-l"	!kuld-kulla
-
+! parandus: tüvevokaal võib kaduda (tüvemitmus), saadavad vormid on kahtlased..
+! tõld, tald, kõld, vald, sild, süld saavad puudutatud
  D:l <=> Algus Vok l _ (TyveVok:) (S:) %$:;
 
 
 "AV 7 - assimilatsioon d-n"	!hind-hinna, kannel-kandle
 
- D:n <=> n _ ([Vok: | VaheVok:] ([l | r | s])) (S:) %$:;
+ D:n <=> [Algus | Kons] Vok n _ ([Vok: | VaheVok:] ([l | r | s])) (S:) %$:;
+! D:n <=> n _ (Vok: l) (S:) %$:;
 
 "AV 8 - assimilatsioon d-r"	!kord-korra
 
@@ -78,7 +80,7 @@ Rules
 
 
 D:0 <=>  Algus Vok Vok: _ (TyveVok:) (l) %$:; !laud-laua, vaidlema-vaielda
-         Algus Vok Vok Liq _ TyveVok (l) %$:;     !siirdama-siirata
+         Algus Vok Vok (Liq | n) _ TyveVok (l) %$:;     !siirdama-siirata
          Algus [ e | i: | u: | ü: ]  _  (%=:) TyveVok: %$: ;	!vedada-vean, rida-rea
 	 Algus õ  _  (%=:) e %$: ; 		!õde-õe, põdeda-põen
 	 [Kons- [r|s] ] a _ (%=:) u: %$: ;	!ladu-lao, kaduda-kaon

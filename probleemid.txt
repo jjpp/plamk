@@ -11,4 +11,5 @@ muud nimisõnade lühenemised
 vok . tagasiteisendused (kuid, söib?)
 mõnede liidete korral sõnaliik? (määrsõnad), ehk peaks eraldi sõnastikku kirjutama?
 
-
+ergama, erjata?
+teistlik, gen, part
