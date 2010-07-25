@@ -810,7 +810,7 @@ while (<>) {
 		if ($w3 eq ':' . $w . $_) {
 			$w3 = '';
 		}
-		push @tyved, " $w$_$w3 $chain; ! $comm$stems\n";
+		push @tyved, " $w$_$w3 $chain; ! ($k -> @kind) $comm$stems\n";
 	}
 	$total ++;
 }

@@ -22,7 +22,8 @@ LEXICON Kohalikud_erandid
  kiire+A+prefix:kiir #;
  kõrge+A+prefix:kõrg #;
  rõhtne+A+prefix:rõht #;
- võõras+A+S+prefix:võõr #;
+ võõras+A+prefix:võõr #;
+ võõras+S+prefix:võõr #;
 
 ! muutumatud eesliitekomponendid, osa tuletuvad ise.. EKKR, SM31
  anti+Adv+prefix:anti #; !??
@@ -128,11 +129,17 @@ LEXICON Kohalikud_erandid
  ! :i An_Pl_Vok; ! mehile?
 
 ! erandlik tyvemitmus: pikk+A+S:pikk 22; ! at: pikk, bt: pikka, bn: pika, btv: pikki, bnv: piki
- pikk+A+S:pikk An_SgN;
- pikk+A+S:pika TP_22bn';
- pikk+A+S:pikka TP_22bt';
- pikk+A+S:piki$ An_Pl_Vok;
- pikk+A+S:pikki An_PlP_V;
+ pikk+A:pikk An_SgN;
+ pikk+A:pika TP_22bn';
+ pikk+A:pikka TP_22bt';
+ pikk+A:piki$ An_Pl_Vok;
+ pikk+A:pikki An_PlP_V;
+
+ pikk+S:pikk An_SgN;
+ pikk+S:pika TP_22bn';
+ pikk+S:pikka TP_22bt';
+ pikk+S:piki$ An_Pl_Vok;
+ pikk+S:pikki An_PlP_V;
 
 ! ??? pundar+S:pundar 08; ! an: pundar, (at): puntar, bt: puntra
  pundar+S:pundar$ TP_08an;
@@ -184,9 +191,13 @@ LEXICON Kohalikud_erandid
  silm+S:silmi An_PlP_V;
 
 ! ??? soe+A+S:soe 24_A; ! an: soe, bn: sooja, bt: sooja, bnv: sooje, btv: sooje
- soe+A+S:soe An_SgN;
- soe+A+S:sooja$ TP_24bn;
- soe+A+S:sooja TP_24bt;
+ soe+A:soe An_SgN;
+ soe+A:sooja$ TP_24bn;
+ soe+A:sooja TP_24bt;
+
+ soe+S:soe An_SgN;
+ soe+S:sooja$ TP_24bn;
+ soe+S:sooja TP_24bt;
 
 ! tun 34_D_TUD; ! at: tund, (bt): tunde, bn: tunne, cn: tun
  tunD TP_34at;
