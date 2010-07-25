@@ -10,21 +10,8 @@ binmode STDIN, ':utf8';
 binmode STDOUT, ':utf8';
 
 
-my @adj = ();
-my @subst = ();
-my @name = ();
-my @verb = ();
-my @adverb = ();
-my @interject = ();
-my @conjunct = ();
-my @pronomen = ();
-my @genitive = ();
-my @prepostpos = ();
-my @number = ();
-my @ordinal = ();
-my @other = ();
-
-my @undecied = ();
+my @tyved = ();
+my @kind = ();
 
 my $total = 0;
 
@@ -34,12 +21,14 @@ while (<>) {
 	next if /^$/;
 	$_ = substr($_, $[ + 1);
 
+
 	my ($w, $k, undef, $stems) = split(' ', $_, 4);
 	next unless $k;
 
 	$stems = '' unless defined($stems);
 	my %stem = split(/[:,]\s*/, $stems);
 	my $comm = '';
+	@kind = ();
 
 
 	$w = lc($w);
@@ -794,103 +783,39 @@ while (<>) {
 	}
 
 	my $list = undef;
-	given ($k) { # {{{
-		when (/D/) {
-			$w .= '+Adv';
-			$list = \@adverb;
-		}
+	push (@kind, '+Adv') if $k =~ /D/;
+	push (@kind, '+A') if $k =~ /A/;
+	push (@kind, '+S') if $k =~ /S/;
+	push (@kind, '+H') if $k =~ /H/;
+	push (@kind, '') if $k =~ /V/;
+	push (@kind, '+I') if $k =~ /I/;
+	push (@kind, '+J') if $k =~ /J/;
+	push (@kind, '+Pron') if $k =~ /P/;
+	push (@kind, '+G') if $k =~ /G/;
+	push (@kind, '+K') if $k =~ /K/;
+	push (@kind, '+Num') if $k =~ /N/;
+	push (@kind, '+Ord') if $k =~ /O/;
+	push (@kind, '+X') if $k =~ /X/;
 
-		when (/A/) {
-			$w .= '+A';
-			$w .= '+S' if /S/;
-			$list = \@adj;
-		}
-
-		when (/S/) {
-			$w .= '+S';
-			$list = \@subst;
-		}
-
-		when (/H/) {
-			$w .= '+H';
-			$list = \@name;
-		}
-
-		when (/V/) {
-			$list = \@verb;
-		}
-
-		when (/I/) {
-			$w .= '+I';
-			$list = \@interject;
-		}
-
-		when (/J/) {
-			$w .= '+J';
-			$list = \@conjunct;
-		}
-
-		when (/P/) {
-			$w .= '+Pron';
-			$list = \@pronomen;
-		}
-
-		when (/G/) {
-			$w .= '+G';
-			$list = \@genitive;
-		}
-
-		when (/K/) {
-			$w .= '+K';
-			$list = \@prepostpos;
-		}
-
-		when (/N/) {
-			$w .= '+Num';
-			$list = \@number;
-		}
-
-		when (/O/) {
-			$w .= '+Ord';
-			$list = \@ordinal;
-		}
-
-		when (/X/) {
-			$w .= '+X';
-			$list = \@other;
-		}
-
-		default {
-			print "Tundmatu sõnaliik '$k' - $w / $stems\n";
-			$list = \@undecied;
-		}
-		
+	if (!scalar @kind) {
+		print "Tundmatu sõnaliik '$k' - $w / $stems\n";
+		push @kind, '+X';
 	} # }}}
 
-	if ($w2 eq ':' . $w) {
-		$w2 = '';
-	}
 
 #	print "$w$w2 $chain; ! $stems\n" if $k =~ /^13/;
 
-	push @{$list}, " $w$w2 $chain; ! $comm$stems\n";
+	for (@kind) {
+		my $w3 = $w2;
+		if ($w3 eq ':' . $w . $_) {
+			$w3 = '';
+		}
+		push @tyved, " $w$_$w3 $chain; ! $comm$stems\n";
+	}
 	$total ++;
 }
 
-print "Kokku sõnu: $total\n";
-write_lex("lex_adj.txt", "Omadussõna", @adj);
-write_lex("lex_subst.txt", "Nimisõna", @subst);
-write_lex("lex_name.txt", "Pärisnimi", @name);
-write_lex("lex_verb.txt", "Tegusõna", @verb);
-write_lex("lex_adv.txt", "Määrsõna", @adverb);
-write_lex("lex_inter.txt", "Hüüdsõna", @interject);
-write_lex("lex_conj.txt", "Sidesõna", @conjunct);
-write_lex("lex_pronom.txt", "Asesõna", @pronomen);
-write_lex("lex_gen.txt", "Genatribuut", @genitive);
-write_lex("lex_prepost.txt", "Kaassõna", @prepostpos);
-write_lex("lex_number.txt", "Arvsõna", @number);
-write_lex("lex_ordinal.txt", "Järgarvsõna", @ordinal);
-write_lex("lex_other.txt", "Muu_sõna", @other);
+write_lex("lex_tyved.txt", "Tüved", @tyved);
 
 exit 0;
 

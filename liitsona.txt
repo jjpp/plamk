@@ -32,7 +32,7 @@ Definitions
 
     Gi = ( "+gi" );
 
-    Omadussõna' = Sona "+A" ("+S") ([ "+C" | "+U" ]) ( "+_us" "+S" | "+_ke" | "+_kene" );
+    Omadussõna' = Sona "+A" ("+S") ([ "+comp" | "+super" ]) ( "+_us" "+S" | "+_ke" | "+_kene" );
     Omadussõna = [ Omadussõna' ArvJaKääne | Sona "+A" ];
     Nimisõna' = Sona [ ("+A") "+S" | "+H" ] ([ "+_ke" | "+_kene" ]);
     Nimisõna = Nimisõna' ArvJaKääne;

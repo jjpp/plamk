@@ -5,19 +5,7 @@
 !  Alfa = [C | V];
 
 LEXICON Sõnastik
-  Nimisõna;	!substantive
-  Omadussõna;	!adjective
-  Pärisnimi;	
-  Tegusõna; 	!verb
-  Määrsõna;	!adverb;
-  Hüüdsõna;
-  Sidesõna;
-  Asesõna;
-  Genatribuut;
-  Arvsõna;
-  Järgarvsõna;
-  Muu_sõna;
-  Kaassõna;
+  Tüved;
   Lisanduvad_erandid;
   Kohalikud_erandid; 
 
@@ -1106,7 +1094,7 @@ LEXICON An_SgG  ! SgG analoogiarühm
  +sg+gen:0 GI;
  +sg:0 KÄÄNE_1;
  +pl+nom:+d GI;
- +C:+m 02_A;
+ +comp:+m 02_A;
  +_ke:ke 12_0-SE-S;
  +_kene:ke 12_NE-SE-S;
  +_us+S:+us 11; 
@@ -1185,7 +1173,7 @@ LEXICON An_Sufix
  +sufix: #;
 
 LEXICON Spr ! ülivõrre
- +U:%!+im 02_A;
+ +super:%!+im 02_A;
 
 LEXICON KÄÄNE_1  ! käändelõpud illatiivist komitatiivini
  +ill:+sse GI;

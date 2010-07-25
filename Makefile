@@ -10,9 +10,7 @@ EKI_ANA=wine /home/jjpp/dev/keel/eki_bin/demo_ana.exe
 ETHTHORN=sed -e 's/š/ð/g' -e 's/Š/Ð/g' -e 's/ž/þ/g' -e 's/Ž/Þ/g' 
 INVERSE_ETHTHORN=sed -e 's/ð/š/g' -e 's/Ð/Š/g' -e 's/þ/ž/g' -e 's/Þ/Ž/g' 
 
-GENERATED_LEX=lex_subst.txt lex_adj.txt lex_name.txt lex_verb.txt lex_adv.txt \
-	lex_inter.txt lex_conj.txt lex_pronom.txt lex_gen.txt lex_number.txt lex_ordinal.txt \
-	lex_other.txt lex_prepost.txt lex_extra.txt 
+GENERATED_LEX=lex_tyved.txt lex_extra.txt 
 TESTFILE=1984_words_u.txt
 
 
@@ -23,6 +21,9 @@ test: estmorf.out xfst.out eki.out $(TESTFILE)
 	fgrep '###' estmorf.out | wc -l
 	fgrep '###' eki.out | wc -l
 	wc -l $(TESTFILE)
+
+testx: xfst.out
+	fgrep '???' xfst.out | wc -l
 
 clean:
 	$(RM) eesti.fst lex.fst lex-av.fst rules.fst xfst.out estmorf.out rul-av.txt \
@@ -58,12 +59,9 @@ lex_full.txt: lex_multichar.txt lex_main.txt lex_gi.txt $(GENERATED_LEX)
 lex_exc.txt: lex_multichar.txt lex_override.txt lex_override_gen.txt lex_gi.txt
 	cat $^ > $@
 
-lex_adj.txt: tyvebaas.txt tyvebaas-lisa.txt eki2lex.pl
+lex_tyved.txt: tyvebaas.txt tyvebaas-lisa.txt eki2lex.pl
 	cat tyvebaas.txt tyvebaas-lisa.txt | $(ICONV) -flatin1 -tutf8 | $(INVERSE_ETHTHORN) | ./eki2lex.pl
 
-lex_subst.txt: lex_adj.txt
-lex_name.txt: lex_adj.txt
-lex_verb.txt: lex_adj.txt
 lex_extra.txt: lex_override_gen.txt
 
 lex_override_gen.txt: form.exc fcodes.ini exc2lex.pl
