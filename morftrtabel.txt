@@ -1,0 +1,413 @@
+@_A_ ?@@_A_ ?
+@_A_ adt@@_A_ sg adit
+@_A_@@_A_
+@_A_ pl ab@@_A_ pl abes
+@_A_ pl abl@@_A_ pl abl
+@_A_ pl ad@@_A_ pl ad
+@_A_ pl all@@_A_ pl all
+@_A_ pl el@@_A_ pl el
+@_A_ pl es@@_A_ pl es
+@_A_ pl g@@_A_ pl gen
+@_A_ pl ill@@_A_ pl ill
+@_A_ pl in@@_A_ pl in
+@_A_ pl kom@@_A_ pl kom
+@_A_ pl n@@_A_ pl nom
+@_A_ pl p@@_A_ pl part
+@_A_ pl ter@@_A_ pl term
+@_A_ pl tr@@_A_ pl tr
+@_A_ sg ab@@_A_ sg abes
+@_A_ sg abl@@_A_ sg abl
+@_A_ sg ad@@_A_ sg ad
+@_A_ sg all@@_A_ sg all
+@_A_ sg el@@_A_ sg el
+@_A_ sg es@@_A_ sg es
+@_A_ sg g@@_A_ sg gen
+@_A_ sg ill@@_A_ sg ill
+@_A_ sg in@@_A_ sg in
+@_A_ sg kom@@_A_ sg kom
+@_A_ sg n@@_A_ sg nom
+@_A_ sg p@@_A_ sg part
+@_A_ sg ter@@_A_ sg term
+@_A_ sg tr@@_A_ sg tr
+@_C_ pl ab@@_A_ comp pl abes
+@_C_ pl abl@@_A_ comp pl abl
+@_C_ pl ad@@_A_ comp pl ad
+@_C_ pl all@@_A_ comp pl all
+@_C_ pl el@@_A_ comp pl el
+@_C_ pl es@@_A_ comp pl es
+@_C_ pl g@@_A_ comp pl gen
+@_C_ pl ill@@_A_ comp pl ill
+@_C_ pl in@@_A_ comp pl in
+@_C_ pl kom@@_A_ comp pl kom
+@_C_ pl n@@_A_ comp pl nom
+@_C_ pl p@@_A_ comp pl part
+@_C_ pl ter@@_A_ comp pl term
+@_C_ pl tr@@_A_ comp pl tr
+@_C_ sg ab@@_A_ comp sg abes
+@_C_ sg abl@@_A_ comp sg abl
+@_C_ sg ad@@_A_ comp sg ad
+@_C_ sg all@@_A_ comp sg all
+@_C_ sg el@@_A_ comp sg el
+@_C_ sg es@@_A_ comp sg es
+@_C_ sg g@@_A_ comp sg gen
+@_C_ sg ill@@_A_ comp sg ill
+@_C_ sg in@@_A_ comp sg in
+@_C_ sg kom@@_A_ comp sg kom
+@_C_ sg n@@_A_ comp sg nom
+@_C_ sg p@@_A_ comp sg part
+@_C_ sg ter@@_A_ comp sg term
+@_C_ sg tr@@_A_ comp sg tr
+@_D_@@_D_
+@_G_@@_G_
+@_H_ adt@@_H_ sg adit
+@_H_ ?@@_H_ ?
+@_H_ pl ab@@_H_ pl abes
+@_H_ pl abl@@_H_ pl abl
+@_H_ pl ad@@_H_ pl ad
+@_H_ pl all@@_H_ pl all
+@_H_ pl el@@_H_ pl el
+@_H_ pl es@@_H_ pl es
+@_H_ pl g@@_H_ pl gen
+@_H_ pl ill@@_H_ pl ill
+@_H_ pl in@@_H_ pl in
+@_H_ pl kom@@_H_ pl kom
+@_H_ pl n@@_H_ pl nom
+@_H_ pl p@@_H_ pl part
+@_H_ pl ter@@_H_ pl term
+@_H_ pl tr@@_H_ pl tr
+@_H_ sg ab@@_H_ sg abes
+@_H_ sg abl@@_H_ sg abl
+@_H_ sg ad@@_H_ sg ad
+@_H_ sg all@@_H_ sg all
+@_H_ sg el@@_H_ sg el
+@_H_ sg es@@_H_ sg es
+@_H_ sg g@@_H_ sg gen
+@_H_ sg ill@@_H_ sg ill
+@_H_ sg in@@_H_ sg in
+@_H_ sg kom@@_H_ sg kom
+@_H_ sg n@@_H_ sg nom
+@_H_ sg p@@_H_ sg part
+@_H_ sg ter@@_H_ sg term
+@_H_ sg tr@@_H_ sg tr
+@_I_@@_I_
+@_J_@@_J_
+@_K_@@_K_
+@_N_ adt@@_N_ card sg adit l
+@_N_ ?@@_N_ card ? digit
+@_N_ pl abl@@_N_ card pl abl l
+@_N_ pl ab@@_N_ card pl abes l
+@_N_ pl ad@@_N_ card pl ad l
+@_N_ pl all@@_N_ card pl all l
+@_N_ pl el@@_N_ card pl el l
+@_N_ pl es@@_N_ card pl es l
+@_N_ pl g@@_N_ card pl gen l
+@_N_ pl ill@@_N_ card pl ill l
+@_N_ pl in@@_N_ card pl in l
+@_N_ pl kom@@_N_ card pl kom l
+@_N_ pl n@@_N_ card pl nom l
+@_N_ pl p@@_N_ card pl part l
+@_N_ pl ter@@_N_ card pl term l
+@_N_ pl tr@@_N_ card pl tr l
+@_N_ sg abl@@_N_ card sg abl l
+@_N_ sg ab@@_N_ card sg abes l
+@_N_ sg ad@@_N_ card sg ad l
+@_N_ sg all@@_N_ card sg all l
+@_N_ sg el@@_N_ card sg el l
+@_N_ sg es@@_N_ card sg es l
+@_N_ sg g@@_N_ card sg gen l
+@_N_ sg ill@@_N_ card sg ill l
+@_N_ sg in@@_N_ card sg in l
+@_N_ sg kom@@_N_ card sg kom l
+@_N_ sg n@@_N_ card sg nom l
+@_N_ sg p@@_N_ card sg part l
+@_N_ sg ter@@_N_ card sg term l
+@_N_ sg tr@@_N_ card sg tr l
+@_O_ adt@@_N_ ord sg adit l
+@_O_ adt@@_N_ ord sg adit roman
+@_O_ ?@@_N_ ord ? digit
+@_O_ ?@@_N_ ord ? roman
+@_O_ pl abl@@_N_ ord pl abl l
+@_O_ pl abl@@_N_ ord pl abl roman
+@_O_ pl ab@@_N_ ord pl abes l
+@_O_ pl ab@@_N_ ord pl abes roman
+@_O_ pl ad@@_N_ ord pl ad l
+@_O_ pl ad@@_N_ ord pl ad roman
+@_O_ pl all@@_N_ ord pl all l
+@_O_ pl all@@_N_ ord pl all roman
+@_O_ pl el@@_N_ ord pl el l
+@_O_ pl el@@_N_ ord pl el roman
+@_O_ pl es@@_N_ ord pl es l
+@_O_ pl es@@_N_ ord pl es roman
+@_O_ pl g@@_N_ ord pl gen l
+@_O_ pl g@@_N_ ord pl gen roman
+@_O_ pl ill@@_N_ ord pl ill l
+@_O_ pl ill@@_N_ ord pl ill roman
+@_O_ pl in@@_N_ ord pl in l
+@_O_ pl in@@_N_ ord pl in roman
+@_O_ pl kom@@_N_ ord pl kom l
+@_O_ pl kom@@_N_ ord pl kom roman
+@_O_ pl n@@_N_ ord pl nom l
+@_O_ pl n@@_N_ ord pl nom roman
+@_O_ pl p@@_N_ ord pl part l
+@_O_ pl p@@_N_ ord pl part roman
+@_O_ pl ter@@_N_ ord pl term l
+@_O_ pl ter@@_N_ ord pl term roman
+@_O_ pl tr@@_N_ ord pl tr l
+@_O_ pl tr@@_N_ ord pl tr roman
+@_O_ sg abl@@_N_ ord sg abl l
+@_O_ sg abl@@_N_ ord sg abl roman
+@_O_ sg ab@@_N_ ord sg abes l
+@_O_ sg ab@@_N_ ord sg abes roman
+@_O_ sg ad@@_N_ ord sg ad l
+@_O_ sg ad@@_N_ ord sg ad roman
+@_O_ sg all@@_N_ ord sg all l
+@_O_ sg all@@_N_ ord sg all roman
+@_O_ sg el@@_N_ ord sg el l
+@_O_ sg el@@_N_ ord sg el roman
+@_O_ sg es@@_N_ ord sg es l
+@_O_ sg es@@_N_ ord sg es roman
+@_O_ sg g@@_N_ ord sg gen l
+@_O_ sg g@@_N_ ord sg gen roman
+@_O_ sg ill@@_N_ ord sg ill l
+@_O_ sg ill@@_N_ ord sg ill roman
+@_O_ sg in@@_N_ ord sg in l
+@_O_ sg in@@_N_ ord sg in roman
+@_O_ sg kom@@_N_ ord sg kom l
+@_O_ sg kom@@_N_ ord sg kom roman
+@_O_ sg n@@_N_ ord sg nom l
+@_O_ sg n@@_N_ ord sg nom roman
+@_O_ sg p@@_N_ ord sg part l
+@_O_ sg p@@_N_ ord sg part roman
+@_O_ sg ter@@_N_ ord sg term l
+@_O_ sg ter@@_N_ ord sg term roman
+@_O_ sg tr@@_N_ ord sg tr l
+@_O_ sg tr@@_N_ ord sg tr roman
+@_P_ adt@@_P_ sg adit
+@_P_@@_P_
+@_P_ pl abl@@_P_ pl abl
+@_P_ pl ab@@_P_ pl abes
+@_P_ pl ad@@_P_ pl ad
+@_P_ pl all@@_P_ pl all
+@_P_ pl el@@_P_ pl el
+@_P_ pl es@@_P_ pl es
+@_P_ pl g@@_P_ pl gen
+@_P_ pl ill@@_P_ pl ill
+@_P_ pl in@@_P_ pl in
+@_P_ pl kom@@_P_ pl kom
+@_P_ pl n@@_P_ pl nom
+@_P_ pl p@@_P_ pl part
+@_P_ pl ter@@_P_ pl term
+@_P_ pl tr@@_P_ pl tr
+@_P_ sg abl@@_P_ sg abl
+@_P_ sg ab@@_P_ sg abes
+@_P_ sg ad@@_P_ sg ad
+@_P_ sg all@@_P_ sg all
+@_P_ sg el@@_P_ sg el
+@_P_ sg es@@_P_ sg es
+@_P_ sg g@@_P_ sg gen
+@_P_ sg ill@@_P_ sg ill
+@_P_ sg in@@_P_ sg in
+@_P_ sg kom@@_P_ sg kom
+@_P_ sg n@@_P_ sg nom
+@_P_ sg p@@_P_ sg part
+@_P_ sg ter@@_P_ sg term
+@_P_ sg tr@@_P_ sg tr
+@_S_ adt@@_S_ sg adit
+@_S_ pl abl@@_S_ pl abl
+@_S_ pl ab@@_S_ pl abes
+@_S_ pl ad@@_S_ pl ad
+@_S_ pl all@@_S_ pl all
+@_S_ pl el@@_S_ pl el
+@_S_ pl es@@_S_ pl es
+@_S_ pl g@@_S_ pl gen
+@_S_ pl ill@@_S_ pl ill
+@_S_ pl in@@_S_ pl in
+@_S_ pl kom@@_S_ pl kom
+@_S_ pl n@@_S_ pl nom
+@_S_ pl p@@_S_ pl part
+@_S_ pl ter@@_S_ pl term
+@_S_ pl tr@@_S_ pl tr
+@_S_ ?@@_S_ ?
+@_S_ sg abl@@_S_ sg abl
+@_S_ sg ab@@_S_ sg abes
+@_S_ sg ad@@_S_ sg ad
+@_S_ sg all@@_S_ sg all
+@_S_ sg el@@_S_ sg el
+@_S_ sg es@@_S_ sg es
+@_S_ sg g@@_S_ sg gen
+@_S_ sg ill@@_S_ sg ill
+@_S_ sg in@@_S_ sg in
+@_S_ sg kom@@_S_ sg kom
+@_S_ sg n@@_S_ sg nom
+@_S_ sg p@@_S_ sg part
+@_S_ sg ter@@_S_ sg term
+@_S_ sg tr@@_S_ sg tr
+@_Z_@@_Z_ Col
+@_Z_@@_Z_ Com
+@_Z_@@_Z_ Cpr
+@_Z_@@_Z_ Cqu
+@_Z_@@_Z_ Csq
+@_Z_@@_Z_ Dsd
+@_Z_@@_Z_ Dsh
+@_Z_@@_Z_ Ell
+@_Z_@@_Z_ Els
+@_Z_@@_Z_ Exc
+@_Z_@@_Z_ Fst
+@_Z_@@_Z_ Int
+@_Z_@@_Z_ Opr
+@_Z_@@_Z_ Oqu
+@_Z_@@_Z_ Osq
+@_Z_@@_Z_ Quo
+@_Z_@@_Z_ Scl
+@_Z_@@_Z_ Sla
+@####@@_T_
+@_U_ pl ab@@_A_ super pl abes
+@_U_ pl abl@@_A_ super pl abl
+@_U_ pl ad@@_A_ super pl ad
+@_U_ pl all@@_A_ super pl all
+@_U_ pl el@@_A_ super pl el
+@_U_ pl es@@_A_ super pl es
+@_U_ pl g@@_A_ super pl gen
+@_U_ pl ill@@_A_ super pl ill
+@_U_ pl in@@_A_ super pl in
+@_U_ pl kom@@_A_ super pl kom
+@_U_ pl n@@_A_ super pl nom
+@_U_ pl p@@_A_ super pl part
+@_U_ pl ter@@_A_ super pl term
+@_U_ pl tr@@_A_ super pl tr
+@_U_ sg ab@@_A_ super sg abes
+@_U_ sg abl@@_A_ super sg abl
+@_U_ sg ad@@_A_ super sg ad
+@_U_ sg all@@_A_ super sg all
+@_U_ sg el@@_A_ super sg el
+@_U_ sg es@@_A_ super sg es
+@_U_ sg g@@_A_ super sg gen
+@_U_ sg ill@@_A_ super sg ill
+@_U_ sg in@@_A_ super sg in
+@_U_ sg kom@@_A_ super sg kom
+@_U_ sg n@@_A_ super sg nom
+@_U_ sg p@@_A_ super sg part
+@_U_ sg ter@@_A_ super sg term
+@_U_ sg tr@@_A_ super sg tr
+@_V_ b@@_V_ indic pres ps3 sg ps af
+@_V_ da@@_V_ inf
+@_V_ des@@_V_ ger
+@_V_ d@@_V_ indic pres ps2 sg ps af
+@_V_ gem@@_V_ imper pres ps1 pl ps af
+@_V_ gem@@_V_ imper pres ps1 pl ps neg
+@_V_ ge@@_V_ imper pres ps2 pl ps af
+@_V_ ge@@_V_ imper pres ps2 pl ps neg
+@_V_ gu@@_V_ imper pres ps3 pl ps af
+@_V_ gu@@_V_ imper pres ps3 pl ps neg
+@_V_ gu@@_V_ imper pres ps3 sg ps af
+@_V_ gu@@_V_ imper pres ps3 sg ps neg
+@_V_ ksid@@_V_ cond pres ps2 sg ps af
+@_V_ ksid@@_V_ cond pres ps3 pl ps af
+@_V_ ksime@@_V_ cond pres ps1 pl ps af
+@_V_ ksin@@_V_ cond pres ps1 sg ps af
+@_V_ ksite@@_V_ cond pres ps2 pl ps af
+@_V_ ks@@_V_ cond pres ps1 pl ps af
+@_V_ ks@@_V_ cond pres ps1 sg ps af
+@_V_ ks@@_V_ cond pres ps2 pl ps af
+@_V_ ks@@_V_ cond pres ps2 sg ps af
+@_V_ ks@@_V_ cond pres ps3 pl ps af
+@_V_ ks@@_V_ cond pres ps3 sg ps af
+@_V_ ks@@_V_ cond pres ps neg
+@_V_ maks@@_V_ sup ps tr
+@_V_ mast@@_V_ sup ps el
+@_V_ mas@@_V_ sup ps in
+@_V_ mata@@_V_ sup ps abes
+@_V_ ma@@_V_ sup ps ill
+@_V_ me@@_V_ indic pres ps1 pl ps af
+@_V_ neg gem@@_V_ imper pres ps1 pl ps neg
+@_V_ neg ge@@_V_ imper pres ps2 pl ps neg
+@_V_ neg gu@@_V_ imper pres imps neg
+@_V_ neg gu@@_V_ imper pres ps3 pl ps neg
+@_V_ neg gu@@_V_ imper pres ps3 sg ps neg
+@_V_ neg ks@@_V_ cond pres ps neg
+@_V_ neg nud@@_V_ indic impf ps neg
+@_V_ neg nuks@@_V_ cond past ps neg
+@_V_ neg o@@_V_ imper pres ps2 sg
+@_V_ neg o@@_V_ indic pres ps neg
+@_V_ neg vat@@_V_ quot pres ps
+@_V_ neg@@_V_ neg
+@_V_ nud@@_V_ indic impf ps neg
+@_V_ nud@@_V_ partic past ps
+@_V_ nuksid@@_V_ cond past ps2 sg ps af
+@_V_ nuksid@@_V_ cond past ps3 pl ps af
+@_V_ nuksime@@_V_ cond past ps1 pl ps af
+@_V_ nuksin@@_V_ cond past ps1 sg ps af
+@_V_ nuksite@@_V_ cond past ps2 pl ps af
+@_V_ nuks@@_V_ cond past ps1 pl ps af
+@_V_ nuks@@_V_ cond past ps1 sg ps af
+@_V_ nuks@@_V_ cond past ps2 pl ps af
+@_V_ nuks@@_V_ cond past ps2 sg ps af
+@_V_ nuks@@_V_ cond past ps3 pl ps af
+@_V_ nuks@@_V_ cond past ps3 sg ps af
+@_V_ nuks@@_V_ cond past ps neg
+@_V_ nuvat@@_V_ quot past ps af
+@_V_ nuvat@@_V_ quot past ps neg
+@_V_ n@@_V_ indic pres ps1 sg ps af
+@_V_ o@@_V_ imper pres ps2 sg
+@_V_ o@@_V_ indic pres ps neg
+@_V_ sid@@_V_ indic impf ps2 sg ps af
+@_V_ sid@@_V_ indic impf ps3 pl ps af
+@_V_ sime@@_V_ indic impf ps1 pl ps af
+@_V_ sin@@_V_ indic impf ps1 sg ps af
+@_V_ site@@_V_ indic impf ps2 pl ps af
+@_V_ s@@_V_ indic impf ps3 sg ps af
+@_V_ tagu@@_V_ imper pres imps af
+@_V_ tagu@@_V_ imper pres imps neg
+@_V_ takse@@_V_ indic pres imps af
+@_V_ taks@@_V_ cond pres imps
+@_V_ tama@@_V_ sup imps
+@_V_ tavat@@_V_ quot pres imps af
+@_V_ tavat@@_V_ quot pres imps neg
+@_V_ ta@@_V_ indic pres imps neg
+@_V_ tav@@_V_ partic pres imps
+@_V_ te@@_V_ indic pres ps2 pl ps af
+@_V_ ti@@_V_ indic impf imps af
+@_V_ tud@@_V_ indic impf imps neg
+@_V_ tud@@_V_ partic past imps
+@_V_ tuks@@_V_ cond past imps af
+@_V_ tuks@@_V_ cond past imps neg
+@_V_ tuvat@@_V_ quot past imps af
+@_V_ tuvat@@_V_ quot past imps neg
+@_V_ vad@@_V_ indic pres ps3 pl ps af
+@_V_@@_V_ af
+@_V_ vat@@_V_ quot pres ps
+@_V_ v@@_V_ partic pres ps
+@_X_@@_X_
+@_Y_ adt@@_Y_ nominal sg adit
+@_Y_ pl abl@@_Y_ nominal pl abl
+@_Y_ pl ab@@_Y_ nominal pl abes
+@_Y_ pl ad@@_Y_ nominal pl ad
+@_Y_ pl all@@_Y_ nominal pl all
+@_Y_ pl el@@_Y_ nominal pl el
+@_Y_ pl es@@_Y_ nominal pl es
+@_Y_ pl g@@_Y_ nominal pl gen
+@_Y_ pl ill@@_Y_ nominal pl ill
+@_Y_ pl in@@_Y_ nominal pl in
+@_Y_ pl kom@@_Y_ nominal pl kom
+@_Y_ pl n@@_Y_ nominal pl nom
+@_Y_ pl p@@_Y_ nominal pl part
+@_Y_ pl ter@@_Y_ nominal pl term
+@_Y_ pl tr@@_Y_ nominal pl tr
+@_Y_ sg abl@@_Y_ nominal sg abl
+@_Y_ sg ab@@_Y_ nominal sg abes
+@_Y_ sg ad@@_Y_ nominal sg ad
+@_Y_ sg all@@_Y_ nominal sg all
+@_Y_ sg el@@_Y_ nominal sg el
+@_Y_ sg es@@_Y_ nominal sg es
+@_Y_ sg g@@_Y_ nominal sg gen
+@_Y_ sg ill@@_Y_ nominal sg ill
+@_Y_ sg in@@_Y_ nominal sg in
+@_Y_ sg kom@@_Y_ nominal sg kom
+@_Y_ sg n@@_Y_ nominal sg nom
+@_Y_ sg p@@_Y_ nominal sg part
+@_Y_ sg ter@@_Y_ nominal sg term
+@_Y_ sg tr@@_Y_ nominal sg tr
+@_Y_ ?@@_Y_ adjectival
+@_Y_ ?@@_Y_ adverbial
+@_Y_ ?@@_Y_ nominal ?
+@_Y_ ?@@_Y_ verbal

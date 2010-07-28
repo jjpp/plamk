@@ -1,0 +1,70 @@
+valim
+innovatiivne
+Tartu
+Viljandi
+kiibistik
+ruuter
+CAD
+CD
+skänner
+ülalpidamiskulud
+Kalmetu
+Põhikool
+porno
+nii-sugune
+nii-
+matemaatika-loodusteaduskond
+käte-jalgadega
+esma-
+humanitaar-
+innovatsioon
+innoveerima
+kodeering
+lähi-
+needki
+prioriteetne
+puhanguti
+regionaal-
+termo-
+TTÜ
+ÜRO
+TÜ
+kooskõlastamata
+meidki
+vikerkaar
+Egiptus
+esmasündinu
+kuningriik
+umbrohi
+tähelepanu
+sensitiiv
+kriminaal
+ärge
+tähelepanuväärne
+kalliskivi
+km
+olemasolev
+halvakspanu
+pühitsus
+lähivõte
+Aafrika
+tähelepanu
+esmakordne
+magneetiline
+esmaspäev
+teisipäev
+kolmapäev
+neljapäev
+reede
+laupäev
+pühapäev
+
+
+*same		(saame)
+*teisendaga	(teisendage)
+*aproksimeeridas	(aproksimeerida)
+*migi		(mingi)
+*positiine	(positiivne)
+*atraaktiivse	(atraktiivse)
+*tavalislet	(tavaliselt)
+
