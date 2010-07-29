@@ -1,6 +1,5 @@
 XEROX=/home/jjpp/dev/keel/xerox/bin
 XFST=$(XEROX)/xfst
-LEXC=$(XEROX)/lexc
 TWOLC=$(XEROX)/twolc
 ICONV=iconv
 ESTMORF=wine /home/jjpp/dev/keel/estmorf/x/ESTMORF.EXE
@@ -114,12 +113,12 @@ tundmatud: xfst.out
 	grep -FB1 ??? xfst.out | grep -vF ??? | grep -vFe -- | less
 
 test: estmorf.out xfst.out eki.out $(TESTFILE)
-	fgrep '???' xfst.out | wc -l
-	fgrep '###' estmorf.out | wc -l
-	fgrep '###' eki.out | wc -l
+	grep -F '???' xfst.out | wc -l
+	grep -F '###' estmorf.out | wc -l
+	grep -F '###' eki.out | wc -l
 	wc -l $(TESTFILE)
 
 testx: xfst.out
-	fgrep '???' xfst.out | wc -l
+	grep -F '???' xfst.out | wc -l
 
 

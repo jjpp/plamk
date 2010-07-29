@@ -13,12 +13,13 @@ $XFST -e "load $FST" -e 'invert' -e "save reverse-$FST" -stop
 
 (
 for num in sg pl; do
-	for cs in nom gen part ill in el all ad abl tr term es abes kom adit; do
+	for cs in nom gen part ill in el all ad abl tr term es abes kom; do
 		echo "$W+$num+$cs"
 	done
 done
 
 echo "$W+prefix"
+echo "$W+sg+adit"
 
 ) | $LOOKUP reverse-$FST | grep -v '^$' | awk '{printf "%-40s %s %s\n", $1, $2, $3}'
 
