@@ -1,0 +1,11 @@
+LEXICON Root
+
+! siin on mugav kasutada varemdefineeritud juppe.
+
+<
+[
+	~[ ?* "&" l a "+S" ArvJaKääne ("&" ?*) | (?* "&") l a "+S" ArvJaKääne "&" ?*  ]
+]
+> #;
+
+ 

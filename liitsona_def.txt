@@ -1,0 +1,52 @@
+Definitions
+    Täht = [ a | b | c | d | e | f | g | h | 
+    	     i | j | k | l | m | n | o | p | 
+	     q | r | s | š | z | ž | t | u | 
+	     v | w | x | y | õ | ä | ö | ü ];
+    Arv = [ %0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 ];
+    Tähtsõne = [Täht | %- | %=]+;
+    Sona = [[Arv]+ (%- | %. | %,)]* [Arv]+ (%. | %% | %' (%') ) | ([Arv]+) Tähtsõne;
+    ArvJaKääne = [ %+sg | %+pl ] [ %+nom | %+gen | %+part | %+ill | %+adit 
+    				  | %+in | %+el | %+all | %+ad | %+abl | %+tr 
+				  | %+term | %+es | %+abes | %+kom ];
+
+    VerbiParadigma = "ma+V"  [
+		 [ %+sup [ %+ill | %+in | %+el | %+abes | %+tr | %+imps ] ] |
+		   %+inf | %+ger |
+		 [ %+partic [ %+pres | %+past ] [ %+ps | %+imps ] ] |
+		 [ %+indic [ %+pres | %+impf ] 
+		 	[ %+imps | [ [ %+ps1 | %+ps2 | %+ps3 ] [ %+sg | %+pl ] %+ps ] ] %+af ] |
+		 [ %+indic [ %+pres | %+impf ] [ %+ps | %+imps ] %+neg ] |
+		 [ %+quot [ %+pres [ %+ps | %+imps ] | %+past %+imps | %+partic %+past %+af ] ] |
+		 [ %+cond %+pres [ %+ps1 | %+ps2 | %+ps3 ] [ %+sg | %+pl ] %+ps %+af ] |
+		 [ %+cond %+partic %+past [ %+ps1 | %+ps2 | %+ps3 ] [ %+sg | %+pl ] %+af ] |
+		 [ %+cond [ %+pres | %+past ] %+imps ] |
+		 [ %+imper %+pres 
+		 	[ %+imps | [ %+ps2 %+sg | %+ps3 %+sg %+ps %+af |
+				[ %+ps1 | %+ps2 | %+ps3 ] %+pl %+ps %+af ] ] ]
+    ];
+
+!  +A +Adv +G +H +I +J +K +Num +O +Ord +Pron +S +X
+
+    Gi = ( "+gi" );
+
+    Omadussõna' = Sona "+A" ([ "+comp" | "+super" ]);
+    Omadussõna = [ Omadussõna' ArvJaKääne | Sona "+A" | Sona "+A" "+partic" ];
+    Nimisõna' = Sona [ "+S" | "+H" ];
+    Nimisõna = Nimisõna' ArvJaKääne;
+    Arvsõna = Sona [ "+Num" | "+Ord" ] (ArvJaKääne);
+    Asesõna = Sona [ "+Pron" ] ArvJaKääne;
+    Käänduvsõna = Omadussõna | Nimisõna | Arvsõna | Asesõna;
+    Määrsõna = Sona "+Adv";
+    Hüüdsõna = Sona "+I";
+    Sidesõna = Sona "+J";
+    Kaassõna = Sona "+K";
+    Muusõna = Sona "+X";
+    Genatribuut = Sona "+G";
+    Tegusõna = Tähtsõne VerbiParadigma;
+    Muutumatusõna = Määrsõna | Hüüdsõna | Sidesõna | Kaassõna | Muusõna | Genatribuut;
+
+    SP = ( "&" "-" ) "&";
+    PreKriips = ( "-" "&" );
+    Kriips = "&" "-";
+
