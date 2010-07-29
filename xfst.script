@@ -19,12 +19,19 @@ read lexc liitsona_full.txt
 save liitsonamask.fst
 clear
 
+read lexc liitsona_filter_full.txt
+save liitsonafilter.fst
+clear
+
 
 read regex ("-" "&") [ @"lihtsonad.fst" "&" ("-" "&") ]* @"lihtsonad.fst" ("&" "-");
 save full-compound.fst
 clear
 
-read regex @"liitsonamask.fst" .o. @"full-compound.fst" .o. [ "&" -> "" ];
+read regex 	@"liitsonafilter.fst" .o. 
+		@"liitsonamask.fst" .o. 
+		@"full-compound.fst" .o. 
+		[ "&" -> "" ];
 
 # kuni compoundidega midagi kavalat ei tehta
 save eesti.fst

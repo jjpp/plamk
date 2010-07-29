@@ -1,5 +1,7 @@
+=Venemaa 26_H | a0: Venemaa, a0r: # 
 =abakus 11_S | a0: abakus, b0: abakuse, b0v: abakusi
 =Abel 02_H | a0: Abel, b0: Abeli, b0r: Abele
+=abielluma 27_V | a0: abiellu
 =aksiom'aatiline 12_A | a0: aksiom'aatiline, b0: aksiom'aatilise, c0: aksiom'aatilis, b0v: aksiom'aatilisi
 =ambitsi'oon 22_S | at: ambitsi'oon, bt: ambitsi'ooni, bn: ambitsiooni, btv: ambitsi'oone, bnv: ambitsioone
 =ambitsioonikas 02_A | a0: ambitsioonikas, b0: ambitsioonika, b0r: 0

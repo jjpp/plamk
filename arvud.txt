@@ -2,7 +2,7 @@ Multichar_Symbols
 
  +Num +Ord
  +pl +sg
- +nom +gen +part +ill +in +el +all +ad +abl +tr +ter +es +ab +kom
+ +nom +gen +part +ill +in +el +all +ad +abl +tr +term +es +abes +kom
  +gi
 
 Definitions
@@ -65,9 +65,9 @@ LEXICON Käänded_X ! ilma miinuseta arvule liituda võivad
  +in:s KI;
  +el:st KI;
  +tr:ks KI;
- +ter:ni GI;
+ +term:ni GI;
  +es:na GI;
- +ab:ta GI;
+ +abes:ta GI;
  +kom:ga GI;
 
 LEXICON Käänded_L ! vahel kohustuslik miinus

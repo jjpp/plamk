@@ -460,6 +460,10 @@ while (<>) {
 		}
 
 		when ("17") {
+			if ($w eq 'ini') {
+				$w = '! erand ' . $w;
+			}
+
 			if ($stem{'a0g'} ne '#') {
 				$chain = '17_Adt';
 				$w2 =~ s/(.)([aeui])$/$1=$2/;

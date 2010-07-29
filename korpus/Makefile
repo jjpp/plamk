@@ -3,9 +3,9 @@
 VPATH=failid
 vpath %.kym failid
 
-all:	1984.check 1984.uwords full.check full.uwords
+all:	unpack 1984.check 1984.uwords full.check full.uwords
 
-cs:	1984.cscheck 1984.csuwords full.cscheck full.csuwords
+cs:	unpack 1984.cscheck 1984.csuwords full.cscheck full.csuwords
 
 clean:
 	rm -rf failid/ *.check *.uwords *.cscheck *.csuwords
@@ -14,16 +14,16 @@ failid.zip:
 	wget http://www.cl.ut.ee/korpused/morfkorpus/failid.zip
 
 
-full.check: failid/*.kym
+full.check: unpack failid/*.kym
 	cat failid/*.kym | ./to_lc_testfile.sh > $@
 
-full.uwords: failid/*.kym
+full.uwords: unpack failid/*.kym
 	cat failid/*.kym | ./to_lc_words.sh > $@
 
-full.cscheck: failid/*.kym
+full.cscheck: unpack failid/*.kym
 	cat failid/*.kym | CASESENSITIVE=1 ./to_lc_testfile.sh > $@
 
-full.csuwords: failid/*.kym
+full.csuwords: unpack failid/*.kym
 	cat failid/*.kym | CASESENSITIVE=1 ./to_lc_words.sh > $@
 
 %.check: %.kym
@@ -39,7 +39,8 @@ full.csuwords: failid/*.kym
 	cat $< | CASESENSITIVE=1 ./to_lc_words.sh > $@
 
 
-failid/1984.kym: failid.zip
+.PHONY:
+unpack: failid.zip
 	unzip -n failid.zip; touch failid/*
 
 

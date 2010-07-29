@@ -13,7 +13,7 @@ $XFST -e "load $FST" -e 'invert' -e "save reverse-$FST" -stop
 
 (
 for num in sg pl; do
-	for cs in nom gen part ill in el all ad abl tr ter es ab kom adit; do
+	for cs in nom gen part ill in el all ad abl tr term es abes kom adit; do
 		echo "$W+$num+$cs"
 	done
 done

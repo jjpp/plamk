@@ -1,12 +1,29 @@
-! lubatud tuletisevormid?
 
-[ ~$[ "+_us" ?* "+_us" ] ] &
-[ ~$[ "+comp" ?* "+comp" ] ] &
-[ ~$[ "+sup" ?* "+sup" ] ] &
-[ ~$[ "+_ke" ?* "+_ke" ] ] &
-[ ~$[ "+_ke" ?* "+_kene" ] ] &
-[ ~$[ "+_kene" ?* "+_ke" ] ] &
-[ ~$[ "+_kene" ?* "+_kene" ] ] &
-[ $[ %+A %+comp] | ~$[ "+comp" ] ] &
-[ $[ %+A %+super] | ~$[ "+super" ] ] &
-[ $[ %+A "+_us" ] | ~$[ "+_us" ] ];
+[ = k e "+S" -> "+S" "+_ke" ] .o.
+[ = k e n e "+S" -> "+S" "+_kene" ] .o.
+[ = k e "+A" -> "+A" "+_ke" ] .o.
+[ = k e n e "+A" -> "+A" "+_kene" ] .o.
+[ = l t "+Adv" (->) "+A" "+_lt" "+Adv" ] .o.
+[ m a = l t "+Adv" (->) "+A" "+comp" "+_lt" "+Adv" ] .o.
+[ i m a = l t "+Adv" -> "+A" "+super" "+_lt" "+Adv" ] .o. ! kui i lõpuvokaaliga asju tegi, on probleem
+[ = l t "+Adv" -> "+S" "+_lt" "+Adv" ] .o.
+[ = u s "+S" -> "+A" "+_us" "+S" ] .o.
+[ m = i n i "+Adv" -> m "+A" "+_ini" "+Adv" ] .o.
+[ = i n i "+Adv" -> "+A" "+_ini" "+Adv" ] .o.
+
+
+[! lubatud tuletisevormid?
+
+	[ ~$[ "+_us" ?* "+_us" ] ] &
+	[ ~$[ "+comp" ?* "+comp" ] ] &
+	[ ~$[ "+sup" ?* "+sup" ] ] &
+	[ ~$[ "+_ke" ?* "+_ke" ] ] &
+	[ ~$[ "+_ke" ?* "+_kene" ] ] &
+	[ ~$[ "+_kene" ?* "+_ke" ] ] &
+	[ ~$[ "+_kene" ?* "+_kene" ] ] &
+	[ $[ "+A" %+comp] | ~$[ "+comp" ] ] &
+	[ $[ "+A" %+super] | ~$[ "+super" ] ] &
+	[ $[ "+A" "+_us" ] | ~$[ "+_us" ] ] &
+	[ $[ "+A" "+_ini" ] | ~$[ "+_ini" ] ] &
+	[ $[ ["+A" ("+comp" | "+super") | "+S"] "+_lt" ] | ~$[ "+_lt" ] ]
+];

@@ -7,6 +7,8 @@ LEXICON Asendavad_erandid
 teist+Num+sg+nom:teist GI;
 kümmend+Num+sg+nom:kümmend GI;
 
+kohus+S+sg+part:kohust GI; ! paralleelvormi erand varjutab selle ka..
+
 ! lühitüvi liitsõnas
 viimane+A+prefix:viimne #;
 uudne+A+prefix:uudse #;

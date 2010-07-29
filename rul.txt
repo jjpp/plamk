@@ -16,6 +16,7 @@ Sets
   VaheVok = A E U I;
   TyveVok = a e i u ;
   LyhVok = a e o u õ ä ö ü ;
+  LyhVoka = e o u õ ä ö ü ;
   LV = B G D S T ; ! laadivaheldus (assimilatsioon ja häälikukadu)
   LVTA = b g d s t ; ! laadivahelduse tugev aste
   Klus = k p t ;
@@ -45,7 +46,7 @@ Rules
 
 "AV 3 - t kadu"
 ! parandus: suhTeldud-vihTeldud, sigaretT 
- T:0 <=>Vok [t|h] _ (Vok ([S: | l ])) %$:;!tt-t (rott-roti) ja ht-h (ehtima-ehib)
+ T:0 <=>Vok [t|h] _ (Vok ([S: | s: | l ])) %$:;!tt-t (rott-roti) ja ht-h (ehtima-ehib)
         Algus Vok: _ e (l) %$:;	!ütlema-öelda, jätma-jäetakse
 
 
@@ -237,22 +238,24 @@ TyveVok:0 <=> [Kons|AV:] (%=:) _ (%$:) %+: [ W: ~%!: |u s];
 
 "oo+a->uua, öö+a->üüa 1"	!joo+a->juua, söö+a->süüa
 
-V1:V2 <=> _ %.: %+: [a | e s];
+V1:V2 <=> _ %.:V2 %+: [a | e s];
                       where V1 in (o ö)
                             V2 in (u ü)
                       matched;
 
 "oo+a ->uua, öö+a ->üüa 2"
 
-%.:V2 <=> V1: _ %+: [a | e s];
+%.:V2 <=> V1:V2 _ %+: [a | e s];
                       where V1 in (o ö)
                             V2 in (u ü)
                       matched;
 
 
-"oo+i, öö+i -> õi"	!joo+i->jõi, söö+i->sõi
+"oo+i -> õi"	!joo+i->jõi, söö+i->sõi
+o:õ <=> [ j | l | t ] _ %.: %+: i [ SonaPiir | d | n | m e | t e];
 
-V1:õ <=> _ %.: %+: i [ SonaPiir | d | n | m e | t e]; where V1 in (o ö);
+"öö+i -> õi"	!joo+i->jõi, söö+i->sõi
+ö:õ <=> [ l | s ] _ %.: %+: i [ SonaPiir | d | n | m e | t e];
 
 
 "Konsonantühendi reegel "    ! Konsonantühendis kirjutatakse kõik häälikud ühekordselt, nt. kukkru->kukru, kristallne->kristalne.
@@ -275,13 +278,14 @@ V1:õ <=> _ %.: %+: i [ SonaPiir | d | n | m e | t e]; where V1 in (o ö);
 !enne i-ga algavat formatiivi, nt.maa+id->maid, maaha->maha.
                                     ! Võõrsõnades ainult 'e': idee-ideid, aga miljöö-miljöösid,depoo-depoosid,kanuu-kanuusid
 
-  %.:0 <=> [Vok [Kons+] e] | [Algus LyhVok] _ [%+: i| h] ;
+  %.:0 <=> [Vok [Kons+] e] | [Algus LyhVoka] _ [%+: [ i | h ]] ;
            a _ [D:|G:] i: %$:;	!praadida-praeb, saagida-saeb
 
 "Pikk vokaal vaikimisi"
+  %.:V1 <=> V1 _ ~[%+: [ i | h ] :* ] .#.; where  V1 in (e o u õ ä ö ü);
 
-  %.:V1 => V1 _ ~[%+:0 i | [D:|G:] i %$:] ; where  V1 in LyhVok;
-
+"Pikk vokaal vaikimisi, a"
+  %.:a <=> a _ ~[ [D: | G:] i: %$: :* ] .#.;
 
 
 "morfeemipiiril kaks s-i saavad üheks"

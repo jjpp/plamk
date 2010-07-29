@@ -35,68 +35,29 @@ while (<>) {
 	$stem =~ tr/'//d;
 	$form =~ tr/'\[\]//d;
 
+	my @kind = ();
+
 	my $suff = '';
-	given ($kind) { # {{{
-		when (/A/) {
-			$stem .= '+A';
-			$stem .= '+S' if /S/;
-		}
 
-		when (/S/) {
-			$stem .= '+S';
-		}
-
-		when (/H/) {
-			$stem .= '+H';
-		}
-
-		when (/D/) {
-			$stem .= '+Adv';
-		}
-
-		when (/V/) {
-		}
-
-		when (/I/) {
-			$stem .= '+I';
-		}
-
-		when (/J/) {
-			$stem .= '+J';
-		}
-
-		when (/P/) {
-			$stem .= '+Pron';
-		}
-
-		when (/G/) {
-			$stem .= '+G';
-		}
-
-		when (/K/) {
-			$stem .= '+K';
-		}
-
-		when (/N/) {
-			$stem .= '+Num';
-		}
-
-		when (/O/) {
-			$stem .= '+O';
-		}
-
-		when (/X/) {
-			$stem .= '+X';
-		}
-
-		default {
-			print "Tundmatu sõnaliik '$kind' - $stem\n";
-		}
-		
-	} # }}}
+	push @kind, '+A' if $kind =~ /A/;
+	push @kind, '+S' if $kind =~ /S/;
+	push @kind, '+H' if $kind =~ /H/;
+	push @kind, '+Adv' if $kind =~ /D/;
+	push @kind, '' if $kind =~ /V/;
+	push @kind, '+I' if $kind =~ /I/;
+	push @kind, '+J' if $kind =~ /J/;
+	push @kind, '+Pron' if $kind =~ /P/;
+	push @kind, '+G' if $kind =~ /G/;
+	push @kind, '+K' if $kind =~ /K/;
+	push @kind, '+Num' if $kind =~ /N/;
+	push @kind, '+Ord' if $kind =~ /O/;
+	push @kind, '+X' if $kind =~ /X/;
 
 	my $list = (($opt eq '*') ? \@override : \@extra);
-	push @{$list}, " $stem$form{$code}:$form GI; ! $line\n";
+
+	for (@kind) {
+		push @{$list}, " $stem$_$form{$code}:$form GI; ! $line\n";
+	}
 }
 
 write_lex("lex_override_gen.txt", "Asendavad_erandid_gen", @override);
