@@ -1,0 +1,64 @@
+PLAMK
+
+Siin kataloogis elab lõplikel automaatidel põhinev eesti keele
+morfoloogiakirjeldus -- selle ehitamiseks ja testimiseks mõeldud
+vahendid.
+
+Süsteemi seisuga 1. august 2008 kirjeldab Jaak Pruulmann-Vengerfeldt'i 
+magistritöö, viide sellele ilmub peale töö kaitsmist.
+
+
+Lõplikel automaatidel põhineva morfoloogiaanalüsaatori, leksikaalse
+teisendaja ehitamiseks on tarvis:
+ - perl'i (5.10+), cat'i, sed'i, iconv'i
+ - Xeroxi lõplike automaatide tööriistu (xfst, twolc; vt
+   http://www.fsmbook.com/)
+
+Testimiseks on veel vaja:
+ - rm, awk, grep, bash, wc, sort, uniq, wget
+ - todos / fromdos pakist tofromdos (või mõni muu LF <> CRLF teisenduse
+   filtrikomplekt)
+ - analüsaator ESTMORF (ftp://ftp.eki.ee/pub/keeletehnoloogia/estmorf/)
+ - EKI analüsaator (http://www.eki.ee/tarkvara/analyys/)
+ - wine kahe eelmise jooksutamiseks
+
+
+Ehitamiseks vajalikest andmefailidest on esialgu puudu EKI tüvebaas, mille
+litsentsitingimused on alles täpsustamisel. Selle põhjal loodud teisendajate
+levitamine peaks olema lubatud.
+
+
+Ehitussüsteemi aluseks on make. Vaikimisi siht "all" ehitab leksikaalse
+teisendaja, mis kirjutatakse faili eesti.fst.
+
+Praeguses versioonis on sellega midagi teha vaid Xeroxi tööriistadega, 
+nende mugavamaks väljakutsumiseks on Makefiles sihid test, testx, xfsti 
+jms.
+
+
+Testimiseks vajalikke sisendfaile ja nende kontrollimiseks mõeldud
+lisafailide genereerimise reeglid on kirjeldatud alamkataloogis 
+korpus asuvas Makefiles.
+
+
+
+Osa faile on algselt pärit mujalt:
+  form.exc ja fcodes.ini sisaldusid EKI andmefailides 
+  (http://www.eki.ee/tarkvara/est_morpho_data.zip, litsents 
+  http://www.eki.ee/eki/litsents.html)
+
+  tolkija.pl ja morftrtabel.txt on pärit eesti keele süntaksianalüsaatori
+  materjalidest (http://math.ut.ee/~kaili/grammatika/ ja 
+  http://math.ut.ee/~kaili/grammatika/estmorfcg.tar.gz)
+
+
+Kogu muu kraam on kasutamiseks LGPLi tingimuste alusel.
+
+
+rul.txt ja lex_main.txt sisaldavad suures osas Heli Uibo tehtud tööd. 
+
+
+
+Igasugused täiendavad küsimused võib saata aadressil jjpp@meso.ee.
+
+
