@@ -1,10 +1,11 @@
-XEROX=/home/jjpp/dev/keel/xerox/bin
+XEROX=~/xerox/bin
 XFST=$(XEROX)/xfst
 TWOLC=$(XEROX)/twolc
 ICONV=iconv
-ESTMORF=wine /home/jjpp/dev/keel/estmorf/x/ESTMORF.EXE
-EKI_DATA=/home/jjpp/dev/keel/eki_bin/data
-EKI_ANA=wine /home/jjpp/dev/keel/eki_bin/demo_ana.exe
+ESTMORF=wine ~/estmorf/ESTMORF.EXE
+EKI_DATA=~/eki/data
+EKI_ANA=wine ~/eki/demo_ana.exe
+
 
 ETHTHORN=sed -e 's/š/ð/g' -e 's/Š/Ð/g' -e 's/ž/þ/g' -e 's/Ž/Þ/g' 
 INVERSE_ETHTHORN=sed -e 's/ð/š/g' -e 's/Ð/Š/g' -e 's/þ/ž/g' -e 's/Þ/Ž/g' 

@@ -1,3 +1,7 @@
+Aastate jooksul ispelli sõnastiku kohta saadetud kaebused nii positiivsete kui negatiivsete 
+valeotsuste kohta (nii puuduvad sõnad kui ekslikult sõnaks peetavad kirjavead). Sekka ka
+kirjavigu, mille speller parandas -- vigade näidetena.
+
 valim
 innovatiivne
 Tartu

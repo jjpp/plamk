@@ -1,8 +1,8 @@
 #!/bin/sh
 
 W=$1
-XFST=/home/jjpp/dev/keel/xerox/bin/xfst
-LOOKUP=/home/jjpp/dev/keel/xerox/bin/lookup
+XFST=~/xerox/bin/xfst
+LOOKUP=~/xerox/bin/lookup
 FST=${FST:-eesti.fst}
 
 [ -r $FST ] || make $FST

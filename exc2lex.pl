@@ -1,5 +1,7 @@
 #!/usr/bin/perl -w
 
+# Copyright © 2010 by Jaak Pruulmann-Vengerefeldt. All rights reserved.
+
 use utf8;
 use strict;
 use feature "switch"; # alates perl 5.10 

@@ -1,3 +1,8 @@
+! Copyright © 1999-2005 by Heli Uibo.
+! Copyright © 2010 by Jaak Pruulmann-Vengerfeldt.
+! All rights reserved. 
+
+
 !Definitions
 !  C = [b|d|g|h|j|k|l|m|n|p|r|s|sh|z|zh|t|v];
 !  V = [a|e|i|o|u|õ|ä|ö|ü];

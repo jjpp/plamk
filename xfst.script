@@ -1,3 +1,6 @@
+# Copyright © 2010 by Jaak Pruulmann-Vengerfeldt.
+# All rights reserved. 
+
 read regex  [@"rules.fst"].i .o. [@"lex.fst"];
 save lex-av.fst
 clear

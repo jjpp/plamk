@@ -1,3 +1,5 @@
+! Copyright © 2010 by Jaak Pruulmann-Vengerfeldt.
+! All rights reserved. 
 
 [ = k e "+S" -> "+S" "+_ke" ] .o.
 [ = k e n e "+S" -> "+S" "+_kene" ] .o.

@@ -1,4 +1,7 @@
-pikk+A+S+C -> pikam (EKKR M102)
+Märkmefail erinevate töö käigus leitud vigade kohta. 
+
+
+pikk+A+comp+sg+nom -> pikam (EKKR M102)
 
 sooje ei tunta ära.
 soojemalt ei tunta ära. (nõrgas astmes omastavaga sõnadel -em)
@@ -8,7 +11,7 @@ totter ?
 -ne-se lühitüvede erandid ja puudumised?
 muud nimisõnade lühenemised
 
-vok . tagasiteisendused (kuid, söib?)
+vok . tagasiteisendused (kuid, söib?) [ see sai vist parandatud ]
 mõnede liidete korral sõnaliik? (määrsõnad), ehk peaks eraldi sõnastikku kirjutama?
 
 ergama, erjata?

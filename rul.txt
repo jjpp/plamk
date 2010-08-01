@@ -1,4 +1,6 @@
-
+! Copyright © 1999-2005 by Heli Uibo.
+! Copyright © 2010 by Jaak Pruulmann-Vengerfeldt.
+! All rights reserved. 
 Alphabet
 
 a b c d e f g h i j k l m n o p q r s š z ž t u v õ ä ö ü x y G:g G:0 B:b B:0 B:m D:d D:0 D:l D:n D:r K:k K:g K:0 P:p P:b P:0 T:t
