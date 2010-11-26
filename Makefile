@@ -2,11 +2,17 @@ XEROX=~/xerox/bin
 XFST=$(XEROX)/xfst
 TWOLC=$(XEROX)/twolc
 ICONV=iconv
+# testimiseks
 ESTMORF=wine ~/estmorf/ESTMORF.EXE
 EKI_DATA=~/eki/data
 EKI_ANA=wine ~/eki/demo_ana.exe
 
+# latin1 to utf-8
+TO_UTF8=$(ICONV) -f latin1 -t UTF-8
+FROM_UTF8=$(ICONV) -f UTF-8 -t latin1
 
+# estonians used modified latin1 where scaron & zcaron used to be 
+# encoded as eth and thorn.
 ETHTHORN=sed -e 's/š/ð/g' -e 's/Š/Ð/g' -e 's/ž/þ/g' -e 's/Ž/Þ/g' 
 INVERSE_ETHTHORN=sed -e 's/ð/š/g' -e 's/Ð/Š/g' -e 's/þ/ž/g' -e 's/Þ/Ž/g' 
 
@@ -32,7 +38,7 @@ eesti.fst: lex.fst rules.fst lex_exc.fst deriv_filter.txt xfst.script liitsona_f
 
 # kahetasemelised reeglid
 rules.fst: rul.txt
-	echo -ne "read-grammar rul.txt\ncompile\nintersect\n\n\nsave-binary rules.fst\nquit\n"  | $(TWOLC)
+	sh -c 'echo -ne "read-grammar rul.txt\ncompile\nintersect\n\n\nsave-binary rules.fst\nquit\n"'  | $(TWOLC)
 
 
 # Heli variandis oli ülemine reeglitekiht vaid astmevahelduse jaoks, praktikas sellest ei piisanud?
@@ -43,7 +49,7 @@ rul-av.txt: rul.txt
 
 # av-reeglid FSTks kompileerituna
 rules-av.fst: rul-av.txt
-	echo -ne "read-grammar rul-av.txt\ncompile\nintersect\n\n\nsave-binary rules-av.fst\nquit\n"  | $(TWOLC)
+	sh -c 'echo -ne "read-grammar rul-av.txt\ncompile\nintersect\n\n\nsave-binary rules-av.fst\nquit\n"' | $(TWOLC)
 
 # põhisõnastik
 lex.fst: lex_full.txt
@@ -55,7 +61,7 @@ lex_full.txt: lex_multichar.txt lex_main.txt lex_gi.txt $(GENERATED_LEX)
 
 # peamine tyvedesõnastik, genereeritakse peamiselt EKI tüvebaasist
 lex_tyved.txt: tyvebaas.txt tyvebaas-lisa.txt eki2lex.pl
-	cat tyvebaas.txt tyvebaas-lisa.txt | $(ICONV) -flatin1 -tutf8 | $(INVERSE_ETHTHORN) | ./eki2lex.pl
+	cat tyvebaas.txt tyvebaas-lisa.txt | $(TO_UTF8) | $(INVERSE_ETHTHORN) | ./eki2lex.pl
 
 # eranditesõnastik
 lex_exc.fst: lex_exc.txt
@@ -68,7 +74,7 @@ lex_exc.txt: lex_multichar.txt lex_override.txt lex_override_gen.txt lex_gi.txt
 # erandifailid. "tõelised" erandid ja paralleelvormid, genereeritakse
 # pisut täiendatud EKI andmetest
 lex_override_gen.txt lex_extra.txt: form.exc fcodes.ini exc2lex.pl
-	cat form.exc | $(ICONV) -flatin1 -tutf8 | $(INVERSE_ETHTHORN) | ./exc2lex.pl
+	cat form.exc | $(TO_UTF8) | $(INVERSE_ETHTHORN) | ./exc2lex.pl
 
 # liitsõna-regulaaravaldistega lexc-sõnastiku lähtetekst
 liitsona_full.txt: lex_multichar.txt liitsona_def.txt liitsona.txt
@@ -90,15 +96,15 @@ xfst.out: eesti.fst $(TESTFILE)
 # võrdluseks estmorfi väljund
 # TESTFILE on ka siin kasutatav
 estmorf.out: $(TESTFILE)
-	cat $^ | $(ETHTHORN) | $(ICONV) -futf8 -tlatin1 | $(ESTMORF) > $@
+	cat $^ | $(ETHTHORN) | $(FROM_UTF8) | $(ESTMORF) > $@
 
 # "normeeritud" estmorfi väljund
 estmorf_check.out: estmorf.out
-	cat $^ | fromdos | $(ICONV) -flatin1 -tutf8 | $(INVERSE_ETHTHORN) | ./tolkija.pl > $@
+	cat $^ | fromdos | $(TO_UTF8) | $(INVERSE_ETHTHORN) | ./tolkija.pl > $@
 
 # testfail EKI jaoks
 1984_words_u_l1.txt: $(TESTFILE)
-	cat $(TESTFILE) | $(ETHTHORN) | $(ICONV) -futf8 -tlatin1 | todos > $@
+	cat $(TESTFILE) | $(ETHTHORN) | $(FROM_UTF8) | todos > $@
 
 
 eki.out: 1984_words_u_l1.txt
