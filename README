@@ -1,0 +1,25 @@
+PLAMK
+
+These files are finite-state morphological description of Estonian. 
+
+Most of the files are under LGPL (see COPYING.LESSER).
+
+Exceptions are:
+
+ fcodes.ini and form.exc, originally from EKI's data files
+ (http://www.eki.ee/tarkvara/est_morpho_data.zip, license
+ http://www.eki.ee/eki/licence.html and EKI_litsents.html)
+
+ tolkija.pl and morftrtabel.txt, originally from page of syntactic 
+ parser of Estonian (http://math.ut.ee/~kaili/grammatika/ and
+ http://math.ut.ee/~kaili/grammatika/estmorfcg.tar.gz)
+
+File tyvebaas.txt is missing as the licensing conditons are not clear yet.
+
+
+Files rul.txt and lex_main.txt contain a lot of work by Heli Uibo. 
+
+
+jjpp@meso.ee
+
+
