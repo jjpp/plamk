@@ -80,6 +80,7 @@ sub write_lex {
 
 sub load_forms {
 	open FC, "<fcodes.ini";
+	binmode FC, ':utf8';
 	while (<FC>) {
 		s/$//;
 		chomp();

@@ -61,7 +61,7 @@ lex_full.txt: lex_multichar.txt lex_main.txt lex_gi.txt $(GENERATED_LEX)
 
 # peamine tyvedesõnastik, genereeritakse peamiselt EKI tüvebaasist
 lex_tyved.txt: tyvebaas.txt tyvebaas-lisa.txt eki2lex.pl
-	cat tyvebaas.txt tyvebaas-lisa.txt | $(TO_UTF8) | $(INVERSE_ETHTHORN) | ./eki2lex.pl
+	cat tyvebaas.txt tyvebaas-lisa.txt | ./eki2lex.pl
 
 # eranditesõnastik
 lex_exc.fst: lex_exc.txt
