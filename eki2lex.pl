@@ -20,6 +20,7 @@ my $total = 0;
 while (<>) {
 	chomp();
 	s/'//g;
+	s/`//g;
 	next if /^$/;
 	$_ = substr($_, $[ + 1);
 
