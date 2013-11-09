@@ -31,14 +31,37 @@ clean:
 		estmorf_check.out reverse-eesti.fst reverse-lex-av.fst reverse-lihtsonad.fst \
 		liitsona_filter_full.txt liitsonafilter.fst
 
-# peamine FST ehitamine
-eesti.fst: lex.fst rules.fst lex_exc.fst deriv_filter.txt xfst.script liitsona_full.txt \
-		liitsona_filter_full.txt arvud.txt
-	$(XFST) -f xfst.script 
+## peamine FST ehitamine
+#eesti.fst: lex.fst rules.fst lex_exc.fst deriv_filter.txt xfst.script liitsona_full.txt \
+#		liitsona_filter_full.txt arvud.txt
+#	$(XFST) -f xfst.script 
+
+lex-av.fst: rules.fst lex.fst
+	$(XFST) -e 'read regex  [@"rules.fst"].i .o. [@"lex.fst"]' -e 'save lex-av.fst' < /dev/null
+
+arvud.fst: arvud.txt
+	$(XFST) -e 'read lexc arvud.txt' -e 'save arvud.fst' < /dev/null
+
+lihtsonad.fst: deriv_filter.txt lex_exc.fst lex-av.fst rules.fst arvud.fst
+	$(XFST) -e 'read regex [ @re"deriv_filter.txt" .o. [[@"lex_exc.fst"] .P. [@"lex-av.fst"]] .o. ~$$"#" .o.  @"rules.fst" ] | @"arvud.fst"' -e 'save lihtsonad.fst' < /dev/null
+
+liitsonamask.fst:	liitsona_full.txt
+	$(XFST) -e 'read lexc liitsona_full.txt' -e 'save liitsonamask.fst' < /dev/null
+
+
+liitsonafilter.fst:	liitsona_filter_full.txt
+	$(XFST) -e 'read lexc liitsona_filter_full.txt' -e 'save liitsonafilter.fst' < /dev/null
+
+full-compound.fst: lihtsonad.fst
+	$(XFST) -e 'read regex ("-" "&") [ @"lihtsonad.fst" "&" ("-" "&") ]* @"lihtsonad.fst" ("&" "-")' -e 'save full-compound.fst' < /dev/null
+
+eesti.fst:	liitsonafilter.fst liitsonamask.fst full-compound.fst
+	$(XFST) -e 'read regex 	@"liitsonafilter.fst" .o.  @"liitsonamask.fst" .o.  @"full-compound.fst" .o. [ "&" -> "" ]' -e 'save eesti.fst' < /dev/null
+
 
 # kahetasemelised reeglid
 rules.fst: rul.txt
-	sh -c 'echo -ne "read-grammar rul.txt\ncompile\nintersect\n\n\nsave-binary rules.fst\nquit\n"'  | $(TWOLC)
+	@printf "read-grammar rul.txt\ncompile\nintersect\n\n\nsave-binary rules.fst\nquit\n" | $(TWOLC) || $(TWOLC) -i rul.txt -o rules.fst
 
 
 # Heli variandis oli ülemine reeglitekiht vaid astmevahelduse jaoks, praktikas sellest ei piisanud?
@@ -49,11 +72,11 @@ rul-av.txt: rul.txt
 
 # av-reeglid FSTks kompileerituna
 rules-av.fst: rul-av.txt
-	sh -c 'echo -ne "read-grammar rul-av.txt\ncompile\nintersect\n\n\nsave-binary rules-av.fst\nquit\n"' | $(TWOLC)
+	@printf "read-grammar rul-av.txt\ncompile\nintersect\n\n\nsave-binary rules-av.fst\nquit\n" | $(TWOLC) || $(TWOLC) -i rul-av.txt -o rules-av.fst
 
 # põhisõnastik
 lex.fst: lex_full.txt
-	$(XFST) -e "read lexc lex_full.txt" -e "save stack lex.fst" -stop
+	$(XFST) -e "read lexc lex_full.txt" -e "save stack lex.fst" < /dev/null
 
 # põhisõnastiku lexc-lähtetekst pannakse tükkidest kokku, tükkide järjekord on oluline
 lex_full.txt: lex_multichar.txt lex_main.txt lex_gi.txt $(GENERATED_LEX)
@@ -65,7 +88,7 @@ lex_tyved.txt: tyvebaas.txt tyvebaas-lisa.txt eki2lex.pl
 
 # eranditesõnastik
 lex_exc.fst: lex_exc.txt
-	$(XFST) -e "read lexc lex_exc.txt" -e "save stack lex_exc.fst" -stop
+	$(XFST) -e "read lexc lex_exc.txt" -e "save stack lex_exc.fst" < /dev/null
 
 # eranditesõnastiku lexc-lähtetekst
 lex_exc.txt: lex_multichar.txt lex_override.txt lex_override_gen.txt lex_gi.txt
@@ -91,7 +114,7 @@ liitsona_filter_full.txt: lex_multichar.txt liitsona_def.txt liitsona_filter.txt
 # peamine testiviis. alternatiivsete sisenditega testimiseks
 # make TESTFILE=testifailinimi xfst.out
 xfst.out: eesti.fst $(TESTFILE)
-	$(XFST) -e "load eesti.fst" -e "apply up < $(TESTFILE)" -stop -q -pipe > xfst.out
+	$(XFST) -e "load eesti.fst" -e "apply up < $(TESTFILE)" -q -pipe > xfst.out < /dev/null
 
 # võrdluseks estmorfi väljund
 # TESTFILE on ka siin kasutatav
