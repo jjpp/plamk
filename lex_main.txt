@@ -1432,53 +1432,53 @@ LEXICON An_me
 !!!!!
 
 LEXICON An_tud
- ma+V+partic+past+imps : +tud GI ;
- ma+V+indic+impf+imps+neg : +tud GI ;
- ma+V+indic+impf+imps+af : +ti GI ; 
- ma+V+cond+pres+imps : +taks GI ; 
- ma+V+cond+past+imps : +tuks GI ; 
- ma+V+quot+pres+imps : +tavat GI ; 
- ma+V+quot+past+imps : +tuvat GI ; 
- ma+V+imper+pres+imps : +tagu GI ; 
- ma+V+sup+imps : +tama GI ;
- ma+V+indic+pres+imps+neg : +ta GI ; 
- ma+V+partic+pres+imps : +tav GI ;
+ ma+V+partic+past+imps:+tud GI ;
+ ma+V+indic+impf+imps+neg:+tud GI ;
+ ma+V+indic+impf+imps+af:+ti GI ; 
+ ma+V+cond+pres+imps:+taks GI ; 
+ ma+V+cond+past+imps:+tuks GI ; 
+ ma+V+quot+pres+imps:+tavat GI ; 
+ ma+V+quot+past+imps:+tuvat GI ; 
+ ma+V+imper+pres+imps:+tagu GI ; 
+ ma+V+sup+imps:+tama GI ;
+ ma+V+indic+pres+imps+neg:+ta GI ; 
+ ma+V+partic+pres+imps:+tav GI ;
 
- $tud+A : +tud GI ;
- $tud+S : +tud GI ;
- $tu+A : +tu 01 ;
- $tu+S : +tu 01 ;
- $tav+A : +tav 02_A ;
- $tav+S : +tav 02_A ;
+ $tud+A:+tud GI ;
+ $tud+S:+tud GI ;
+ $tu+A:+tu 01 ;
+ $tu+S:+tu 01 ;
+ $tav+A:+tav 02_A ;
+ $tav+S:+tav 02_A ;
 
 LEXICON An_dud
- ma+V+partic+past+imps : +dud GI ;
- ma+V+indic+impf+imps+neg : +dud GI ;
- ma+V+indic+impf+imps+af : +di GI ; 
- ma+V+cond+pres+imps : +daks GI ; 
- ma+V+cond+past+imps : +duks GI ; 
- ma+V+quot+pres+imps : +davat GI ; 
- ma+V+quot+past+imps : +duvat GI ; 
- ma+V+imper+pres+imps : +dagu GI ; 
- ma+V+sup+imps : +dama GI ; 
- ma+V+indic+pres+imps+neg : +da GI ; 
- ma+V+partic+pres+imps : +dav GI ;
+ ma+V+partic+past+imps:+dud GI ;
+ ma+V+indic+impf+imps+neg:+dud GI ;
+ ma+V+indic+impf+imps+af:+di GI ; 
+ ma+V+cond+pres+imps:+daks GI ; 
+ ma+V+cond+past+imps:+duks GI ; 
+ ma+V+quot+pres+imps:+davat GI ; 
+ ma+V+quot+past+imps:+duvat GI ; 
+ ma+V+imper+pres+imps:+dagu GI ; 
+ ma+V+sup+imps:+dama GI ; 
+ ma+V+indic+pres+imps+neg:+da GI ; 
+ ma+V+partic+pres+imps:+dav GI ;
 
- $dud+A : +dud GI ;
- $dud+S : +dud GI ;
- $du+S : +du 01 ;
- $du+A : +du 01 ;
- $dav+A : +dav 02_A ;
- $dav+S : +dav 02_A ;
+ $dud+A:+dud GI ;
+ $dud+S:+dud GI ;
+ $du+S:+du 01 ;
+ $du+A:+du 01 ;
+ $dav+A:+dav 02_A ;
+ $dav+S:+dav 02_A ;
 
 LEXICON An_takse
- ma+V+indic+pres+imps+af : +takse GI ;
+ ma+V+indic+pres+imps+af:+takse GI ;
 
 LEXICON An_dakse
- ma+V+indic+pres+imps+af : +dakse GI ;
+ ma+V+indic+pres+imps+af:+dakse GI ;
 
 LEXICON An_akse
- ma+V+indic+pres+imps+af : +akse GI ;
+ ma+V+indic+pres+imps+af:+akse GI ;
 
 !!!!!
 
@@ -1486,14 +1486,14 @@ LEXICON An_akse
 ! Produktiivne verbituletus (v,tav,nud,nu,tud,tu on analoogiarühmade all)
 !!!!!!
 LEXICON Deriv_mine_ja
-  ja+S : +ja 01;
-  mine+S : +mi 12_NE-SE-S;
+  ja+S:+ja 01;
+  mine+S:+mi 12_NE-SE-S;
 
 LEXICON Deriv_ja
-  ja+S : +ja 01;
+  ja+S:+ja 01;
 
 LEXICON Deriv_mine
-  mine+S : +mi 12_NE-SE-S;
+  mine+S:+mi 12_NE-SE-S;
 
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
