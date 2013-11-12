@@ -34,7 +34,7 @@ Definitions
     Gi = ( "+gi" );
 
     Omadussõna' = Sona "+A" ([ "+comp" | "+super" ]);
-    Omadussõna = [ Omadussõna' ArvJaKääne | Sona "+A" | Sona "+A" "+partic" ];
+    Omadussõna = [ Omadussõna' ArvJaKääne | Sona "+A" ( "+partic" ) ];
     Nimisõna' = Sona [ "+S" | "+H" ];
     Nimisõna = Nimisõna' ArvJaKääne;
     Arvsõna = Sona [ "+Num" | "+Ord" ] (ArvJaKääne);
@@ -49,7 +49,7 @@ Definitions
     Tegusõna = Tähtsõne VerbiParadigma;
     Muutumatusõna = Määrsõna | Hüüdsõna | Sidesõna | Kaassõna | Muusõna | Genatribuut;
 
-    SP = ( "&" "-" ) "&";
-    PreKriips = ( "-" "&" );
-    Kriips = "&" "-";
+    SP = ( %& %- ) %&;
+    PreKriips = ( %- %& );
+    Kriips = %& %-;
 
