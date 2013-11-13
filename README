@@ -22,7 +22,7 @@ Exceptions are:
 Files rul.txt and lex_main.txt contain a lot of work by Heli Uibo. 
 
 
-To boild a FST:
+To build a FST:
 
  - with Xerox tools: update Makefile or use parameter:
 
