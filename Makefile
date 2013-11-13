@@ -40,17 +40,17 @@ lex-av.fst: rules.fst lex.fst
 	$(XFST) -e 'read regex  [@"rules.fst"].i .o. [@"lex.fst"]' -e 'save lex-av.fst' < /dev/null
 
 arvud.fst: arvud.txt
-	$(XFST) -e 'read lexc arvud.txt' -e 'eliminate flag LEXNAME' -e 'save arvud.fst' < /dev/null
+	$(XFST) -e 'read lexc arvud.txt' -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e 'save arvud.fst' < /dev/null
 
 lihtsonad.fst: deriv_filter.txt lex_exc.fst lex-av.fst rules.fst arvud.fst
 	$(XFST) -e 'read regex [ @re"deriv_filter.txt" .o. [[@"lex_exc.fst"] .P. [@"lex-av.fst"]] .o. ~$$"#" .o.  @"rules.fst" ] | @"arvud.fst"' -e 'save lihtsonad.fst' < /dev/null
 
 liitsonamask.fst:	liitsona_full.txt
-	$(XFST) -e 'read lexc liitsona_full.txt' -e 'eliminate flag LEXNAME' -e 'save liitsonamask.fst' < /dev/null
+	$(XFST) -e 'read lexc liitsona_full.txt' -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e 'save liitsonamask.fst' < /dev/null
 
 
 liitsonafilter.fst:	liitsona_filter_full.txt
-	$(XFST) -e 'read lexc liitsona_filter_full.txt' -e 'eliminate flag LEXNAME' -e 'save liitsonafilter.fst' < /dev/null
+	$(XFST) -e 'read lexc liitsona_filter_full.txt' -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e 'save liitsonafilter.fst' < /dev/null
 
 full-compound.fst: lihtsonad.fst
 	$(XFST) -e 'read regex ("-" "&") [ @"lihtsonad.fst" "&" ("-" "&") ]* @"lihtsonad.fst" ("&" "-")' -e 'save full-compound.fst' < /dev/null
@@ -77,7 +77,7 @@ rules-av.fst: rul-av.txt
 
 # põhisõnastik
 lex.fst: lex_full.txt
-	$(XFST) -e "read lexc lex_full.txt" -e 'eliminate flag LEXNAME' -e "save stack lex.fst" < /dev/null
+	$(XFST) -e "read lexc lex_full.txt" -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e "save stack lex.fst" < /dev/null
 
 # põhisõnastiku lexc-lähtetekst pannakse tükkidest kokku, tükkide järjekord on oluline
 lex_full.txt: lex_multichar.txt lex_main.txt lex_gi.txt $(GENERATED_LEX)
@@ -89,7 +89,7 @@ lex_tyved.txt: tyvebaas.txt tyvebaas-lisa.txt eki2lex.pl
 
 # eranditesõnastik
 lex_exc.fst: lex_exc.txt
-	$(XFST) -e "read lexc lex_exc.txt" -e 'eliminate flag LEXNAME' -e "save stack lex_exc.fst" < /dev/null
+	$(XFST) -e "read lexc lex_exc.txt" -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e "save stack lex_exc.fst" < /dev/null
 
 # eranditesõnastiku lexc-lähtetekst
 lex_exc.txt: lex_multichar.txt lex_override.txt lex_override_gen.txt lex_gi.txt
