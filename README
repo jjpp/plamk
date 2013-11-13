@@ -22,6 +22,19 @@ Exceptions are:
 Files rul.txt and lex_main.txt contain a lot of work by Heli Uibo. 
 
 
+To boild a FST:
+
+ - with Xerox tools: update Makefile or use parameter:
+
+    make XEROX=/location/of/your/xerox/tools/bin
+
+
+ - with HFST: (tested with SVN rev 3613, built with configure options 
+ 	--enable-proc --enable-lexc --enable-xfst --enable-foma-wrapper)
+
+    make XFST="hfst-xfst -f foma" TWOLC="hfst-twolc -f foma"
+
+
 jjpp@meso.ee
 
 
