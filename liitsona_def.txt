@@ -13,7 +13,7 @@ Definitions
     				  | %+in | %+el | %+all | %+ad | %+abl | %+tr 
 				  | %+term | %+es | %+abes | %+kom ];
 
-    VerbiParadigma = "ma+V"  [
+    VerbiParadigma = m a "+V"  [
 		 [ %+sup [ %+ill | %+in | %+el | %+abes | %+tr | %+imps ] ] |
 		   %+inf | %+ger |
 		 [ %+partic [ %+pres | %+past ] [ %+ps | %+imps ] ] |
