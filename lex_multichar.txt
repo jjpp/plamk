@@ -33,21 +33,21 @@ Multichar_Symbols
 +pl	! mitmus	! plural
 
 ! käänded
-+nom	! nimetav			! nominative	! part, maja
-+gen	! omastav 			! genitive	! pardi, maja
-+part	! osastav			! partitive	! parti, maja
-+ill	! sisseütlev			! illative	! pardisse, majasse
++nom	! nimetav			! nominative	! part, maja		pardid, majad
++gen	! omastav 			! genitive	! pardi, maja		partide, majade
++part	! osastav			! partitive	! parti, maja		parte, maju
++ill	! sisseütlev			! illative	! pardisse, majasse	partidesse, majadesse
 +adit	! suunduv (lühike sisseütlev?)	! aditive	! p'arti, majja
-+in	! seesütlev			! inessive	! pardis, majas
-+el	! seestütlev			! elative	! pardist, majast
-+all	! alaleütlev			! allative	! pardile, majale
-+ad	! alalütlev			! adessive	! pardil, majal
-+abl	! alaltütlev			! ablative	! pardilt, majalt
-+tr	! saav				! translative	! pardiks, majaks
-+term	! rajav				! terminative	! pardini, majani
-+es	! olev				! essive	! pardina, majana
-+abes	! ilmaütlev			! abessive	! pardita, majata
-+kom	! kaasaütlev			! comitative	! pardiga, majaga
++in	! seesütlev			! inessive	! pardis, majas		partides, majades
++el	! seestütlev			! elative	! pardist, majast	partidest, majadest
++all	! alaleütlev			! allative	! pardile, majale	partidele, majadele
++ad	! alalütlev			! adessive	! pardil, majal		partidel, majadel
++abl	! alaltütlev			! ablative	! pardilt, majalt	partidelt, majadelt
++tr	! saav				! translative	! pardiks, majaks	partideks, majadeks
++term	! rajav				! terminative	! pardini, majani	partideni, majadeni
++es	! olev				! essive	! pardina, majana	partidena, majadena
++abes	! ilmaütlev			! abessive	! pardita, majata	partideta, majadeta
++kom	! kaasaütlev			! comitative	! pardiga, majaga	partidega, majadega
 
 ! võrdlusastmed
 +comp	! komparatiiv	! comparative
@@ -100,9 +100,9 @@ Multichar_Symbols
 !			  past    singular 1st person	+sin, +in	lugesin, tegin
 !				           2nd person	+sid, +id	lugesid, tegid
 !					   3rd person	+s, +is, +i	luges, tõstis, tegi
-!				  plural   1st person
-!					   2nd person
-!                                          3rd person
+!				  plural   1st person	+sime, +ime	lugesime, tegime
+!					   2nd person	+site, +ite	lugesite, tegite
+!                                          3rd person	+sid, +id	lugesid, tegid
 !				  impersonal		+ti, +di	loeti
 !
 !             quotative   present personal		+vat		lugevat
