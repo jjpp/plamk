@@ -1,18 +1,189 @@
-Multichar_Symbols 
+Multichar_Symbols
 
-! 
-+I +J +G +H +S +A +Num +Ord +Pron
-!ma+V
- +V +K +Adv +X
-+_ke +_kene +_us +_lt +_ini +gi
-+sg +pl
-+nom +gen +part +ill +adit +in +el +all +ad +abl +tr +term +es +abes +kom
-+comp +super
-+indic +imper +cond +quot
-+pres +past +impf
-+ps1 +ps2 +ps3 
-+neg +af 
-+imps +ps
-+inf +sup
-+partic +ger
-+prefix +sufix ! liitsõnaosad
+! sõnaliik
+! part of speech
++S	! nimisõna		! substantive		! asi
++H	! päris nimi		! proper name		! Jaan
++A	! omadussõna		! adjective		! asjalik
++Num	! arvsõna		! numeral		! kaks
++Ord	! järgarv		! ordinal		! teine
++Pron	! asesõna		! pronoun		! see
++V	! tegusõna 		! verb			! asjastama
++Adv	! määrsõna		! adverb		! asjatult
++I	! hüüdsõna		! interjection		! hei
++J	! sidesõna		! conjunction		! ja
++G	! genitiivatribuut	! genitive attribute	! saksa
++K	! kaassõna		! pre/postposition	! kaudu
++X	! muu sõna		! other word		! kihku, kihla, minap
+
+! tuletised, sisemiseks kasutamiseks, filtreerimiseks
+! derivation suffixes, used to filter out illegal combinations internally
++_ke	! deminutive
++_kene  ! deminutive
++_us
++_lt
++_ini	! comparation? paremini, kiiremini (how? better than .., faster than ..)
+
+! partikkel -gi/-ki
+! particle -gi/-ki
++gi
+
+! arv 			! number
++sg	! ainsus	! singular
++pl	! mitmus	! plural
+
+! käänded
++nom	! nimetav			! nominative	! part, maja
++gen	! omastav 			! genitive	! pardi, maja
++part	! osastav			! partitive	! parti, maja
++ill	! sisseütlev			! illative	! pardisse, majasse
++adit	! suunduv (lühike sisseütlev?)	! aditive	! p'arti, majja
++in	! seesütlev			! inessive	! pardis, majas
++el	! seestütlev			! elative	! pardist, majast
++all	! alaleütlev			! allative	! pardile, majale
++ad	! alalütlev			! adessive	! pardil, majal
++abl	! alaltütlev			! ablative	! pardilt, majalt
++tr	! saav				! translative	! pardiks, majaks
++term	! rajav				! terminative	! pardini, majani
++es	! olev				! essive	! pardina, majana
++abes	! ilmaütlev			! abessive	! pardita, majata
++kom	! kaasaütlev			! comitative	! pardiga, majaga
+
+! võrdlusastmed
++comp	! komparatiiv	! comparative
++super	! superlatiiv	! superlative
+
+! verb
+! finiitsed (pöördelised) vormid
+! finite (conjugable) forms
+
+! kategooriad: isik, arv, tegumood, aeg, kõneviis, kõnelaad
+! categories: person, number, voice, tense, mood, aspect
+
+! kõneviis		! mood
++indic	! kindel	! indicative
++imper	! käskiv	! imperative
++cond	! tingiv	! conditional
++quot	! kaudne	! quotative
+
+! aeg			! tense
++pres	! olevik	! present
++past	! minevik	! past (used for conditional and particles)
++impf	! lihtminevik	! past imperfect (used for indicative mood only)
+! täisminevik, past perfect: olema (pres) + nud/tud/dud (olen teinud)
+! enneminevik, past pluperfect: olema (impf) + nut/tud/dud (olin teinud)
+
+! pööre			! person
++ps1	! 1. pööre	! 1st person
++ps2	! 2. pööre	! 2nd person
++ps3 	! 3. pööre	! 3rd person
+
+! kõnelaad		! aspect
++neg	! eitav kõne	! negative
++af 	! jaatav kõne	! affirmative
+
+! tegumood		! voice
++imps	! umbisikuline	! impersonal
++ps	! isikuline	! personal
+
+
+! kategooriate võimalikud kombinatsioonid
+! possible combinations of categories
+
+! affirmative indicative  present singular 1st person	+n		loen
+!					   2nd person	+d		loeb
+!					   3rd person	+b		loed
+!				  plural   1st person	+me		loeme
+!					   2nd person	+te		loete
+!					   3rd person	+vad		loevad
+!				  impersonal		+takse, +dakse	loetakse
+!			  past    singular 1st person	+sin, +in	lugesin, tegin
+!				           2nd person	+sid, +id	lugesid, tegid
+!					   3rd person	+s, +is, +i	luges, tõstis, tegi
+!				  plural   1st person
+!					   2nd person
+!                                          3rd person
+!				  impersonal		+ti, +di	loeti
+!
+!             quotative   present personal		+vat		lugevat
+!				  impersonal		+tavat, +davat	loetavat
+!			  past    personal		+nuvat		lugenuvat
+!			 	  impersonal		+tuvat		loetuvat* ? (can't think of example sentence)
+!
+!	      conditional present singular 1st person	+ksin		loeksin
+!					   2nd person	+ksid		loeksid
+!					   3rd person	+ks		loeks
+!				  plural   1st person	+ksime		loeksime
+!					   2nd person	+ksite		loeksite
+!					   3rd person	+ksid		loeksid
+!				  personal		+ks		loeks
+!				  impersonal		+taks, +daks	loetaks
+!			  past    singular 1st person	+nuksin		lugenuksin
+!					   2nd person	+nuksid		lugenuksid
+!					   3rd person	+nuks		lugenuks
+!				  plural   1st person	+nuksime	lugenuksime
+!					   2nd person	+nuksite	lugenuksite
+!					   3rd person	+nuksid		lugenuksid
+!				  personal		+nuks		lugenuks
+!				  impersonal		+tuks, +duks	loetuks
+!
+!	      imperative  present singular 1st person	--
+!					   2nd person	+0		loe
+!					   3rd person	+gu, +ku	lugegu
+!				  plural   1st person	+gem, +kem	lugegem
+!					   2nd person	+ge, +ke	lugege
+!					   3rd person	+gu, +ku	lugegu
+!				  impersonal		+tagu, +dagu	loetagu
+!
+! negative    indicative  present personal		ei +0			ei loe
+!				  impersonal		ei +ta, +da		ei loeta
+!			  past	  personal		ei +nud			ei lugenud
+!				  impersonal		ei +tud, +dud		ei loetud
+!
+!	      quotative   present personal		ei +vat			ei lugevat
+!				  impersonal		ei +tavat, +davat	ei loetavat
+!			  past    personal		ei +nuvat		ei lugenuvat
+!				  impersonal		ei +tuvat, +duvat	ei loetuvat
+!
+!	      conditional present personal		ei +ks			ei loeks
+!				  impersonal		ei +taks, +daks		ei loetaks
+!			  past    personal		ei +nuks		ei lugenuks
+!				  impersonal		ei +tuks, +duks		ei loetuks
+!
+!	      imperative  present singular 1st person	--
+!					   2nd person	ära +0			ära loe
+!					   3rd person	ärgu +gu, +ku		ärgu lugegu
+!				  plural   1st person	ärgem +gem, +kem	ärgem lugegem
+!					   2nd person	ärge +ge, +ke		ärge lugege
+!					   3rd person	ärgu +gu, +ku		ärgu lugegu
+!				  impersonal		ärgu +tagu, +dagu	ärgu loetagu
+
+
+! infiniitsed (nn käänduvad) verbivormid
+! infinite ("declinable") verb forms
+
++sup	! ma-tegevusnimi ! supine (ma-infinitive)	! lugema
+! (personal)
+! +sup+ill  -- lugema
+! +sup+in   -- lugemas
+! +sup+el   -- lugemast
+! +sup+tr   -- lugemaks
+! +sup+abes -- lugemata
+! (impersonal)
+! +sup+imps -- loetama
+
++inf	! da-tegevusnimi ! inifinitive (da-infinitive)	! lugeda
+
++ger	! des-vorm	 ! gerund (des-form)		! lugedes
+
++partic	! kesksõnad ! participles
+! +partic+pres+ps   -- personal present particle  -- lugev
+! +partic+pres+imps -- impersonal resent particle -- loetav
+! +partic+past+ps   -- personal past particle     -- lugenud
+! +partic+past+imps -- impersonal past particle   -- loetud
+
+! ainult liitsõna osadena esinevad vormid
+! forms that can exist only as a part of compound
++prefix
++suffix
+

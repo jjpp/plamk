@@ -1,6 +1,6 @@
 ! Copyright © 1999-2005 by Heli Uibo.
 ! Copyright © 2010 by Jaak Pruulmann-Vengerfeldt.
-! All rights reserved. 
+! All rights reserved.
 
 
 !Definitions
@@ -12,7 +12,7 @@
 LEXICON Sõnastik
   Tüved;
   Lisanduvad_erandid;
-  Kohalikud_erandid; 
+  Kohalikud_erandid;
 
 
 LEXICON Kohalikud_erandid
@@ -102,10 +102,10 @@ LEXICON Kohalikud_erandid
  üld+Adv+prefix:üld #; !?
  üli+Adv+prefix:üli #;
 
- viker+Adv+prefix:viker #; !? 
+ viker+Adv+prefix:viker #; !?
 
 ! järelliitekomponendid
- võitu+Adv+sufix:võitu #;
+ võitu+Adv+suffix:võitu #;
 
 
 
@@ -132,7 +132,7 @@ LEXICON Kohalikud_erandid
 ! ??? kurat+S:kurat 02; ! a0: kurat, b0: kuradi, b0r: kurade
  kurat+S:kurat An_SgN;
  kurat+S:kuradi TP_02b0;
- 
+
 ! ??? kuuas+S:kuuas 07_S-0; ! an: kuuas, (at): kuudas, bt: kuuda, btr: #
  kuuas+S:kuuas$ TP_07an;
  kuuas+S:kuuda TP_07bt;
@@ -152,7 +152,7 @@ LEXICON Kohalikud_erandid
 ! ??? lemmel+S:lemmel 08; ! an: lemmel, (at): lemmel, bt: lemle
  lemmel+S:lemmel TP_08an;
  lemmel+S:lemle TP_07bt;
- 
+
 ! ??? lõõg+S:lõõg 22; ! at: lõõg, bt: lõõga, bn: lõa, btv: lõõgu, bnv: 0
  lõõg+S:lõõg An_SgN;
  lõõg+S:lõa$ TP_22bn;
@@ -264,7 +264,7 @@ LEXICON Kohalikud_erandid
  õlu+S:õlle$ TP_24bn;
  õlu+S:õlle TP_24bt;
 
- 
+
 ! tüvevariantide moodustus ja kasutus
 
 LEXICON 01	!vallatu
@@ -433,9 +433,9 @@ LEXICON 10_
 LEXICON 11		!harjutus
 An_SgN;
 :e An_SgG;
-!:e An_SgG_der; 
+!:e An_SgG_der;
 An_SgP_t;
-An_SgAdt_se; 
+An_SgAdt_se;
 An_PlG_te;
 :i An_PlP_V;
 :i An_Pl_Vok;
@@ -460,7 +460,7 @@ An_SgN;
 :e An_SgG;
 An_SgG_der;
 An_SgP_t;
-An_SgAdt_de; 
+An_SgAdt_de;
 An_PlG_te;
 :i An_PlP_V;
 :i An_Pl_Vok;
@@ -470,7 +470,7 @@ LEXICON 14_S-NE	!laas
 :ne$ An_SgG;
 ! :ne$ An_SgG_der;
 :n$ An_SgP_t;
-:n$ An_SgAdt_de; 
+:n$ An_SgAdt_de;
 :n$ An_PlG_te;
 :si An_PlP_V;
 :si An_Pl_Vok; ! ???
@@ -480,7 +480,7 @@ An_SgN;
 :e$ An_SgG;
 ! :e$ An_SgG_der;
 :$ An_SgP_t;
-:$ An_SgAdt_de; 
+:$ An_SgAdt_de;
 :$ An_PlG_te;
 :i An_PlP_V;
 :i An_Pl_Vok;
@@ -500,25 +500,25 @@ TP_16a0;
 
 LEXICON 16_Adt	!kõne ?? kere, pere, tare
 TP_16a0;
-:2 An_SgAdt_0;   
+:2 An_SgAdt_0;
 
 LEXICON 16_GRI_Adt	!pogri
 :gri TP_16a0;
-:kri An_SgAdt_0;   
+:kri An_SgAdt_0;
 
 LEXICON 17	!tuvi
 TP_17a0;
 
 LEXICON 17_Adt	!saba, kivi
 TP_17a0;
-:2 An_SgAdt_0; 
+:2 An_SgAdt_0;
 
-LEXICON 18	!lagi, ladu, jõgi, lugu 
+LEXICON 18	!lagi, ladu, jõgi, lugu
 TP_18at;
 :$ TP_18an;
 :2 An_SgAdt_0;
 
-LEXICON 18_PlPV	
+LEXICON 18_PlPV
 18;
 :+W An_PlP_V;
 
@@ -531,7 +531,7 @@ LEXICON 18_PlPV_PlV
 :+W An_PlP_V;
 :$+W An_Pl_Vok;
 
-LEXICON 19	!seminar 
+LEXICON 19	!seminar
 TP_19a0;
 :i TP_19b0;
 
@@ -556,12 +556,12 @@ An_SgN;
 :e TP_22bt;
 
 LEXICON 22_I  !tekk
-An_SgN;		
+An_SgN;
 :i$ TP_22bn;
 :i TP_22bt;
 
 LEXICON 22_FI  !proff, nišš
-:2 An_SgN;		
+:2 An_SgN;
 :i$ TP_22bn;
 :2i TP_22bt;
 
@@ -570,9 +570,9 @@ LEXICON 22_KPT_I !sigaret, kompvek, piiskop
 :i$ TP_22bn;
 :i TP_22bt;
 
-LEXICON 22_U  !tikk 
+LEXICON 22_U  !tikk
 An_SgN;
-:u$ TP_22bn; 
+:u$ TP_22bn;
 :u TP_22bt;
 
 LEXICON 22_0-U ! jõud-jõu-jõudu
@@ -663,7 +663,7 @@ TP_26a0;
 !*****noomenite lõpp ja verbide algus********
 
 LEXICON 27	! muutumatu tüvega ja astmevahelduseta verbid (kõige produktiivsem verbitüüp (elama)
- TP_27a0; 
+ TP_27a0;
 
 LEXICON 28	! ma ja da - TA, olevik -  NA (leppima)
  :2 TP_28at;
@@ -688,11 +688,11 @@ LEXICON 32	! ma ja da - TA+konsonanttüvi, olevik - NA+Vokaaltüvi (seisma)
 LEXICON 32_E	! tüvevokaal e (tõusma)
  TP_32at;
  :e$ TP_32bn;
- 
+
 LEXICON 33	! erinevus eelmisest - da, dud, sin, sime (naerma)
  TP_33at;
  :a$ TP_33bn;
- 
+
 LEXICON 33_E  ! tüvevokaal e (kuulma)
  TP_33at;
  :e$ TP_33bn;
@@ -706,12 +706,12 @@ LEXICON 34_K_TUD ! laskma/mõskma/puskma
  K TP_34at;
  :Ke$ TP_34bn;
  :$ TP_34cn;
- 
+
 LEXICON 34_D_TUD ! hoidma-leidma-püüdma
  D TP_34at;
  d:Da$ TP_34bn;
  d:$ TP_34cn;
- 
+
 
 LEXICON 35_	! 4 tüve: nut+ma (at), nuta+b (bn), nute+tud (cn), nutt+a (ct)
  TP_35at;
@@ -749,10 +749,10 @@ LEXICON 38_SIN ! (ct tüve ei moodustu?) müüma, pooma, käima, viima
 LEXICON 38_
  :$ TP_38an;
  TP_38at;
- :$ TP_38bn; ! tüvevariandi "süü(a)" tekitavad reeglid 
+ :$ TP_38bn; ! tüvevariandi "süü(a)" tekitavad reeglid
  TP_38bt;
 
- 
+
 ! TP_  tüvevariantide paigutusviisid paradigmas
 
 LEXICON TP_02b0  ! õpiku
@@ -767,7 +767,7 @@ An_SgP_t;
 An_PlG_te;
 An_PlP_id;
 
-LEXICON TP_04b0-05bt	!aseme (=04), liikme (=05) 
+LEXICON TP_04b0-05bt	!aseme (=04), liikme (=05)
 An_SgG;
 An_PlG_te;
 An_PlP_id;
@@ -786,7 +786,7 @@ An_SgN;
 An_SgP_t;
 An_PlG_de;
 
-LEXICON TP_09a0	! katus 
+LEXICON TP_09a0	! katus
 An_SgN;
 An_SgP_t;
 An_PlG_te;
@@ -825,7 +825,7 @@ An_PlP_sid;
 LEXICON TP_18at	!sõda, tigu
 An_SgN;
 ! siin olid kolmed?
-An_SgP_0; ! TA muutetüvi 
+An_SgP_0; ! TA muutetüvi
 An_PlG_de;
 An_PlP_sid;
 
@@ -1017,7 +1017,7 @@ LEXICON TP_31b0
 LEXICON TP_32at	!seis+ma
  An_ma;
  An_mata;
- An_ev;	
+ An_ev;
  An_is;
  An_in;
  An_ime;
@@ -1035,7 +1035,7 @@ LEXICON TP_32bn	!seisa+b
 LEXICON TP_33at	!naer+ma
  An_ma;
  An_mata;
- An_ev;	
+ An_ev;
  An_is;
  An_sin;
  An_sime;
@@ -1053,7 +1053,7 @@ LEXICON TP_33bn	!naera+b
 LEXICON TP_34at	!saat+ma
  An_ma;
  An_mata;
- An_ev;	
+ An_ev;
  An_is;
  An_sin;
  An_sime;
@@ -1078,7 +1078,7 @@ LEXICON TP_35at	!nut+ma
  An_ke;
  An_nud_der;
  Deriv_mine_ja;
- 
+
 LEXICON TP_35bn	!nuta+b
  An_b;
  An_me;
@@ -1181,37 +1181,37 @@ LEXICON An_SgG  ! SgG analoogiarühm
  !LIIT_DEV_G;
 
 LEXICON An_SgG_der ! siia tuleb üleval pool ka sobiv tüvi
- +_us+S:+us 11; 
- +_us+S:+us 09_E; 
- 
+ +_us+S:+us 11;
+ +_us+S:+us 09_E;
+
 
 LEXICON An_SgP_0  ! SgP (formatiiv 0)
  +sg+part:0 GI;
  !LIIT_DEV_P;
 
-LEXICON An_SgP_t  ! SgP (formatiiv t) 
+LEXICON An_SgP_t  ! SgP (formatiiv t)
  +sg+part:+t GI;
  !:+t LIIT_DEV_P;
 
-LEXICON An_SgP_tt  ! SgP (formatiiv tt) 
+LEXICON An_SgP_tt  ! SgP (formatiiv tt)
  +sg+part:+tt GI;
  !:+tt LIIT_DEV_P;
 
-LEXICON An_SgP_d  ! SgP (formatiiv d) 
+LEXICON An_SgP_d  ! SgP (formatiiv d)
  +sg+part:+d GI;
  !:+d LIIT_DEV_P;
 
 
-LEXICON An_SgAdt_0  ! SgAdt (formatiiv 0) 
+LEXICON An_SgAdt_0  ! SgAdt (formatiiv 0)
  +sg+adit:0 GI;
 
-LEXICON An_SgAdt_de  ! SgAdt (formatiiv de) 
+LEXICON An_SgAdt_de  ! SgAdt (formatiiv de)
  +sg+adit:+de GI;
 
-LEXICON An_SgAdt_se  ! SgAdt (formatiiv se) 
+LEXICON An_SgAdt_se  ! SgAdt (formatiiv se)
  +sg+adit:+se GI;
 
-LEXICON An_SgAdt_tte ! SgAdt (formatiiv tte) 
+LEXICON An_SgAdt_tte ! SgAdt (formatiiv tte)
  +sg+adit:+tte GI;
 
 
@@ -1238,7 +1238,7 @@ LEXICON An_PlG_te  ! de-mitmuse (formatiiv te) analoogiarühm
  +pl:+te KÄÄNE_1;
  !:+te LIIT_DEV_G;
 
-LEXICON An_PlG_de  ! de-mitmuse (formatiiv de) analoogiarühm 
+LEXICON An_PlG_de  ! de-mitmuse (formatiiv de) analoogiarühm
  +pl+gen:+de GI;
  +pl:+de KÄÄNE_1;
  !:+de LIIT_DEV_G;
@@ -1253,8 +1253,8 @@ LEXICON An_PlG_V	!õnnelik-tüüp
 LEXICON An_Prefix
  +prefix: #;
 
-LEXICON An_Sufix
- +sufix: #;
+LEXICON An_Suffix
+ +suffix: #;
 
 LEXICON Spr ! ülivõrre
  +super:%!+im 02_A;
@@ -1295,14 +1295,14 @@ LEXICON An_mata
 
 LEXICON An_v
  ma+V+partic+pres+ps:v GI;
- v+A:v 02_A; 
- v+S:v 02_A; 
+ v+A:v 02_A;
+ v+S:v 02_A;
 ! v+A+sg+nom+partic:v GI;
 
 LEXICON An_ev
  ma+V+partic+pres+ps:ev GI;
- ev+A:Ev 02_A; 
- ev+S:Ev 02_A; 
+ ev+A:Ev 02_A;
+ ev+S:Ev 02_A;
 ! ev+A+sg+nom+partic GI;
 
 !!!!!
@@ -1361,37 +1361,38 @@ LEXICON An_a
 !!!!!
 
 LEXICON An_ge
- ma+V+imper+pres+ps3+sg+ps+af:+gu GI ; 
- ma+V+imper+pres+ps1+pl+ps+af:+gem GI ; 
- ma+V+imper+pres+ps2+pl+ps+af:+ge GI ; 
- ma+V+imper+pres+ps3+pl+ps+af:+gu GI ;
- An_nud ; 
-  
+ ma+V+imper+pres+ps3+sg+ps:+gu GI ;
+ ma+V+imper+pres+ps1+pl+ps:+gem GI ;
+ ma+V+imper+pres+ps2+pl+ps:+ge GI ;
+ ma+V+imper+pres+ps3+pl+ps:+gu GI ;
+ An_nud ;
+
 LEXICON An_ke
- ma+V+imper+pres+ps3+sg+ps+af:+ku GI ;
- ma+V+imper+pres+ps1+pl+ps+af:+kem GI ;
- ma+V+imper+pres+ps2+pl+ps+af:+ke GI ;
- ma+V+imper+pres+ps3+pl+ps+af:+ku GI ;
-  An_nud ;
+ ma+V+imper+pres+ps3+sg+ps:+ku GI ;
+ ma+V+imper+pres+ps1+pl+ps:+kem GI ;
+ ma+V+imper+pres+ps2+pl+ps:+ke GI ;
+ ma+V+imper+pres+ps3+pl+ps:+ku GI ;
+ An_nud ;
 
 LEXICON An_nud
   ma+V+partic+past+ps:+nud GI ;
   ma+V+indic+impf+ps+neg:+nud GI ;
-  ma+V+cond+partic+past+ps1+sg+af:+nuksin GI ; 
-  ma+V+cond+partic+past+ps2+sg+af:+nuksid GI ; 
-  ma+V+cond+partic+past+ps3+sg+af:+nuks GI ; 
-  ma+V+cond+partic+past+ps1+pl+af:+nuksime GI ; 
-  ma+V+cond+partic+past+ps2+pl+af:+nuksite GI ; 
-  ma+V+cond+partic+past+ps3+pl+af:+nuksid GI ; 
-  ma+V+cond+partic+past+ps1+sg+af:+nuks GI ; 
-  ma+V+cond+partic+past+ps2+sg+af:+nuks GI ; 
-  ma+V+cond+partic+past+ps1+pl+af:+nuks GI ; 
-  ma+V+cond+partic+past+ps2+pl+af:+nuks GI ; 
-  ma+V+cond+partic+past+ps3+pl+af:+nuks GI ; 
-  ma+V+quot+partic+past+af:+nuvat GI ;
+  ma+V+cond+past+ps:+nuks GI ;
+  ma+V+cond+past+ps1+sg+ps:+nuks GI ;
+  ma+V+cond+past+ps1+sg+ps:+nuksin GI ;
+  ma+V+cond+past+ps2+sg+ps:+nuks GI ;
+  ma+V+cond+past+ps2+sg+ps:+nuksid GI ;
+  ma+V+cond+past+ps3+sg+ps:+nuks GI ;
+  ma+V+cond+past+ps1+pl+ps:+nuks GI ;
+  ma+V+cond+past+ps1+pl+ps:+nuksime GI ;
+  ma+V+cond+past+ps2+pl+ps:+nuks GI ;
+  ma+V+cond+past+ps2+pl+ps:+nuksite GI ;
+  ma+V+cond+past+ps3+pl+ps:+nuks GI ;
+  ma+V+cond+past+ps3+pl+ps:+nuksid GI ;
+  ma+V+quot+past+ps:+nuvat GI ;
 
 LEXICON An_nud_der
-  nud+A:+nud GI ; 
+  nud+A:+nud GI ;
 !  nud+A+partic:+nud GI;
   nu+S:nu 01;
   nu+A:nu 01;
@@ -1408,17 +1409,23 @@ LEXICON An_b
  ma+V+indic+pres+ps3+sg+ps+af:+b GI;
  ma+V+indic+pres+ps+neg:+0 GI;
  ma+V+imper+pres+ps2+sg:+0 GI;
+
+ ma+V+cond+pres+ps+af:+ks GI ;
+ ma+V+cond+pres+ps+neg:+ks GI ;
  ma+V+cond+pres+ps1+sg+ps+af:+ksin GI ;
  ma+V+cond+pres+ps2+sg+ps+af:+ksid GI ;
  ma+V+cond+pres+ps3+sg+ps+af:+ks GI ;
+ ma+V+cond+pres+ps3+sg+ps+neg:+ks GI ;
  ma+V+cond+pres+ps1+pl+ps+af:+ksime GI ;
  ma+V+cond+pres+ps2+pl+ps+af:+ksite GI ;
  ma+V+cond+pres+ps3+pl+ps+af:+ksid GI ;
+
  ma+V+cond+pres+ps1+sg+ps+af:+ks GI ;
  ma+V+cond+pres+ps2+sg+ps+af:+ks GI ;
  ma+V+cond+pres+ps1+pl+ps+af:+ks GI ;
  ma+V+cond+pres+ps2+pl+ps+af:+ks GI ;
  ma+V+cond+pres+ps3+pl+ps+af:+ks GI ;
+
 
 LEXICON An_me
  ma+V+indic+pres+ps1+pl+ps+af:+me GI;
@@ -1434,14 +1441,14 @@ LEXICON An_me
 LEXICON An_tud
  ma+V+partic+past+imps:+tud GI ;
  ma+V+indic+impf+imps+neg:+tud GI ;
- ma+V+indic+impf+imps+af:+ti GI ; 
- ma+V+cond+pres+imps:+taks GI ; 
- ma+V+cond+past+imps:+tuks GI ; 
- ma+V+quot+pres+imps:+tavat GI ; 
- ma+V+quot+past+imps:+tuvat GI ; 
- ma+V+imper+pres+imps:+tagu GI ; 
+ ma+V+indic+impf+imps+af:+ti GI ;
+ ma+V+cond+pres+imps:+taks GI ;
+ ma+V+cond+past+imps:+tuks GI ;
+ ma+V+quot+pres+imps:+tavat GI ;
+ ma+V+quot+past+imps:+tuvat GI ;
+ ma+V+imper+pres+imps:+tagu GI ;
  ma+V+sup+imps:+tama GI ;
- ma+V+indic+pres+imps+neg:+ta GI ; 
+ ma+V+indic+pres+imps+neg:+ta GI ;
  ma+V+partic+pres+imps:+tav GI ;
 
  $tud+A:+tud GI ;
@@ -1454,14 +1461,14 @@ LEXICON An_tud
 LEXICON An_dud
  ma+V+partic+past+imps:+dud GI ;
  ma+V+indic+impf+imps+neg:+dud GI ;
- ma+V+indic+impf+imps+af:+di GI ; 
- ma+V+cond+pres+imps:+daks GI ; 
- ma+V+cond+past+imps:+duks GI ; 
- ma+V+quot+pres+imps:+davat GI ; 
- ma+V+quot+past+imps:+duvat GI ; 
- ma+V+imper+pres+imps:+dagu GI ; 
- ma+V+sup+imps:+dama GI ; 
- ma+V+indic+pres+imps+neg:+da GI ; 
+ ma+V+indic+impf+imps+af:+di GI ;
+ ma+V+cond+pres+imps:+daks GI ;
+ ma+V+cond+past+imps:+duks GI ;
+ ma+V+quot+pres+imps:+davat GI ;
+ ma+V+quot+past+imps:+duvat GI ;
+ ma+V+imper+pres+imps:+dagu GI ;
+ ma+V+sup+imps:+dama GI ;
+ ma+V+indic+pres+imps+neg:+da GI ;
  ma+V+partic+pres+imps:+dav GI ;
 
  $dud+A:+dud GI ;
@@ -1501,7 +1508,7 @@ LEXICON Deriv_mine
 
 LEXICON LIIT
 
-LIIT; ! tupikuks.. 
+LIIT; ! tupikuks..
 !& Nimisõna;
 !& Omadussõna;
 !& Tegusõna; ! vähemalt tuletiste jaoks on seda vaja.

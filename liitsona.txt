@@ -82,7 +82,7 @@ LEXICON Määrsõnad
  < Määrsõna ("+prefix") SP > Omadussõnad; ! EKKR, SM39
 
  < Määrsõna ("+prefix") SP > Määrsõnad; ! EKKR, SM42
- < Määrsõna ("+prefix") SP Määrsõna "+sufix" > GI;
+ < Määrsõna ("+prefix") SP Määrsõna "+suffix" > GI;
 
 
 LEXICON Kaassõnad
