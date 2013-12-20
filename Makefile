@@ -81,7 +81,7 @@ generated_overrides.lexc generated_extra.lexc: form.exc fcodes.ini exc2lex.pl
 	cat form.exc | $(TO_UTF8) | $(INVERSE_ETHTHORN) | ./exc2lex.pl
 
 # liitsõna-regulaaravaldistega lexc-sõnastiku lähtetekst
-liitsonamask.lexc: multichar.lexc compound_definitions.lexc compund_rules.lexc
+liitsonamask.lexc: multichar.lexc compound_definitions.lexc compound_rules.lexc
 	cat $^ > $@
 
 # liitsõna-erandite jms regulaaravaldis lexc-sõnastikuna
