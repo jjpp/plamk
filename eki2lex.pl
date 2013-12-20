@@ -58,10 +58,10 @@ while (<>) {
 				$chain = '02_DA';
 			} elsif ($w =~ /[ea][rlnm]$/ && $g eq er_ri($w)) {
 				$chain = '02_I';
-				$w2 =~ s/([ae])([rlnm])$/\u$1$2/; # kaduv E, A
+				$w2 =~ s/([ae])([rlnm])$/\u${1}1$2/; # kaduv E, A
 			} elsif ($w =~ /[ae][rlnm]$/ && $g eq er_ra($w)) {
 				$chain = '02_A';
-				$w2 =~ s/([ae])([rlnm])$/\u$1$2/; # kaduv E. A
+				$w2 =~ s/([ae])([rlnm])$/\u${1}1$2/; # kaduv E. A
 			} elsif ($g eq $w . 'i') {
 				$chain = '02_I';
 			} elsif ($w =~ /ne$/ && $g eq ne_se($w)) {
@@ -78,10 +78,10 @@ while (<>) {
 				$w2 =~ s/t$//;
 			} elsif ($w =~ /(.)\1[eaui][lrmn]$/ && $g eq CCVl_Cl('a', $w)) {
 				$chain = '02_A';
-				$w2 =~ s/(.)\1([eaui])([lmnr])/$1=\u$2$3/;
+				$w2 =~ s/(.)\1([eaui])([lmnr])/$1=\u${2}1$3/;
 			} elsif ($w =~ /(.)\1[eaui][lrmn]$/ && $g eq CCVl_Cl('i', $w)) {
 				$chain = '02_I';
-				$w2 =~ s/(.)\1([eaui])([lmnr])/$1=\u$2$3/;
+				$w2 =~ s/(.)\1([eaui])([lmnr])/$1=\u${2}1$3/;
 			} elsif ($w eq $g . 's') {
 				if ($w =~ /[kg]as$/ && syllcount($g) == 3) {
 					$chain = '02_GAS_S-0';
@@ -102,31 +102,31 @@ while (<>) {
 			}
 			elsif ($w =~ /(.)u([lrvs])$/ && $g =~ /[lrvs]u$/) {
 				$chain = '02_U';
-				$w2 =~ s/(.)u([lrvs])$/$1U$2/;
+				$w2 =~ s/(.)u([lrvs])$/$1U1$2/;
 			}
 			elsif ($w =~ /(.)\1e([lrv])$/ && $g =~ /[lrv]a$/) {
 				$chain = '02_A';
-				$w2 =~ s/(.)\1e([lrv])$/$1=E$2/;
+				$w2 =~ s/(.)\1e([lrv])$/$1=E1$2/;
 			}
 			elsif ($w =~ /(.)\1u([lrvs])$/ && $g =~ /[lrvs]a$/) {
 				$chain = '02_A';
-				$w2 =~ s/(.)\1u([lrvs])$/$1=U$2/;
+				$w2 =~ s/(.)\1u([lrvs])$/$1=U1$2/;
 			}
 			elsif ($w =~ /(.)\1i([lrvs])$/ && $g =~ /[lrvs]a$/) {
 				$chain = '02_A';
-				$w2 =~ s/(.)\1i([lrvs])$/$1=I$2/;
+				$w2 =~ s/(.)\1i([lrvs])$/$1=I1$2/;
 			}
 			elsif ($w =~ /(.)e([lrv])$/ && $g =~ /[lrv]a$/) {
 				$chain = '02_A';
-				$w2 =~ s/(.)e([lrv])$/$1=E$2/;
+				$w2 =~ s/(.)e([lrv])$/$1=E1$2/;
 			}
 			elsif ($w =~ /(.)u([lrvs])$/ && $g =~ /[lrvs]a$/) {
 				$chain = '02_A';
-				$w2 =~ s/(.)u([lrvs])$/$1U$2/;
+				$w2 =~ s/(.)u([lrvs])$/$1U1$2/;
 			}
 			elsif ($w =~ /(.)i([lrvs])$/ && $g =~ /[lrvs]a$/) {
 				$chain = '02_A';
-				$w2 =~ s/(.)i([lrvs])$/$1=I$2/;
+				$w2 =~ s/(.)i([lrvs])$/$1=I1$2/;
 			} elsif ($w =~ /ne$/ && $g =~ /sa$/) {
 				$chain = '02_NE-SA';
 				$w2 =~ s/ne$//;
@@ -144,25 +144,25 @@ while (<>) {
 			
 			if ($g =~ /sa$/ && substr($w, $[, -2) eq substr($g, $[, -2)) {
 				$chain = '03_A';
-				$w2 =~ s/([aieu])s/\u$1s/;
+				$w2 =~ s/([aieu])s/\u${1}1s/;
 			} elsif ($w =~ /bus$/ && $g =~ /psa$/) {
 				$chain = '03_A';
-				$w2 =~ s/bus$/PUs/;
+				$w2 =~ s/bus$/P1U1s/;
 			} elsif ($w =~ /ges$/ && $g =~ /ksa$/) {
 				$chain = '03_A';
-				$w2 =~ s/ges/KEs/;
+				$w2 =~ s/ges/K1E1s/;
 			} elsif ($w =~ /gas$/ && $g =~ /ksa$/) {
 				$chain = '03_A';
-				$w2 =~ s/gas/KAs/;
+				$w2 =~ s/gas/K1A1s/;
 			} elsif ($w =~ /nnis$/ && $g =~ /ndsa$/) {
 				$chain = '03_A';
-				$w2 =~ s/nnis/nDIs/;
+				$w2 =~ s/nnis/nD1I1s/;
 			} elsif ($w =~ /her$/ && $g =~ /tra$/) {
 				$chain = '03_A';
-				$w2 =~ s/her$/hTEr/;
+				$w2 =~ s/her$/hT1E1r/;
 			} elsif ($w =~ /nner$/ && $g =~ /ndri$/) {
 				$chain = '03_I';
-				$w2 =~ s/nner$/nDEr/;
+				$w2 =~ s/nner$/nD1E1r/;
 			}
 
 			else {
@@ -184,22 +184,22 @@ while (<>) {
 
 			if ($g =~ /sa$/ && substr($w, $[, -2) eq substr($g, $[, -2)) {
 				$chain = '05_A';
-				$w2 =~ s/([aieu])s/\u$1s/;
+				$w2 =~ s/([aieu])s/\u${1}1s/;
 			} elsif ($w =~ /bus$/ && $g =~ /psa$/) {
 				$chain = '05_A';
-				$w2 =~ s/bus$/PUs/;
+				$w2 =~ s/bus$/P1U1s/;
 			} elsif ($w =~ /ges$/ && $g =~ /ksa$/) {
 				$chain = '05_A';
-				$w2 =~ s/ges/KEs/;
+				$w2 =~ s/ges/K1E1s/;
 			} elsif ($w =~ /gas$/ && $g =~ /ksa$/) {
 				$chain = '05_A';
-				$w2 =~ s/gas/KAs/;
+				$w2 =~ s/gas/K1A1s/;
 			} elsif ($w =~ /nnis$/ && $g =~ /ndsa$/) {
 				$chain = '05_A';
-				$w2 =~ s/nnis/nDIs/;
+				$w2 =~ s/nnis/nD1I1s/;
 			} elsif ($w =~ /hus$/ && $g =~ /htu$/) {
 				$chain = '05_S-0';
-				$w2 =~ s/hus/hTu/;
+				$w2 =~ s/hus/hT1u/;
 			} elsif ($w eq $g . 's') {
 				$chain = '05_S-0';
 				$w2 = ':' . $g;
@@ -213,24 +213,24 @@ while (<>) {
 				$w2 =~ s/[aiue]$//;
 			} elsif ($w =~ /([lrn])\1e$/ && $g =~ /[lrn]dme$/) {
 				$chain = '05_E-ME';
-				$w2 =~ s/([lrn])\1e$/$1D/;
+				$w2 =~ s/([lrn])\1e$/$1D1/;
 			} elsif ($w =~ /[dgb]e$/ && $g =~ /[tkp]me$/) {
 				$chain = '05_E-ME';
-				$w2 =~ s/de$/T/;
-				$w2 =~ s/ge$/K/;
-				$w2 =~ s/be$/P/;
+				$w2 =~ s/de$/T1/;
+				$w2 =~ s/ge$/K1/;
+				$w2 =~ s/be$/P1/;
 			} elsif ($w =~ /[sh]e$/ && $g =~ /[sh]kme$/) {
 				$chain = '05_E-ME';
-				$w2 =~ s/([sh])e$/$1K/;
+				$w2 =~ s/([sh])e$/$1K1/;
 			} elsif ($w =~ /[ui]e$/ && $g =~ /[ui]dme$/) {
 				$chain = '05_E-ME';
-				$w2 =~ s/([ui])e$/$1D/;
+				$w2 =~ s/([ui])e$/$1D1/;
 			} elsif ($w =~ /ie$/ && $g =~ /igme$/) {
 				$chain = '05_E-ME';
-				$w2 =~ s/ie$/iG/;
+				$w2 =~ s/ie$/iG1/;
 			} elsif ($w =~ /he$/ && $g =~ /htme$/) {
 				$chain = '05_E-ME';
-				$w2 =~ s/he$/hT/;
+				$w2 =~ s/he$/hT1/;
 			} elsif ($w =~ /me$/ && $g =~ /mne$/) {
 				$chain = '05_E-NE';
 				$w2 =~ s/mme$/m=/;
@@ -248,41 +248,41 @@ while (<>) {
 			if ($g eq $w) {
 				# välte muutus? kõik jääb samaks
 			} elsif ($w =~ /ve$/ && $g =~ /be$/) {
-				$w2 =~ s/ve$/Be/;
+				$w2 =~ s/ve$/B1e/;
 			} elsif ($w =~ /ve$/ && $g =~ /be$/) {
-				$w2 =~ s/ve$/Be/;
+				$w2 =~ s/ve$/B1e/;
 			} elsif ($w =~ /([kpt])e$/ && $g =~ /([kpt])\1e$/) {
-				$w2 =~ s/([kpt])e$/$1\u$1e/;
+				$w2 =~ s/([kpt])e$/$1\u${1}1e/;
 			} elsif ($w =~ /([lnr])\1e$/ && $g =~ /[lnr]de$/) {
-				$w2 =~ s/([lnr])\1e/$1De/;
+				$w2 =~ s/([lnr])\1e/$1D1e/;
 			} elsif ($w =~ /mme$/ && $g =~ /mbe$/) {
-				$w2 =~ s/mme/mBe/;
+				$w2 =~ s/mme/mB1e/;
 			} elsif ($w =~ /[lnr]e$/ && $g =~ /[lnr]de$/) {
-				$w2 =~ s/([lnr])e/$1De/;
+				$w2 =~ s/([lnr])e/$1D1e/;
 			} elsif ($w =~ /he$/ && $g =~ /hte$/) {
-				$w2 =~ s/he/hTe/;
+				$w2 =~ s/he/hT1e/;
 			} elsif ($w =~ /he$/ && $g =~ /hke$/) {
-				$w2 =~ s/he/hKe/;
+				$w2 =~ s/he/hK1e/;
 			} elsif ($w =~ /se$/ && $g =~ /ske$/) {
-				$w2 =~ s/se/sKe/;
+				$w2 =~ s/se/sK1e/;
 			} elsif ($w =~ /[lr]e$/ && $g =~ /[lr]ge$/) {
-				$w2 =~ s/([lr])e/$1Ge/;
+				$w2 =~ s/([lr])e/$1G1e/;
 			} elsif ($w =~ /se$/ && $g =~ /sse$/) {
-				$w2 =~ s/se/sSe/;
+				$w2 =~ s/se/sS1e/;
 		 	} elsif ($w =~ /ge$/ && $g =~ /ke$/) {
-				$w2 =~ s/ge$/Ke/;
+				$w2 =~ s/ge$/K1e/;
 		 	} elsif ($w =~ /be$/ && $g =~ /pe$/) {
-				$w2 =~ s/be$/Pe/;
+				$w2 =~ s/be$/P1e/;
 		 	} elsif ($w =~ /de$/ && $g =~ /te$/) {
-				$w2 =~ s/de$/Te/;
+				$w2 =~ s/de$/T1e/;
 		 	} elsif ($w =~ /je$/ && $g =~ /ge$/) {
-				$w2 =~ s/je$/Ge/;
+				$w2 =~ s/je$/G1e/;
 		 	} elsif ($w =~ /e$/ && $g =~ /de$/) {
-				$w2 =~ s/e$/De/;
+				$w2 =~ s/e$/D1e/;
 		 	} elsif ($w =~ /e$/ && $g =~ /ge$/) {
-				$w2 =~ s/e$/Ge/;
+				$w2 =~ s/e$/G1e/;
 		 	} elsif ($w =~ /dve$/ && $g =~ /tve$/) {
-				$w2 =~ s/dve$/Tve/;
+				$w2 =~ s/dve$/T1ve/;
 			}
 
 			else {
@@ -298,35 +298,35 @@ while (<>) {
 			if ($g . 's' eq $w) {
 				$w2 = ':' . $g;
 			} elsif ($g =~ /kri$/) { # nugris 
-				$w2 =~ s/gris$/Kri/;
+				$w2 =~ s/gris$/K1ri/;
 			} elsif ($w =~ /dis$/) { # aldis
-				$w2 =~ s/dis$/Ti/;
+				$w2 =~ s/dis$/T1i/;
 			} elsif ($w =~ /([rln])\1as$/ && $g =~ /[rln]da$/) {
-				$w2 =~ s/([rln])\1as$/$1Da/;
+				$w2 =~ s/([rln])\1as$/$1D1a/;
 			} elsif ($w =~ /dras$/ && $g =~ /tra$/) {
-				$w2 =~ s/dras$/Tra/;
+				$w2 =~ s/dras$/T1ra/;
 			} elsif ($w =~ /b[rl]as$/ && $g =~ /p[rl]a$/) {
-				$w2 =~ s/b([rl])as$/P$1a/;
+				$w2 =~ s/b([rl])as$/P1$1a/;
 			} elsif ($w =~ /kas$/ && $g =~ /kka$/) {
-				$w2 =~ s/kas$/kKa/;
+				$w2 =~ s/kas$/kK1a/;
 			} elsif ($w =~ /has$/ && $g =~ /hta$/) {
-				$w2 =~ s/has$/hTa/;
+				$w2 =~ s/has$/hT1a/;
 			} elsif ($w =~ /bas$/ && $g =~ /pa$/) {
-				$w2 =~ s/bas$/Pa/;
+				$w2 =~ s/bas$/P1a/;
 			} elsif ($w =~ /gas$/ && $g =~ /ka$/) {
-				$w2 =~ s/gas$/Ka/;
+				$w2 =~ s/gas$/K1a/;
 			} elsif ($w =~ /([ptk])[aei]s$/ && $g =~ /([ptk])\1[aei]$/) {
-				$w2 =~ s/([ptk])([aei])s$/$1\u$1$2/;
+				$w2 =~ s/([ptk])([aei])s$/$1\u${1}1$2/;
 			} elsif ($w =~ /([mv])[aei]s$/ && $g =~ /b[aei]$/) {
-				$w2 =~ s/([mv])([aei])s$/B$2/;
+				$w2 =~ s/([mv])([aei])s$/B1$2/;
 			} elsif ($w =~ /jes$/ && $g =~ /ge$/) {
-				$w2 =~ s/jes$/Ge/;
+				$w2 =~ s/jes$/G1e/;
 			} elsif ($w =~ /ras$/ && $g =~ /rga$/) {
-				$w2 =~ s/ras$/rGa/;
+				$w2 =~ s/ras$/rG1a/;
 			} elsif ($w =~ /das$/ && $g =~ /ta$/) {
-				$w2 =~ s/das$/Ta/;
+				$w2 =~ s/das$/T1a/;
 			} elsif ($w =~ /bjas$/ && $g =~ /pja$/) {
-				$w2 =~ s/bjas$/Pja/;
+				$w2 =~ s/bjas$/P1ja/;
 			}
 
 			else {
@@ -339,16 +339,16 @@ while (<>) {
 
 			if ($w =~ /mm[ae][lr]$/ && $g =~ /mb[lr][ae]$/) {
 				$chain = $g =~ /e$/ ? '08_E' : '08_A';
-				$w2 =~ s/mm([ae])([lr])$/mB$2/;
+				$w2 =~ s/mm([ae])([lr])$/mB1$2/;
 			} elsif ($w =~ /nn[ae][lr]$/ && $g =~ /nd[lr][ae]$/) {
 				$chain = $g =~ /e$/ ? '08_E' : '08_A';
-				$w2 =~ s/nn([ae])([lr])$/nD\u$1$2/;
+				$w2 =~ s/nn([ae])([lr])$/nD1\u${1}1$2/;
 			} elsif ($g eq er_ra($w)) { # kukal-kukla
 				$chain = '08_A';
-				$w2 =~ s/([ea])([lrnm])$/\u$1$2/;
+				$w2 =~ s/([ea])([lrnm])$/\u${1}1$2/;
 			} elsif ($g eq er_re($w)) { # tütar-tütre
 				$chain = '08_E';
-				$w2 =~ s/([ea])([lrnm])$/\u$1$2/;
+				$w2 =~ s/([ea])([lrnm])$/\u${1}1$2/;
 			}
 		
 			else {
@@ -431,12 +431,12 @@ while (<>) {
 			if ($g eq $w . 'e') {
 				# 
 			} elsif ($g eq s_e($w)) {
-				$w2 =~ s/s$/S/;
+				$w2 =~ s/s$/S1/;
 			} elsif ($g eq s_ne($w)) {
 				$chain = '14_S-NE';
 				$w2 =~ s/s$//;
 			} else { #elsif ($w =~ /rs$/ && $g =~ /rre$/) {
-				$w2 =~ s/s$/S/;
+				$w2 =~ s/s$/S1/;
 			}
 			
 #			else {
@@ -447,7 +447,7 @@ while (<>) {
 
 		when ("15") {
 			$chain = '15';
-			$w2 =~ s/si$/S/;
+			$w2 =~ s/si$/S1/;
 		}
 
 		when ("16") { 
@@ -481,11 +481,11 @@ while (<>) {
 			my $pikk = $stem{'atg'} ne '#' ? '=' : '';
 
 			if ($w =~ /g[eaui]$/) {
-				$w2 =~ s/g([eaui])$/G${pikk}$1/;
+				$w2 =~ s/g([eaui])$/G1${pikk}$1/;
 			} elsif ($w =~ /d[eaui]$/) {
-				$w2 =~ s/d([eaui])$/D${pikk}$1/;
+				$w2 =~ s/d([eaui])$/D1${pikk}$1/;
 			} elsif ($w =~ /b[eaui]$/) {
-				$w2 =~ s/b([eaui])$/B${pikk}$1/;
+				$w2 =~ s/b([eaui])$/B1${pikk}$1/;
 			} elsif ($w =~ /j[eaui]$/) {
 				$w2 =~ s/j([eaui])$/j${pikk}$1/;
 			} else {
@@ -501,7 +501,7 @@ while (<>) {
 		}
 
 		when ("21") { 
-			$w2 =~ s/g([eaui])$/G=/;
+			$w2 =~ s/g([eaui])$/G1=/;
 
 			if ($w eq 'tõbi') {
 				$w = '! erand ' . $w;
@@ -520,55 +520,55 @@ while (<>) {
 				$g =~ /([aeiu])$/;
 				$chain = "22_\u$1";
 			} elsif ($g =~ /^${w}()[aeiu]$/ && $w =~ /[kpt]$/) {
-				$w2 =~ s/([kpt])$/$1\u$1/;
+				$w2 =~ s/([kpt])$/$1\u${1}1/;
 				$chain = "22_KPT_I";
 			} elsif ($w =~ /[kpt](v?)$/ && $g =~ /[gbd](v?)[aeiu]$/) {
-				$w2 =~ s/([kpt])(v?)$/\u$1$2/;
+				$w2 =~ s/([kpt])(v?)$/\u${1}1$2/;
 				$g =~ /([aeiu])$/;
 				$chain = "22_\u$1";
 			} elsif ($w =~ /([kpts])\1$/ && $g =~ /[kpts][aeiu]$/) {
-				$w2 =~ s/([kpts])$/\u$1/;
+				$w2 =~ s/([kpts])$/\u${1}1/;
 				$g =~ /([aeiu])$/;
 				$chain = "22_\u$1";
 			} elsif ($w =~ /([fš])\1$/ && $g =~ /[fš][aeiu]$/) {
 				$w2 =~ s/([fš])$/=/;
 				$chain = "22_FI";
 			} elsif ($w =~ /h[tk]$/ && $g =~ /h[aeiu]$/) {
-				$w2 =~ s/([kpt])$/\u$1/;
+				$w2 =~ s/([kpt])$/\u${1}1/;
 				$g =~ /([aeiu])$/;
 				$chain = "22_\u$1";
 			} elsif ($w =~ /sk$/ && $g =~ /s[aeiu]$/) {
-				$w2 =~ s/([kpt])$/\u$1/;
+				$w2 =~ s/([kpt])$/\u${1}1/;
 				$g =~ /([aeiu])$/;
 				$chain = "22_\u$1";
 			} elsif ($w =~ /[rnl]d$/ && $g =~ /([rnl])\1[aeiu]$/) {
-				$w2 =~ s/([gbd])$/\u$1/;
+				$w2 =~ s/([gbd])$/\u${1}1/;
 				$g =~ /([aeiu])$/;
 				$chain = "22_\u$1";
 			} elsif ($w =~ /[rnl]b$/ && $g =~ /([rnl])v[aeiu]$/) {
-				$w2 =~ s/([gbd])$/\u$1/;
+				$w2 =~ s/([gbd])$/\u${1}1/;
 				$g =~ /([aeiu])$/;
 				$chain = "22_\u$1";
 			} elsif ($w =~ /mb$/ && $g =~ /mm[aeiu]$/) {
-				$w2 =~ s/([gbd])$/\u$1/;
+				$w2 =~ s/([gbd])$/\u${1}1/;
 				$g =~ /([aeiu])$/;
 				$chain = "22_\u$1";
 			} elsif ($w =~ /[rl]g$/ && $g =~ /[rl]j[aeu]$/) {
-				$w2 =~ s/([gbd])$/\u$1/;
+				$w2 =~ s/([gbd])$/\u${1}1/;
 				$g =~ /([aeiu])$/;
 				$chain = "22_\u$1";
 			} elsif ($g =~ /[aeiu]$/ && 
 					(($w eq _V($g) . 'g') 
 					|| ($w eq _V($g) . 'd')))  { # urg-uru, laid-laiu
-				$w2 =~ s/([gbd])$/\u$1/;
+				$w2 =~ s/([gbd])$/\u${1}1/;
 				$g =~ /([aeiu])$/;
 				$chain = "22_\u$1";
 			} elsif ($w =~ /b$/ && $g =~ /v[ai]$/) {
-				$w2 =~ s/([gbd])$/\u$1/;
+				$w2 =~ s/([gbd])$/\u${1}1/;
 				$g =~ /([aeiu])$/;
 				$chain = "22_\u$1";
 			} elsif ($w =~ /^$g()[dg]$/ && $stem{'bt'} =~ /u$/) {
-				$w2 =~ s/([gbd])$/\u$1/;
+				$w2 =~ s/([gbd])$/\u${1}1/;
 				$chain = '22_0-U';
 			} elsif ($w =~ /ks$/ && $g =~ /he$/) {
 				$w2 =~ s/ks$//;
@@ -614,7 +614,7 @@ while (<>) {
 				default { $w = '! ??? ' . $w; }
 			}
 
-			$w2 =~ s/ss$/sS/;
+			$w2 =~ s/ss$/sS1/;
 		}
 
 		when ("24") {
@@ -629,20 +629,20 @@ while (<>) {
 			}
 			
 			if ($w =~ /[gbd]e[rlv]$/ && $p =~ /[kpt][rlv][aeu]$/) {
-				$w2 =~ s/ge([rlv])$/KE$1/;
-				$w2 =~ s/be([rlv])$/PE$1/;
-				$w2 =~ s/de([rlv])$/TE$1/;
+				$w2 =~ s/ge([rlv])$/K1E1$1/;
+				$w2 =~ s/be([rlv])$/P1E1$1/;
+				$w2 =~ s/de([rlv])$/T1E1$1/;
 			} elsif ($w =~ /[rlhsdb]i$/ && $g =~ /[rlhsdb]j[aeu]$/ && $g eq $p) {
 				$w2 =~ s/i$/j/;
 			} elsif ($w =~ /[rlhsdb]i$/ && $g =~ /[rlhsdb]j[aeu]$/) {
-				$w2 =~ s/gi$/Kj/;
-				$w2 =~ s/di$/Tj/;
-				$w2 =~ s/bi$/Pj/;
+				$w2 =~ s/gi$/K1j/;
+				$w2 =~ s/di$/T1j/;
+				$w2 =~ s/bi$/P1j/;
 			} elsif ($w =~ /[rl]i$/ && $g =~ /[rl]ve$/) {
 				$w2 =~ s/i$//;
 				$chain = '24_I-VE';
 			} elsif ($w =~ /hi$/ && $g =~ /h[eu]$/) {
-				$w2 =~ s/i$/I/;
+				$w2 =~ s/i$/I1/;
 			}
 
 
@@ -654,7 +654,7 @@ while (<>) {
 		}
 
 		when ("25") {
-			$w2 .= 'K';
+			$w2 .= 'K1';
 		}
 
 		when ("26") {
@@ -674,7 +674,7 @@ while (<>) {
 			if ($w eq $b) {
 				# 
 			} elsif ($w =~ /([gbdkpt])[aeiu]$/) {
-				$w2 =~ s/([gbdkpt])([aeiu])$/\u$1$2/;
+				$w2 =~ s/([gbdkpt])([aeiu])$/\u${1}1$2/;
 			} elsif ($w =~ /([fšs])\1[aeiu]$/) {
 				$w2 =~ s/([fšs])\1([aeiu])$/$1=$2/;
 			}
@@ -692,11 +692,11 @@ while (<>) {
 			if ($w eq $b) {
 				# 
 			} elsif ($w =~ /([gbdkpt])[aeiu]$/) {
-				$w2 =~ s/([gbdkpt])([aeiu])$/\u$1$2/;
+				$w2 =~ s/([gbdkpt])([aeiu])$/\u${1}1$2/;
 			} elsif ($w =~ /([fšs])\1[aeiu]$/) {
 				$w2 =~ s/([fšs])\1([aeiu])$/$1=2$2/;
 			} elsif ($w =~ /([kpt])[rlj]a$/) {
-				$w2 =~ s/([kpt])([rlj])a$/\u$1$2a/;
+				$w2 =~ s/([kpt])([rlj])a$/\u${1}1$2a/;
 			}
 
 			else {
@@ -706,7 +706,7 @@ while (<>) {
 
 		when ("30") {
 			$w2 =~ s/le$//;
-			$w2 =~ s/([gbdkpt])$/\u$1/ unless $w eq er_re($stem{'bn'});
+			$w2 =~ s/([gbdkpt])$/\u${1}1/ unless $w eq er_re($stem{'bn'});
 			if ($w eq 'vähkre') {
 				$w = '! erand ' . $w;
 			}
@@ -736,14 +736,14 @@ while (<>) {
 				$chain = '34_K_TUD';
 				$w2 =~ s/k$//;
 			} else {
-				$w2 =~ s/([gbdkpt])$/\u$1/;
+				$w2 =~ s/([gbdkpt])$/\u${1}1/;
 			}
 		}
 
 		when ("35") {
 			$chain = $w =~ /p$/ ? '35_P' : '35_T';
 			if ($stem{'cn'} ne $w . 'e') {
-				$w2 =~ s/([pt])$/\u$1/;
+				$w2 =~ s/([pt])$/\u${1}1/;
 			}
 		}
 

@@ -3,9 +3,9 @@
 ! All rights reserved. 
 Alphabet
 
-a b c d e f g h i j k l m n o p q r s š z ž t u v õ ä ö ü x y G:g G:0 B:b B:0 B:m D:d D:0 D:l D:n D:r K:k K:g K:0 P:p P:b P:0 T:t
-T:d T:0 S:s S:0 S:r %+:0 %$:0 %&:0 A:a A:0 E:e E:0 I:i I:0 U:u U:0 %.:a %.:e 
-%.:o %.:u %.:ö %.:ä %.:i %.:0 %=:0 2:0 %!:0 Q:k %-; 
+a b c d e f g h i j k l m n o p q r s š z ž t u v õ ä ö ü x y G1:g G1:0 B1:b B1:0 B1:m D1:d D1:0 D1:l D1:n D1:r K1:k K1:g K1:0 P1:p P1:b P1:0 T1:t
+T1:d T1:0 S1:s S1:0 S1:r %+:0 %$:0 %&:0 A1:a A1:0 E1:e E1:0 I1:i I1:0 U1:u U1:0 %.:a %.:e 
+%.:o %.:u %.:ö %.:ä %.:i %.:0 %=:0 X2:0 %!:0 Q1:k %-; 
 
 Sets
 
@@ -13,17 +13,17 @@ Sets
   KonsKP = b d f g h j l m n r s š z ž t v ;
   Vok = a e i o u õ ä ö ü ;
   Alfa = Kons Vok;
-  AV = G B D K P T S ;! astmevaheldusele alluvad foneemid
+  AV = G1 B1 D1 K1 P1 T1 S1 ;! astmevaheldusele alluvad foneemid
   AVT = g b d k p t s ;	! AV-tugev aste
-  VaheVok = A E U I;
+  VaheVok = A1 E1 U1 I1;
   TyveVok = a e i u ;
   LyhVok = a e o u õ ä ö ü ;
   LyhVoka = e o u õ ä ö ü ;
-  LV = B G D S T ; ! laadivaheldus (assimilatsioon ja häälikukadu)
+  LV = B1 G1 D1 S1 T1 ; ! laadivaheldus (assimilatsioon ja häälikukadu)
   LVTA = b g d s t ; ! laadivahelduse tugev aste
   Klus = k p t ;
-  AVKlus = K P T ;
-  NorkKlus = g b d G B D ;
+  AVKlus = K1 P1 T1 ;
+  NorkKlus = g b d G1 B1 D1 ;
   Liq = l r ;
   TavaKons = f h j l m n r s š  v ;
 
@@ -40,49 +40,49 @@ Rules
 
 "AV 1-2 - k ja p kadu"!kukk-kuke, lipp-lipu, õhk-õhu, kask-kase
 ! parandus: kaduvale klusiilile järgnev vokaal võib ka ise kaduda, nt tüvemitmuse tõttu
- AVKlus:0 <=> Vok (r) [Klus|h|s] _ (Vok:) (S:|l) %$:;
+ AVKlus:0 <=> Vok (r) [Klus|h|s] _ (Vok:) (S1:|l) %$:;
                s _  (%$:)(%+:) t ;	!fonotaktika reegel skt->st
-       where AVKlus in (K P)
+       where AVKlus in (K1 P1)
                      Klus   in (k p)
        matched ;
 
 "AV 3 - t kadu"
 ! parandus: suhTeldud-vihTeldud, sigaretT 
- T:0 <=>Vok [t|h] _ (Vok ([S: | s: | l ])) %$:;!tt-t (rott-roti) ja ht-h (ehtima-ehib)
+ T1:0 <=>Vok [t|h] _ (Vok ([S1: | s: | l ])) %$:;!tt-t (rott-roti) ja ht-h (ehtima-ehib)
         Algus Vok: _ e (l) %$:;	!ütlema-öelda, jätma-jäetakse
 
 
 "AV 4-5- assimilatsioonid s-r ja b-m"!vars-varre,tõmbama-tõmmata
 ! parandus: kõr[s-kõrr[e-kõr[t viimase tüvevariandi jaoks kaob esimene r (konsonantühend?). lubame seda.
- SB:RM <=> RM: _ (TyveVok) (S:) %$: ; where SB  in (S B)
+ SB:RM <=> RM: _ (TyveVok) (S1:) %$: ; where SB  in (S1 B1)
                                      RM  in (r m)
                                     matched;
 
 "AV 6 - assimilatsioon d-l"	!kuld-kulla
 ! parandus: tüvevokaal võib kaduda (tüvemitmus), saadavad vormid on kahtlased..
 ! tõld, tald, kõld, vald, sild, süld saavad puudutatud
- D:l <=> Algus Vok l _ (TyveVok:) (S:) %$:;
+ D1:l <=> Algus Vok l _ (TyveVok:) (S1:) %$:;
 
 
 "AV 7 - assimilatsioon d-n"	!hind-hinna, kannel-kandle
 
- D:n <=> [Algus | Kons] Vok n _ ([Vok: | VaheVok:] ([l | r | s])) (S:) %$:;
-! D:n <=> n _ (Vok: l) (S:) %$:;
+ D1:n <=> [Algus | Kons] Vok n _ ([Vok: | VaheVok:] ([l | r | s])) (S1:) %$:;
+! D1:n <=> n _ (Vok: l) (S1:) %$:;
 
 "AV 8 - assimilatsioon d-r"	!kord-korra
 
- D:r <=> Algus Vok r _ (TyveVok) (S: | l) %$:;
+ D1:r <=> Algus Vok r _ (TyveVok) (S1: | l) %$:;
 
 
 "AV 9 -  b kadu"	!tuba-toa
 
- B:0 <=> Algus Vok: _ (%=:) (Vok:) %$:;
+ B1:0 <=> Algus Vok: _ (%=:) (Vok:) %$:;
 
 "AV 10 -  d kadu." ! Muuseas siin ka yks morfeemipiiri reegel:
 ! morfeemipiiril kaks d-d saavad üheks ning dt saab t-ks"
 
 
-D:0 <=>  Algus Vok Vok: _ (TyveVok:) (l) %$:; !laud-laua, vaidlema-vaielda
+D1:0 <=>  Algus Vok Vok: _ (TyveVok:) (l) %$:; !laud-laua, vaidlema-vaielda
          Algus Vok Vok (Liq | n) _ TyveVok (l) %$:;     !siirdama-siirata
          Algus [ e | i: | u: | ü: ]  _  (%=:) TyveVok: %$: ;	!vedada-vean, rida-rea
 	 Algus õ  _  (%=:) e %$: ; 		!õde-õe, põdeda-põen
@@ -92,49 +92,49 @@ D:0 <=>  Algus Vok Vok: _ (TyveVok:) (l) %$:; !laud-laua, vaidlema-vaielda
 
 "AV 11 - g kadu"
 
-G:0 <=> Vok _ (%=:) (Vok|h) %$: ;
-        [ a | i | õ | u ] [ l | r ] _ (Vok (S:)) %$: ; ! jalg-jala, kirg-kire
+G1:0 <=> Vok _ (%=:) (Vok|h) %$: ;
+        [ a | i | õ | u ] [ l | r ] _ (Vok (S1:)) %$: ; ! jalg-jala, kirg-kire
         [ e | ä | ü ]  [ l | r ] _ [ i | u ]  %$: ;  ! pürgima-pürin
 	a %.: _ i: %$: ;     !saagida-saenA
 
 "AV 12-13 - s sise- ja lõpukadu"
 
-S:0 <=> Algus Vok [Kons+] (AV:AVT) TyveVok:  _ Piir; !küngas-künka
+S1:0 <=> Algus Vok [Kons+] (AV:AVT) TyveVok:  _ Piir; !küngas-künka
         Algus Vok AV:AVT TavaKons Vok  _  Piir;  !kobras-kopra
         Algus Vok (Vok) _ (Vok) %$:;		!käsi-käe, õis-õie
         Algus Vok (Vok) (Liq | n) s _ Vok %$:; 	!kauss-kausi, kurss-kursi?
-                where AV in  (G B D K P T )
+                where AV in  (G1 B1 D1 K1 P1 T1 )
                      AVT in  (g b d k p t )
            matched;
 
 
  "AV 14 k-g"
- K:g <=> Vok [Liq | n | Vok] _ (Vok | VaheVok:) (S:|l|s) %$:;	!kook-koogi, pilk-pilgu, küngas-künka
+ K1:g <=> Vok [Liq | n | Vok] _ (Vok | VaheVok:) (S1:|l|s) %$:;	!kook-koogi, pilk-pilgu, küngas-künka
  	 Vok _ VaheVok: Liq (Vok) %$:;    	!kogre-kokre
 
  "AV 15 p-b"
- P:b <=> Vok [Liq | m | Vok] _  [Vok | VaheVok:] ([S:|s]) %$:0 ;	!karp-karbi, kimp-kimbu, loopida-loobin
-         Vok _ [Liq Vok | j: (Vok) ] (S:) %$:;	!lupjama-lubjata, kobras-kopra
+ P1:b <=> Vok [Liq | m | Vok] _  [Vok | VaheVok:] ([S1:|s]) %$:0 ;	!karp-karbi, kimp-kimbu, loopida-loobin
+         Vok _ [Liq Vok | j: (Vok) ] (S1:) %$:;	!lupjama-lubjata, kobras-kopra
          Vok _ VaheVok: Liq (Vok) %$:;    		!sõpra-sõbra
 
  "AV 16 t-d"
- T:d <=> Vok [Vok|Liq | n ] _ Vok (S:) %$:;	!paat-paadi, kaart-kaardi, elevant-elevandi
+ T1:d <=> Vok [Vok|Liq | n ] _ Vok (S1:) %$:;	!paat-paadi, kaart-kaardi, elevant-elevandi
          Vok Vok _ e l %$:;     		!vaatlema-vaadelda
          Vok _ (VaheVok:) [Liq | v | j:] (Vok) %$:;    	!putru-pudru, patrama-padrata
 	 
 
  "AV 17: g-j"	!märg-märja, hüljes-hülge
- G:j <=> [ e | ä | ü ]  [ l | r ] _ [ a | e ] (S: )  %$: ;
+ G1:j <=> [ e | ä | ü ]  [ l | r ] _ [ a | e ] (S1: )  %$: ;
 
 "AV 18: d-j"
 
-D:j <=>  Algus [ a | o | õ ]  _  (%=:) a   %$:;	!sadada-sajab, sõda-sõja
+D1:j <=>  Algus [ a | o | õ ]  _  (%=:) a   %$:;	!sadada-sajab, sõda-sõja
  	 SonaPiir [ [[ r | s ] a] |s õ ]  _  u  %$: ; !sadu-saju,kodu-koju
 
 
 "AV 19: b-v"
 
- B:v <=> Vok [Vok|Liq] _ (Vok:) (S:) %$:;	!kaebama-kaevata, kõlbama-kõlvata, värbama-värvata, varb-varva
+ B1:v <=> Vok [Vok|Liq] _ (Vok:) (S1:) %$:;	!kaebama-kaevata, kõlbama-kõlvata, värbama-värvata, varb-varva
 
 !!!! EOF AV
 
@@ -147,7 +147,7 @@ D:j <=>  Algus [ a | o | õ ]  _  (%=:) a   %$:;	!sadada-sajab, sõda-sõja
 
 "Vokaali annihileerumine nõrgas astmes"
 
-  V1:0 <=> Vok _ D: V1 %$:; where V1 in (a u); ! jõudu-jõuu->jõu
+  Vok1:0 <=> Vok _ D1: Vok1 %$:; where Vok1 in (a u); ! jõudu-jõuu->jõu
 
 
 "Vokaali madaldumine"   ! Nõrgeneva AV tõttu !tekivad mõnedes 
@@ -164,30 +164,30 @@ D:j <=>  Algus [ a | o | õ ]  _  (%=:) a   %$:;	!sadada-sajab, sõda-sõja
 
 "vokaalide teisenemine järgsilbis o->u, ö->e, ä->e"
 
-%.:V2 <=> V1 %.: h _ Piir;	!soo-sohu, töö-töhe, pea-pähe
-where V1 in (a o u ö ä)
-          V2 in (a u u e e)
+%.:Vok2 <=> Vok1 %.: h _ Piir;	!soo-sohu, töö-töhe, pea-pähe
+where Vok1 in (a o u ö ä)
+          Vok2 in (a u u e e)
 matched;
 
 
 "Konsonandi kahekordistumine"   !nt. elu-ellu, nime-nimme, tulema-tulla
 
-  %=:K1 <=> K1 _ (TyveVok:) 2:;	!mitte-klusiilid
-                     where K1 in TavaKons;
+  %=:Kons1 <=> Kons1 _ (TyveVok:) X2:;	!mitte-klusiilid
+                     where Kons1 in TavaKons;
 
 "Nõrga klusiili pikendamine III-välteliseks - 1"
  !vagu-vao-vakku, saba-saba-sappa, tuba-toa-tuppa, ladu-lao-lattu
 
-  %=:Klus <=>  NorkKlus: _ (TyveVok:) 2:; !klusiilid
-              where NorkKlus in (g G b B d D)
+  %=:Klus <=>  NorkKlus: _ (TyveVok:) X2:; !klusiilid
+              where NorkKlus in (g G1 b B1 d D1)
       	                Klus in (k k p p t t)
               matched;
 
 
 "Nõrga klusiili pikendamine III-välteliseks - 2"
 
-NorkKlus:Klus <=> _ %=: (TyveVok:) 2:;
-              where NorkKlus in (g G b B d D)
+NorkKlus:Klus <=> _ %=: (TyveVok:) X2:;
+              where NorkKlus in (g G1 b B1 d D1)
       	                Klus in (k k p p t t)
               matched;
 
@@ -221,13 +221,13 @@ W:i <=> e: (%$:) %+: _ MitteSpr;	! e-tüvelised
 
  "mitmuse vokaal e"
 W:e <=> [i: | u:] (%$:) %+: _ ;		! i- ja u-tüvelised
-        Algus [u | o] [B:|n] (%=:) a: (%$:) %+: _ MitteSpr;	!a-tüvelised,lühikeses  
+        Algus [u | o] [B1:|n] (%=:) a: (%$:) %+: _ MitteSpr;	!a-tüvelised,lühikeses  
 						!esisilbis u või o
         Algus [u | o | ü] Kons j: a: (%$:) %+: _ MitteSpr;	!a-tüvelised, esisilbis uCj, 
 						!oCj, üCj (kuri)
 
  "mitmuse vokaal u"
-W:u <=> [[i: [D:|G:]]|[[Kons | Algus] 
+W:u <=> [[i: [D1:|G1:]]|[[Kons | Algus] 
 		[a | a a | i | i i | õ | õ õ | a e | a i 
 		   | e i | ä i | õ i | a u | i u | õ u ] [:Kons | VaheVok:0]+]] (%=:) a: (%$:) %+: _ MitteSpr; !"kass kõrtsis ei käi"
 	 [a | ä | e] Kons j: a: (%$:) %+: _ MitteSpr ; !a-tüvelised, esisilbis äCj, eCj (väli, neli) (asjus?)
@@ -240,16 +240,16 @@ TyveVok:0 <=> [Kons|AV:] (%=:) _ (%$:) %+: [ W: ~%!: |u s];
 
 "oo+a->uua, öö+a->üüa 1"	!joo+a->juua, söö+a->süüa
 
-V1:V2 <=> _ %.:V2 %+: [a | e s];
-                      where V1 in (o ö)
-                            V2 in (u ü)
+Vok1:Vok2 <=> _ %.:Vok2 %+: [a | e s];
+                      where Vok1 in (o ö)
+                            Vok2 in (u ü)
                       matched;
 
 "oo+a ->uua, öö+a ->üüa 2"
 
-%.:V2 <=> V1:V2 _ %+: [a | e s];
-                      where V1 in (o ö)
-                            V2 in (u ü)
+%.:Vok2 <=> Vok1:Vok2 _ %+: [a | e s];
+                      where Vok1 in (o ö)
+                            Vok2 in (u ü)
                       matched;
 
 
@@ -262,13 +262,13 @@ o:õ <=> [ j | l | t ] _ %.: %+: i [ SonaPiir | d | n | m e | t e];
 
 "Konsonantühendi reegel "    ! Konsonantühendis kirjutatakse kõik häälikud ühekordselt, nt. kukkru->kukru, kristallne->kristalne.
 
-  K1:0 <=> Vok _ :K1 [:0 - %&:0]+ [Kons - K1]; ! vähemalt morfeemipiir võiks vahele jääda. 
-             where K1 in KonsKP;
+  Kons1:0 <=> Vok _ :Kons1 [:0 - %&:0]+ [Kons - Kons1]; ! vähemalt morfeemipiir võiks vahele jääda. 
+             where Kons1 in KonsKP;
 
 
 "Liitsõnapiirile sidekriips kolme ühesuguse hääliku korral"	!nt. plekk-katus, jää-äär
 
-  %&:%- <=> :A1 (:0) :A1 (:0) _ :A1; where A1 in (a e f h i k l m n o p r s š t u õ ä ö ü);
+  %&:%- <=> :Xx1 (:0) :Xx1 (:0) _ :Xx1; where Xx1 in (a e f h i k l m n o p r s š t u õ ä ö ü);
 
 
 
@@ -281,13 +281,13 @@ o:õ <=> [ j | l | t ] _ %.: %+: i [ SonaPiir | d | n | m e | t e];
                                     ! Võõrsõnades ainult 'e': idee-ideid, aga miljöö-miljöösid,depoo-depoosid,kanuu-kanuusid
 
   %.:0 <=> [Vok [Kons+] e] | [Algus LyhVoka] _ [%+: [ i | h ]] ;
-           a _ [D:|G:] i: %$:;	!praadida-praeb, saagida-saeb
+           a _ [D1:|G1:] i: %$:;	!praadida-praeb, saagida-saeb
 
 "Pikk vokaal vaikimisi"
-  %.:V1 <=> V1 _ ~[%+: [ i | h ] :* ] .#.; where  V1 in (e o u õ ä ö ü);
+  %.:Vok1 <=> Vok1 _ ~[%+: [ i | h ] :* ] .#.; where  Vok1 in (e o u õ ä ö ü);
 
 "Pikk vokaal vaikimisi, a"
-  %.:a <=> a _ ~[ [D: | G:] i: %$: :* ] .#.;
+  %.:a <=> a _ ~[ [D1: | G1:] i: %$: :* ] .#.;
 
 
 "morfeemipiiril kaks s-i saavad üheks"
@@ -297,7 +297,7 @@ o:õ <=> [ j | l | t ] _ %.: %+: i [ SonaPiir | d | n | m e | t e];
 
 "käskiva kõneviisi formatiivi alguse g läheb k-ks helitu konsonandi järel või NA-tüves a järel"
 
- g:k <=> [h | D:d | T:t] [:0*] %+: _ [e|u];	!teh+ge->tehke
+ g:k <=> [h | D1:d | T1:t] [:0*] %+: _ [e|u];	!teh+ge->tehke
         a %$: %+: _ [e|u];	!tõmbama-tõmma+gu->tõmmaku
 
 
@@ -312,11 +312,11 @@ o:õ <=> [ j | l | t ] _ %.: %+: i [ SonaPiir | d | n | m e | t e];
 
 "i -> e enne i-ga algavat formatiivi"	!kauni+im=kauneim
 
- i:e <=> Kons _ (S:) %+: i:;
+ i:e <=> Kons _ (S1:) %+: i:;
 
 "ki/gi liite valik - kui eelneb heliline häälik, siis gi"
 
- Q:g <=> [:Vok | :l | :m | :n | :r] [:0]* (%$:) (%+:) _ i;
+ Q1:g <=> [:Vok | :l | :m | :n | :r] [:0]* (%$:) (%+:) _ i;
 
 "vokaalikadu +im eest"
 
