@@ -16,7 +16,7 @@ FROM_UTF8=$(ICONV) -f UTF-8 -t latin1
 ETHTHORN=sed -e 's/š/ð/g' -e 's/Š/Ð/g' -e 's/ž/þ/g' -e 's/Ž/Þ/g' 
 INVERSE_ETHTHORN=sed -e 's/ð/š/g' -e 's/Ð/Š/g' -e 's/þ/ž/g' -e 's/Þ/Ž/g' 
 
-GENERATED_LEX=lex_tyved.txt lex_extra.txt 
+GENERATED_LEX=stems.lexc generated_extra.lexc 
 TESTFILE=1984_words_u.txt
 
 # vaikimisi ehitame vaid eesti keele morfoanalüsaatori FST
@@ -24,33 +24,30 @@ all: eesti.fst
 
 # vahel on kasulik kõik genereeritud failid ära koristada
 clean:
-	$(RM) eesti.fst lex.fst lex-av.fst rules.fst xfst.out estmorf.out rul-av.txt \
-		rules-av.fst lex_full.txt $(GENERATED_LEX) lex_exc.txt lex_override_gen.txt \
-		lex_exc.fst full-compound.fst lihtsonad.fst liitsonamask.fst arvud.fst \
-		1984_words_u_l1.txt 1984_words_u_l1.out eki.out liitsona_full.txt \
+	$(RM) eesti.fst lexicon.fst lex-av.fst rules.fst xfst.out estmorf.out rules-av.twolc \
+		rules-av.fst lexicon.lexc $(GENERATED_LEX) exceptions.lexc generated_overrides.lexc \
+		exceptions.fst full-compound.fst lihtsonad.fst liitsonamask.fst arvud.fst \
+		1984_words_u_l1.txt 1984_words_u_l1.out eki.out liitsonamask.lexc \
 		estmorf_check.out reverse-eesti.fst reverse-lex-av.fst reverse-lihtsonad.fst \
-		liitsona_filter_full.txt liitsonafilter.fst
+		liitsonafilter.lexc liitsonafilter.fst
 
 ## peamine FST ehitamine
-#eesti.fst: lex.fst rules.fst lex_exc.fst deriv_filter.txt xfst.script liitsona_full.txt \
-#		liitsona_filter_full.txt arvud.txt
+#eesti.fst: lexicon.fst rules.fst exceptions.fst deriv_filter.txt xfst.script liitsonamask.lexc \
+#		liitsonafilter.lexc arvud.lexc
 #	$(XFST) -f xfst.script 
 
-lex-av.fst: rules.fst lex.fst
-	$(XFST) -e 'read regex  [@"rules.fst"].i .o. [@"lex.fst"]' -e 'save lex-av.fst' < /dev/null
+%.fst: %.lexc
+	$(XFST) -e 'read lexc $<' -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e 'save $@' < /dev/null
 
-arvud.fst: arvud.txt
-	$(XFST) -e 'read lexc arvud.txt' -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e 'save arvud.fst' < /dev/null
+%.fst: %.twolc
+	@printf "read-grammar $<\ncompile\nintersect\n\n\nsave-binary $@\nquit\n" | $(TWOLC) || \
+		( $(TWOLC) -i $< -o $@ && $(XFST) -e 'load < $@' -e 'intersect' -e 'save $@' < /dev/null)
 
-lihtsonad.fst: deriv_filter.txt lex_exc.fst lex-av.fst rules.fst arvud.fst
-	$(XFST) -e 'read regex [ @re"deriv_filter.txt" .o. [[@"lex_exc.fst"] .P. [@"lex-av.fst"]] .o. ~$$"#" .o.  @"rules.fst" ] | @"arvud.fst"' -e 'save lihtsonad.fst' < /dev/null
+lex-av.fst: rules.fst lexicon.fst
+	$(XFST) -e 'read regex  [@"rules.fst"].i .o. [@"lexicon.fst"]' -e 'save lex-av.fst' < /dev/null
 
-liitsonamask.fst:	liitsona_full.txt
-	$(XFST) -e 'read lexc liitsona_full.txt' -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e 'save liitsonamask.fst' < /dev/null
-
-
-liitsonafilter.fst:	liitsona_filter_full.txt
-	$(XFST) -e 'read lexc liitsona_filter_full.txt' -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e 'save liitsonafilter.fst' < /dev/null
+lihtsonad.fst: deriv_filter.txt exceptions.fst lex-av.fst rules.fst arvud.fst
+	$(XFST) -e 'read regex [ @re"deriv_filter.txt" .o. [[@"exceptions.fst"] .P. [@"lex-av.fst"]] .o. ~$$"#" .o.  @"rules.fst" ] | @"arvud.fst"' -e 'save lihtsonad.fst' < /dev/null
 
 full-compound.fst: lihtsonad.fst
 	$(XFST) -e 'read regex ("-" "&") [ @"lihtsonad.fst" "&" ("-" "&") ]* @"lihtsonad.fst" ("&" "-")' -e 'save full-compound.fst' < /dev/null
@@ -59,53 +56,36 @@ eesti.fst:	liitsonafilter.fst liitsonamask.fst full-compound.fst
 	$(XFST) -e 'read regex 	@"liitsonafilter.fst" .o.  @"liitsonamask.fst" .o.  @"full-compound.fst" .o. [ "&" -> "" ]' -e 'save eesti.fst' < /dev/null
 
 
-# kahetasemelised reeglid
-rules.fst: rul.txt
-	@printf "read-grammar rul.txt\ncompile\nintersect\n\n\nsave-binary rules.fst\nquit\n" | $(TWOLC) || \
-		( $(TWOLC) -i rul.txt -o rules.fst && $(XFST) -e 'load < rules.fst' -e 'intersect' -e 'save rules.fst' < /dev/null)
-
 
 # Heli variandis oli ülemine reeglitekiht vaid astmevahelduse jaoks, praktikas sellest ei piisanud?
-# rul-av.txt on fail, kus on vaid rul.txt algus kuni märgendini "!!!! EOF AV"
-rul-av.txt: rul.txt
-	awk '/!!!! EOF AV/ { x = 1; } { if (!x) { print; } }' rul.txt  > rul-av.txt
-#	awk '/!!!! EOF AV/ { x = 1; } { if (!x) { print; } }' rul.txt | sed -e 's/%+:0/%+:%+/' > rul-av.txt
-
-# av-reeglid FSTks kompileerituna
-rules-av.fst: rul-av.txt
-	@printf "read-grammar rul-av.txt\ncompile\nintersect\n\n\nsave-binary rules-av.fst\nquit\n" | $(TWOLC) || $(TWOLC) -i rul-av.txt -o rules-av.fst
-
-# põhisõnastik
-lex.fst: lex_full.txt
-	$(XFST) -e "read lexc lex_full.txt" -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e "save stack lex.fst" < /dev/null
+# rules-av.twolc on fail, kus on vaid rules.twolc algus kuni märgendini "!!!! EOF AV"
+rules-av.twolc: rules.twolc
+	awk '/!!!! EOF AV/ { x = 1; } { if (!x) { print; } }' rules.twolc  > rules-av.twolc
+#	awk '/!!!! EOF AV/ { x = 1; } { if (!x) { print; } }' rules.twolc | sed -e 's/%+:0/%+:%+/' > rules-av.twolc
 
 # põhisõnastiku lexc-lähtetekst pannakse tükkidest kokku, tükkide järjekord on oluline
-lex_full.txt: lex_multichar.txt lex_main.txt lex_gi.txt $(GENERATED_LEX)
+lexicon.lexc: multichar.lexc main.lexc gi.lexc $(GENERATED_LEX)
 	cat $^ > $@
 
 # peamine tyvedesõnastik, genereeritakse peamiselt EKI tüvebaasist
-lex_tyved.txt: tyvebaas.txt tyvebaas-lisa.txt eki2lex.pl
+stems.lexc: tyvebaas.txt tyvebaas-lisa.txt eki2lex.pl
 	cat tyvebaas.txt tyvebaas-lisa.txt | ./eki2lex.pl
 
-# eranditesõnastik
-lex_exc.fst: lex_exc.txt
-	$(XFST) -e "read lexc lex_exc.txt" -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e "save stack lex_exc.fst" < /dev/null
-
 # eranditesõnastiku lexc-lähtetekst
-lex_exc.txt: lex_multichar.txt lex_override.txt lex_override_gen.txt lex_gi.txt
+exceptions.lexc: multichar.lexc overrides.lexc generated_overrides.lexc gi.lexc
 	cat $^ > $@
 
 # erandifailid. "tõelised" erandid ja paralleelvormid, genereeritakse
 # pisut täiendatud EKI andmetest
-lex_override_gen.txt lex_extra.txt: form.exc fcodes.ini exc2lex.pl
+generated_overrides.lexc generated_extra.lexc: form.exc fcodes.ini exc2lex.pl
 	cat form.exc | $(TO_UTF8) | $(INVERSE_ETHTHORN) | ./exc2lex.pl
 
 # liitsõna-regulaaravaldistega lexc-sõnastiku lähtetekst
-liitsona_full.txt: lex_multichar.txt liitsona_def.txt liitsona.txt
+liitsonamask.lexc: multichar.lexc compound_definitions.lexc compund_rules.lexc
 	cat $^ > $@
 
 # liitsõna-erandite jms regulaaravaldis lexc-sõnastikuna
-liitsona_filter_full.txt: lex_multichar.txt liitsona_def.txt liitsona_filter.txt
+liitsonafilter.lexc: multichar.lexc compound_definitions.lexc compound_filter.lexc
 	cat $^ > $@
 
 #

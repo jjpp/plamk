@@ -9,7 +9,7 @@
 !  F = [B|D|G|S];	! laadivahelduslikud konsonandid
 !  Alfa = [C | V];
 
-LEXICON Sõnastik
+LEXICON Root
   Tüved;
   Lisanduvad_erandid;
   Kohalikud_erandid;

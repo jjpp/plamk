@@ -62,8 +62,8 @@ while (<>) {
 	}
 }
 
-write_lex("lex_override_gen.txt", "Asendavad_erandid_gen", @override);
-write_lex("lex_extra.txt", "Lisanduvad_erandid", @extra);
+write_lex("generated_overrides.lexc", "Asendavad_erandid_gen", @override);
+write_lex("generated_extra.lexc", "Lisanduvad_erandid", @extra);
 
 exit 0;
 

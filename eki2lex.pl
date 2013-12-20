@@ -822,7 +822,7 @@ while (<>) {
 	$total ++;
 }
 
-write_lex("lex_tyved.txt", "Tüved", @tyved);
+write_lex("stems.lexc", "Tüved", @tyved);
 
 exit 0;
 
