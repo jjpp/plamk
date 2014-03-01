@@ -199,3 +199,4 @@
 =yz-tasand 02_S | a0: yz-tasand, b0: yz-tasandi, b0r: yz-tasande
 =y-t'elg 22_S | at: y-t'elg, bt: y-t'elge, bn: y-telje, btv: y-t'elgi, bnv: y-teli
 =James 02_H | a0: James, b0: Jamesi, b0r: Jamese
+=Mary 16_H | a0: Mary, a0g: #
