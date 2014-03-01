@@ -34,7 +34,7 @@ while (<>) {
 	@kind = ();
 
 
-	$w = lc($w);
+#	$w = lc($w);
 
 	my $chain = substr($k, $[, 2);
 	if ($chain >= 27 && $chain < 39) {
