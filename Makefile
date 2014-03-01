@@ -134,11 +134,14 @@ testx: xfst.out
 
 ######################################
 
-est.apertium.hfst: eesti.fst
+apertium: apertium-est-fin.est-fin.LR.att.gz apertium-est-fin.est-fin.RL.att.gz
+
+est.apertium.fst: eesti.fst
 	hfst-invert eesti.fst -o eesti.mor.fst
-	hfst-substitute -F apertium.relabel eesti.mor.fst -o eesti.mor.apertium.fst
-	hfst-fst2fst -O eesti.mor.apertium.fst -o $@
+	hfst-substitute -F apertium.relabel eesti.mor.fst -o $@
 
-est.apertium.att: est.apertium.hfst
-	hfst-fst2txt est.apertium.hfst -o $@
+apertium-est-fin.est-fin.LR.att.gz: est.apertium.fst
+	hfst-fst2txt est.apertium.fst -o $@
 
+apertium-est-fin.est-fin.RL.att.gz: est.apertium.fst
+	hfst-invert est.apertium.fst | hfst-fst2txt -o $@
