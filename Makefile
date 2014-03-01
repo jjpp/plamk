@@ -147,4 +147,4 @@ apertium-fin-est.est-fin.RL.att: est.apertium.fst
 	hfst-invert est.apertium.fst | hfst-fst2txt -o $@
 
 %.att.gz: %.att
-	gzip -9 --verbose $<
+	gzip -9 -f --verbose $<

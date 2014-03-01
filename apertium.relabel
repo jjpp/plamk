@@ -1,10 +1,10 @@
 +S	<n>
-+H	<prop>
++H	<np>
 +A	<adj>
 +Num	<num>
 +Ord	<ord>
 +Pron	<prn>
-+V	<v>
++V	<vblex>
 +Adv	<adv>
 +I	<ij>
 +J	<cnjcoo>
@@ -48,5 +48,5 @@
 +inf	<inf>
 +ger	<ger>
 +partic	<pp>
-&	+
+&	<cmp>+
 =	@0@
