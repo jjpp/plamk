@@ -74,6 +74,8 @@ LEXICON Omadussõnad
  < Omadussõna' ("+sg" "+nom" | "+prefix") SP > Määrsõnad; ! EKKR, SM42 ! FIXME: lühitüved
  < Omadussõna' ("+sg" "+nom" | "+prefix") Kriips > #;
 
+ < Tähtsõne "+Num" "+sg" "+gen" SP > Omadussõnad; ! viieaastane? 
+
 
 LEXICON Määrsõnad
  < Määrsõna > GI;
