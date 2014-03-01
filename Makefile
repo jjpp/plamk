@@ -115,7 +115,6 @@ eki.out: 1984_words_u_l1.txt
 	export EST_MORPHO_DATA=$(EKI_DATA); $(EKI_ANA) 1984_words_u_l1.txt /v3 /s+ /t-
 	cat 1984_words_u_l1.out | ./eki_out2out.pl > eki.out
 
-
 # interaktiivne XFST -- ehitab valmis ja laeb vaikimisi ka kehtiva seisu FSTst
 xfsti: eesti.fst
 	$(XFST) -e "load eesti.fst"
@@ -132,4 +131,14 @@ test: estmorf.out xfst.out eki.out $(TESTFILE)
 testx: xfst.out
 	grep -F '???' xfst.out | wc -l
 
+
+######################################
+
+est.apertium.hfst: eesti.fst
+	hfst-invert eesti.fst -o eesti.mor.fst
+	hfst-substitute -F apertium.relabel eesti.mor.fst -o eesti.mor.apertium.fst
+	hfst-fst2fst -O eesti.mor.apertium.fst -o $@
+
+est.apertium.att: est.apertium.hfst
+	hfst-fst2txt est.apertium.hfst -o $@
 
