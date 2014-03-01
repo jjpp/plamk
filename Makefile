@@ -140,8 +140,11 @@ est.apertium.fst: eesti.fst
 	hfst-invert eesti.fst -o eesti.mor.fst
 	hfst-substitute -F apertium.relabel eesti.mor.fst -o $@
 
-apertium-est-fin.est-fin.LR.att.gz: est.apertium.fst
+apertium-est-fin.est-fin.LR.att: est.apertium.fst
 	hfst-fst2txt est.apertium.fst -o $@
 
-apertium-est-fin.est-fin.RL.att.gz: est.apertium.fst
+apertium-est-fin.est-fin.RL.att: est.apertium.fst
 	hfst-invert est.apertium.fst | hfst-fst2txt -o $@
+
+%.att.gz: %.att
+	gzip -9 --verbose $<
