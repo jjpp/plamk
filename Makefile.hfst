@@ -153,7 +153,7 @@ testx: xfst.out
 apertium: apertium-fin-est.est-fin.LR.att.gz apertium-fin-est.est-fin.RL.att.gz
 
 punctuation.hfst: punctuation.lexc
-	hfst-lexc -f foma $< -o $@
+	hfst-lexc $< -o $@
 
 est.apertium.fst: eesti.fst punctuation.hfst
 	hfst-union eesti.fst punctuation.hfst -o est.gen.fst
