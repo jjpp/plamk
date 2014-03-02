@@ -1,6 +1,5 @@
-XEROX=~/xerox/bin
-XFST=$(XEROX)/xfst
-TWOLC=$(XEROX)/twolc
+XFST=hfst-xfst
+TWOLC=hfst-twolc
 ICONV=iconv
 # testimiseks
 ESTMORF=wine ~/estmorf/ESTMORF.EXE
