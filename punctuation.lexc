@@ -10,7 +10,7 @@ Multichar_Symbols
 
 LEXICON Root
 
-%;+punct:%: # ;
+%;+punct:%; # ;
 %,+cm:%, # ;
 %.+punct+clb:%. # ;
 …+punct:… # ;

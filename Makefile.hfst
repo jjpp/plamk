@@ -157,7 +157,7 @@ apertium: apertium-fin-est.est-fin.LR.att.gz apertium-fin-est.est-fin.RL.att.gz
 punctuation.hfst: punctuation.lexc
 	hfst-lexc -f foma $< -o $@
 
-est.apertium.fst: eesti.fst punctuation.hfst
+est.apertium.fst: eesti.fst punctuation.hfst apertium.relabel
 	hfst-union eesti.fst punctuation.hfst -o est.gen.fst
 	hfst-invert est.gen.fst -o est.mor.fst
 	hfst-substitute -F apertium.relabel est.mor.fst -o $@
@@ -169,7 +169,7 @@ apertium-fin-est.est-fin.RL.att: est.apertium.fst
 	hfst-invert est.apertium.fst | hfst-fst2txt -o $@
 
 %.att.gz: %.att
-	gzip -9 -f --verbose $<
+	gzip -9 -f $<
 
 APERTIUM_CLEAN=apertium-fin-est.est-fin.LR.att.gz apertium-fin-est.est-fin.RL.att.gz est.apertium.fst \
 		punctuation.hfst est.gen.fst est.mor.fst 
