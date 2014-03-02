@@ -36,35 +36,40 @@ clean:
 #	$(XFST) -f xfst.script 
 
 %.fst: %.lexc
-	$(XFST) -e 'read lexc $<' -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e 'save $@' < /dev/null
+	hfst-lexc -f foma $< -o $@
+#	$(XFST) -e 'read lexc $<' -e 'set quit-on-fail OFF' -e 'eliminate flag LEXNAME' -e 'save $@' < /dev/null
 
 #%.fst: %.twolc
 #	@printf "read-grammar $<\ncompile\nintersect\n\n\nsave-binary $@\nquit\n" | $(TWOLC) || \
 		( $(TWOLC) -i $< -o $@ && $(XFST) -e 'load < $@' -e 'intersect' -e 'save $@' < /dev/null)
 
 %.hfst: %.twolc
-	$(TWOLC) -i $< -o $@ --resolve
+	$(TWOLC) -f foma -i $< -o $@ --resolve
 
 #lex-av.fst: rules.fst lexicon.fst
 #	$(XFST) -e 'read regex  [@"rules.fst"].i .o. [@"lexicon.fst"]' -e 'save lex-av.fst' < /dev/null
 
 lex-av.fst: rules.hfst lexicon.fst
-	hfst-compose-intersect lexicon.fst rules.hfst -o $@
+	hfst-compose-intersect lexicon.hfst rules.hfst -o $@
 
 #lihtsonad.fst: deriv_filter.txt exceptions.fst lex-av.fst rules.fst arvud.fst
 #	$(XFST) -e 'read regex [ @re"deriv_filter.txt" .o. [[@"exceptions.fst"] .P. [@"lex-av.fst"]] .o. ~$$"#" .o.  @"rules.fst" ] | @"arvud.fst"' -e 'save lihtsonad.fst' < /dev/null
 
 lihtsonad.fst: deriv_filter.txt exceptions.fst lex-av.fst rules.hfst arvud.fst
 	$(XFST) -e 'read regex [ @re"deriv_filter.txt" .o. [[@"exceptions.fst"] .P. [@"lex-av.fst"]] .o. ~$$"#"]' -e 'save foo.fst' < /dev/null
-	hfst-compose-intersect foo.fst rules.hfst |\
+	hfst-fst2fst -f foma -i foo.fst -o foo.hfst
+	hfst-compose-intersect foo.hfst rules.hfst |\
 		hfst-disjunct arvud.fst |\
 		hfst-minimize -o $@
 
 full-compound.fst: lihtsonad.fst
-	$(XFST) -e 'read regex ("-" "&") [ @"lihtsonad.fst" "&" ("-" "&") ]* @"lihtsonad.fst" ("&" "-")' -e 'save full-compound.fst' < /dev/null
+#	$(XFST) -e 'read regex ("-" "&") [ @"lihtsonad.fst" "&" ("-" "&") ]* @"lihtsonad.fst" ("&" "-")' -e 'save full-compound.fst' < /dev/null
+	echo '("-" "&")' | hfst-regexp2fst -f foma -o hyphen-amper.hfst
+	echo ' [ @"hyphen-amper.hfst" ] [ @"lihtsonad.fst" "&" @"hyphen-amper.hfst" ]* @"lihtsonad.fst" @"hyphen-amper.hfst"' | hfst-regexp2fst -f foma -o $@
+	
 
 eesti.fst:	liitsonafilter.fst liitsonamask.fst full-compound.fst
-	$(XFST) -e 'read regex 	@"liitsonafilter.fst" .o.  @"liitsonamask.fst" .o.  @"full-compound.fst" .o. [ "&" -> "" ]' -e 'save eesti.fst' < /dev/null
+	echo '@"liitsonafilter.fst" .o.  @"liitsonamask.fst" .o.  @"full-compound.fst" .o. [ "&" -> "" ]' | hfst-regexp2fst -f foma -o $@
 
 
 
@@ -147,9 +152,13 @@ testx: xfst.out
 
 apertium: apertium-fin-est.est-fin.LR.att.gz apertium-fin-est.est-fin.RL.att.gz
 
-est.apertium.fst: eesti.fst
-	hfst-invert eesti.fst -o eesti.mor.fst
-	hfst-substitute -F apertium.relabel eesti.mor.fst -o $@
+punctuation.hfst: punctuation.lexc
+	hfst-lexc $< -o $@
+
+est.apertium.fst: eesti.fst punctuation.hfst
+	hfst-union eesti.fst punctuation.hfst -o est.gen.fst
+	hfst-invert est.gen.fst -o est.mor.fst
+	hfst-substitute -F apertium.relabel est.mor.fst -o $@
 
 apertium-fin-est.est-fin.LR.att: est.apertium.fst
 	hfst-fst2txt est.apertium.fst -o $@
@@ -159,3 +168,8 @@ apertium-fin-est.est-fin.RL.att: est.apertium.fst
 
 %.att.gz: %.att
 	gzip -9 -f --verbose $<
+
+APERTIUM_CLEAN=apertium-fin-est.est-fin.LR.att.gz apertium-fin-est.est-fin.RL.att.gz est.apertium.fst \
+		punctuation.hfst est.gen.fst est.mor.fst 
+	
+
