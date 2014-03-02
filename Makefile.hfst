@@ -28,7 +28,7 @@ clean:
 		exceptions.fst full-compound.fst lihtsonad.fst liitsonamask.fst arvud.fst \
 		1984_words_u_l1.txt 1984_words_u_l1.out eki.out liitsonamask.lexc \
 		estmorf_check.out reverse-eesti.fst reverse-lex-av.fst reverse-lihtsonad.fst \
-		liitsonafilter.lexc liitsonafilter.fst rules.hfst
+		liitsonafilter.lexc liitsonafilter.fst rules.hfst $(APERTIUM_CLEAN)
 
 ## peamine FST ehitamine
 #eesti.fst: lexicon.fst rules.fst exceptions.fst deriv_filter.txt xfst.script liitsonamask.lexc \
@@ -50,7 +50,9 @@ clean:
 #	$(XFST) -e 'read regex  [@"rules.fst"].i .o. [@"lexicon.fst"]' -e 'save lex-av.fst' < /dev/null
 
 lex-av.fst: rules.hfst lexicon.fst
-	hfst-compose-intersect lexicon.hfst rules.hfst -o $@
+	hfst-invert -i lexicon.fst -o lexicon-i.fst
+	hfst-compose-intersect lexicon-i.fst rules.hfst -o lex-av-i.fst
+	hfst-invert -i lex-av-i.fst -o $@
 
 #lihtsonad.fst: deriv_filter.txt exceptions.fst lex-av.fst rules.fst arvud.fst
 #	$(XFST) -e 'read regex [ @re"deriv_filter.txt" .o. [[@"exceptions.fst"] .P. [@"lex-av.fst"]] .o. ~$$"#" .o.  @"rules.fst" ] | @"arvud.fst"' -e 'save lihtsonad.fst' < /dev/null
@@ -153,7 +155,7 @@ testx: xfst.out
 apertium: apertium-fin-est.est-fin.LR.att.gz apertium-fin-est.est-fin.RL.att.gz
 
 punctuation.hfst: punctuation.lexc
-	hfst-lexc $< -o $@
+	hfst-lexc -f foma $< -o $@
 
 est.apertium.fst: eesti.fst punctuation.hfst
 	hfst-union eesti.fst punctuation.hfst -o est.gen.fst
