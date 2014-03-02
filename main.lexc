@@ -1408,7 +1408,7 @@ LEXICON An_b
  ma+V+indic+pres+ps2+sg+ps+af:+d GI;
  ma+V+indic+pres+ps3+sg+ps+af:+b GI;
  ma+V+indic+pres+ps+neg:+0 GI;
- ma+V+imper+pres+ps2+sg:+0 GI;
+ ma+V+imper+pres+ps2+sg+ps+af:+0 GI;
 
  ma+V+cond+pres+ps+af:+ks GI ;
  ma+V+cond+pres+ps+neg:+ks GI ;
