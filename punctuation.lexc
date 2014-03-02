@@ -1,0 +1,19 @@
+! This file contains punctuation symbols, it is unioned
+! with the main morphological transducer for those applications
+! that also need punctuation to receive analyses.
+
+Multichar_Symbols
+
+%+punct
+%+clb
+%+cm
+
+LEXICON Root
+
+%;+punct:%: # ;
+%,+cm:%, # ;
+%.+punct+clb:%. # ;
+…+punct:… # ;
+%:+punct+clb:%: # ;
+%?+punct+clb:%? # ;
+%!+punct+clb:%! # ;

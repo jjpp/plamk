@@ -29,8 +29,8 @@ clean:
 		exceptions.fst full-compound.fst lihtsonad.fst liitsonamask.fst arvud.fst \
 		1984_words_u_l1.txt 1984_words_u_l1.out eki.out liitsonamask.lexc \
 		estmorf_check.out reverse-eesti.fst reverse-lex-av.fst reverse-lihtsonad.fst \
-		liitsonafilter.lexc liitsonafilter.fst
-
+		liitsonafilter.lexc liitsonafilter.fst $(APERTIUM_CLEAN)
+	
 ## peamine FST ehitamine
 #eesti.fst: lexicon.fst rules.fst exceptions.fst deriv_filter.txt xfst.script liitsonamask.lexc \
 #		liitsonafilter.lexc arvud.lexc
@@ -136,9 +136,13 @@ testx: xfst.out
 
 apertium: apertium-fin-est.est-fin.LR.att.gz apertium-fin-est.est-fin.RL.att.gz
 
-est.apertium.fst: eesti.fst
-	hfst-invert eesti.fst -o eesti.mor.fst
-	hfst-substitute -F apertium.relabel eesti.mor.fst -o $@
+punctuation.hfst: punctuation.lexc
+	hfst-lexc $< -o $@
+
+est.apertium.fst: eesti.fst punctuation.hfst
+	hfst-union eesti.fst punctuation.hfst -o est.gen.fst
+	hfst-invert est.gen.fst -o est.mor.fst
+	hfst-substitute -F apertium.relabel est.mor.fst -o $@
 
 apertium-fin-est.est-fin.LR.att: est.apertium.fst
 	hfst-fst2txt est.apertium.fst -o $@
@@ -148,3 +152,8 @@ apertium-fin-est.est-fin.RL.att: est.apertium.fst
 
 %.att.gz: %.att
 	gzip -9 -f --verbose $<
+
+APERTIUM_CLEAN=apertium-fin-est.est-fin.LR.att.gz apertium-fin-est.est-fin.RL.att.gz est.apertium.fst \
+		punctuation.hfst est.gen.fst est.mor.fst 
+	
+

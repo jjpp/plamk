@@ -17,7 +17,7 @@
 +gen	<gen>
 +part	<par>
 +ill	<ill>
-+adit	<adit>
++adit	<adi>
 +in	<ine>
 +el	<ela>
 +all	<all>
@@ -44,9 +44,13 @@
 +af	<aff>
 +imps	<impers>
 +ps	@0@
-+sup	<supn>
-+inf	<inf>
++sup	<infma>
++inf	<infa>
++punct	<punct>
++cm	<cm>
++clb	<clb>
 +ger	<ger>
++gi	<foc_gi>
 +partic	<pp>
 &	+
 =	@0@
